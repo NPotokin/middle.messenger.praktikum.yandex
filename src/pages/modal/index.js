@@ -1,0 +1,7 @@
+export {AddUser} from './addUser'
+export {DeleteUser} from './deleteUser'
+export {ErrorUser} from './errorUser'
+export {UploadAvatar} from './uploadAvatar'
+export {UploadAvatarNoFile} from './uploadAvatarNoFile'
+export {UploadedAvatar} from './uploadedAvatar'
+export {UploadAvatarError} from './uploadAvatarError'
