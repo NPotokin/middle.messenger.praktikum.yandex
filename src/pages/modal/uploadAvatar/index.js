@@ -1,2 +1,2 @@
 import '../modal.css'
-export { defult as UploadAvatar } from './uploadAvatar.hbs?raw'
+export { default as UploadAvatar } from './uploadAvatar.hbs?raw'

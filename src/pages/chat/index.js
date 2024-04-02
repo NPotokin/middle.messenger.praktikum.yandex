@@ -1,1 +1,2 @@
-export {Chat} from './chat.hbs?raw'
+export {default as Chat} from './chat.hbs?raw'
+

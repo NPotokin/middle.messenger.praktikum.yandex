@@ -1,7 +1,8 @@
-export {AddUser} from './addUser'
-export {DeleteUser} from './deleteUser'
-export {ErrorUser} from './errorUser'
-export {UploadAvatar} from './uploadAvatar'
-export {UploadAvatarNoFile} from './uploadAvatarNoFile'
-export {UploadedAvatar} from './uploadedAvatar'
-export {UploadAvatarError} from './uploadAvatarError'
+import {AddUser} from './addUser'
+import {DeleteUserModal} from './deleteUser'
+import {UploadAvatar} from './uploadAvatar'
+import {UploadAvatarNoFile} from './uploadAvatarNoFile'
+import {UploadedAvatar} from './uploadedAvatar'
+import {UploadAvatarError} from './uploadAvatarError'
+
+export {AddUser, DeleteUserModal, UploadAvatar, UploadAvatarNoFile, UploadAvatarError, UploadedAvatar };

@@ -1,20 +1,21 @@
-<div class="{{loginClass}}">
-    <form 
-    action="{{formAction}}" 
-    class="{{formClass}}">
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Button buttonClass="" buttonText=""}}
-        {{> Button buttonClass="" buttonText=""}}
-    </form>
+<div class="login">
+    <div class="login__modal">
+        <h1 class="login__title">Вход</h1>
+        <form 
+        action="{{formAction}}" 
+        class="login__form">
+            {{> Input 
+            inputId="" inputType="" inputName="" 
+            label="Логин" placeholder="" inputText=""
+            }}
+            {{> Input 
+            inputId="" inputType="" inputName="" 
+            label="Пароль" placeholder="" inputText="some"
+            }}
+            {{> Button buttonClass="primary" buttonText="Авторизоваться"}}
+            {{> Button buttonClass="link" buttonText="Нет аккаунта?"}}
+        </form>
+    </div>
 </div>
 
 

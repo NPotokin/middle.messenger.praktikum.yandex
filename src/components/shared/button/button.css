@@ -1,0 +1,49 @@
+.button {
+    background-color: initial;
+    border: none;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    
+  }
+
+  .button__primary {
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .button__link {
+    font-size: 11px;
+    line-height: 11px;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+  }
+
+  .button__link--underscore {
+    width: 122px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 20px auto auto auto;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .button__link--gray {
+    width: 122px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 10px auto auto auto;
+    color: #8D8D8D;
+    cursor: pointer;
+  }
+
+  
