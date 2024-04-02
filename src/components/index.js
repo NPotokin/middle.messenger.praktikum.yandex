@@ -10,6 +10,8 @@ import {ChatContent} from './chat/chatArea/active/chatContent'
 import {Header} from './chat/chatArea/active/header'
 import {ChatInput} from './chat/chatArea/active/chatInput'
 import { Error } from './error'
+import { Arrow } from './shared/arrowButton'
+import { UserInput } from './userProfile/userInput'
 
 
 export {Input, 
@@ -24,5 +26,7 @@ export {Input,
     Header,
     ChatInput,
     Error,
+    Arrow,
+    UserInput
     
 }

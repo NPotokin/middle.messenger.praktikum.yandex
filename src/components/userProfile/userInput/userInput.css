@@ -1,24 +1,37 @@
-.userData {
+.userInput {
+    display: flex;
     border-bottom: 1px solid #EAEAEA;
     display: flex;
     justify-content: space-between;
     width: 510px;
-
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-.userData__key {
+.userInput__label {
     width: 50%;
     text-align: left;
     font-size: 13px;
     line-height: 13px;
     font-weight: 500;
+    align-content: center;
+
 }
 
-.userData__value {
+.userInput__element {
     width: 50%;
     text-align: right;
     color: var(--text-secondary-color);
     font-size: 13px;
     line-height: 13px;
     font-weight: 500;
+    border: none;
+}
+
+.userInput__element:focus-visible{
+    outline: none;
+}
+
+.loginChange {
+    padding-top: 120px;
 }

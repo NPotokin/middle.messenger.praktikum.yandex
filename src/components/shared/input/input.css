@@ -6,11 +6,11 @@
 .input__label {
     margin-top: 12px;
     margin-bottom: 6px;
-    transform: translateY(24px);
+    transform: translateY(1px);
     display: flex;
     flex-direction: column;
     text-align: left;
-    font-size: 13px;
+    font-size: 13px; 
     font-weight: 500;
     line-height: 13px;
     color: var(--text-secondary-color);
@@ -18,12 +18,14 @@
 }
 
 .input__element {
+    transform: translateY(30px);
     font-size: 13px;
     font-weight: 500;
     color: var(--primary-text-color);
     border: none;
     border-bottom: 1px solid var(--primary-color);
     padding-bottom: 7px;
+    padding: 0%;
 }
 
 .input__text {
@@ -39,8 +41,13 @@
     outline: none;
 }
 
-.input__element:focus-within + .input__label {
-    transform: translateY(-24px);
-    font-size: 9px; 
+.input__element:not(:placeholder-shown) + .input__label,
+  .input__element:focus + .input__label {
+    transform: translateY(-15px);
+    font-size: 9px;
+  }
+
+.input__text--error {
+    color: #FF2F2F;
 }
 

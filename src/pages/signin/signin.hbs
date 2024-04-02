@@ -1,46 +1,49 @@
-<div class="{{loginClass}}">
-    <form 
-    action="{{formAction}}" 
-    class="{{formClass}}">
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         <p class="{{errorClasss}}">{{errorText}}</p>
-        {{> Button buttonClass="" buttonText=""}}
-        {{> Button buttonClass="" buttonText=""}}
-    </form>
+<div class="signin">
+    <div class="signin__modal">
+        <h1 class="signin__title">Регистрация</h1>
+        <form 
+        action="{{formAction}}" 
+        class="signin__form">
+            {{> Input 
+                inputId="" inputType="" inputName="" inputValue="pochta@yandex.ru"
+                label="Почта" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="" inputName="" 
+                inputValue="ivanivanov"
+                label="Логин" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="" inputName="" 
+                inputValue="Иван"
+                label="Имя" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="" inputName="" 
+                inputValue="Иванов"
+                label="Фамилия" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="tel" inputName="" 
+                inputValue="+7 (909) 967 30 30"
+                label="Телефон" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="password" inputName="" 
+                inputValue="whatever" modifier="input__text--error"
+                label="Пароль" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="" inputType="password" inputName="" 
+                inputValue="whatever" modifier="input__text--error"
+                label="Пароль (ещё раз)" placeholder="" inputText="Пароли не совпадают" 
+            }}
+            {{> Button buttonClass="primary" buttonText="Зарегистрироваться"}}
+            {{> Button buttonClass="link" buttonText="Войти"}}
+        </form>
+
+
+    </div>
 </div>
 
 

@@ -1,40 +1,24 @@
-<div class="{{userProfileClass}}">
-    {{> Image avatarSrc="" avatarAlt="" avatarSize=""}}
-    <div class="{{userInfoClass}}">
-        {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-         {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-         }}
-        
-        {{> Button buttonClass="" buttonText=""}}
+<div class="profile">
+    <div class="profile__buttonArea">
+        {{> Arrow src="/static/icons/arrow-left.svg"}}
     </div>
-    {{> Button buttonClass="" buttonText=""}} //arrow button
+    <div class="profile__main">
+        <div class="profileContainer">
+            {{> Image imgSize="40px" contSize="__128" imgSrc="/static/icons/image.svg"}}
+            <div class="profile__info">
+                {{> UserInput label="Почта" inputType="" inputValue="pochta@yandex.ru" userInputContainerClass="loginChange"}}
+                {{> UserInput label="Логин" inputType="" inputValue="ivanivanov"}}
+                {{> UserInput label="Имя" inputType="" inputValue="Иван"}}
+                {{> UserInput label="Фамилия" inputType="" inputValue="Иванов"}}
+                {{> UserInput label="Имя в чате" inputType="" inputValue="Иван"}}
+                {{> UserInput label="Телефон" inputType="tel" inputValue="+7 (909) 967 30 30"}}
+            </div>
+    
+            {{> Button buttonClass="primary--user" buttonText="Сохранить"}}
+
+            
+
+        </div>
+    </div>
+
 </div>
-
-

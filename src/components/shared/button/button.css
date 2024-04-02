@@ -46,4 +46,42 @@
     cursor: pointer;
   }
 
-  
+  .button__link--profile {
+    justify-content: left;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    border-bottom: 1px solid #EAEAEA;
+    border-radius: 0%;
+  }
+
+  .button__link--profileError {
+    justify-content: left;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    color: var(--text-error-color);
+    background-color: var(--background-color);
+    border-bottom: 1px solid #EAEAEA;
+    border-radius: 0%;
+  }
+
+  .button__primary--user {
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    width: 280px;
+    margin-top: 44px;
+  }
+
+  .button__primary--password {
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    width: 280px;
+    margin-top: 144px;
+  }

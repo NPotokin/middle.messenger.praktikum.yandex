@@ -18,6 +18,9 @@ const pages = {
   'noFile': [Pages.UploadAvatarNoFile],
   'succesUploadAvatar': [Pages.UploadedAvatar],
   'deleteUserModal': [Pages.DeleteUserModal],
+  'profile': [Pages.Profile],
+  'profileChangeData': [Pages.ProfileChangeData],
+  'profileChangePassword': [Pages.ProfileChangePassword],
   'signIn': [Pages.SignIn]
 };
 
