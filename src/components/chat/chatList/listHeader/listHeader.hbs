@@ -1,8 +1,16 @@
-<div class="{{listHeaderClass}}">
-    <a href="{{profileLink}}" class="{{profileLinkClass}}">{{profileLinkText}}</a>
-    {{> Input 
-        divClass="" labelClass="" inputClass="" tempClass=""
-        imputId="" inputType="" inputName="" 
-        label="" placeholder="" tempText=""
-    }}
+<div class="listHeader">
+    <a href="" class="listHeader__link">Профиль > </a>
+    <div class="listHeader__search">
+        <label 
+        for="{{inputId}}" 
+        class="listHeader__label">
+        </label>
+        <input 
+        type="search" 
+        id="{{inputId}}" 
+        name="" 
+        value=""
+        class="listHeader__input" 
+        placeholder="Поиск">
+</div>
 </div>

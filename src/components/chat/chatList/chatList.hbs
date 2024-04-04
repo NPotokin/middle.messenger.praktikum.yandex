@@ -1,4 +1,6 @@
 <div>
     {{> ListHeader}}
-    {{> ListItem}}
+    {{#each (listItems)}}
+        {{> ListItem}}
+    {{/each}}    
 </div>

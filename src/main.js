@@ -5,6 +5,7 @@ import * as Pages from './pages';
 
 const pages = {
   'nav': [ Pages.Navigation],
+  'emptyChat': [Pages.EmptyChat],
   'chat': [Pages.Chat],
   'error404': [Pages.Error404],
   'error500': [Pages.Error500],
@@ -18,6 +19,8 @@ const pages = {
   'noFile': [Pages.UploadAvatarNoFile],
   'succesUploadAvatar': [Pages.UploadedAvatar],
   'deleteUserModal': [Pages.DeleteUserModal],
+  'preAddDeleteUserModal': [Pages.PreAddDeleteUser],
+  'attachModal': [Pages.Attach],
   'profile': [Pages.Profile],
   'profileChangeData': [Pages.ProfileChangeData],
   'profileChangePassword': [Pages.ProfileChangePassword],

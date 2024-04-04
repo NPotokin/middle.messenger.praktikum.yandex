@@ -1,5 +1,65 @@
-<div>
-    {{> Header}}
-    {{> ChatContent}}
-    {{> ChatInput}}
+<div class="chatAreaHeader">
+    <div class="chatAreaHeader__image">
+        {{> Image contSize="__38" imgSize=""}}
+    </div>
+    <div class="chatAreaHeader__title">
+        Вадим
+    </div>
+    <div class="chatAreaHeader__menu"></div>
 </div>
+
+<div class="chatAreaContent">
+    <div class="chatAreaContent__date">19 июня</div>
+    
+    <div class="chatAreaContent__inbound">
+        <div class="chatAreaContent__inbound--message">Привет! Смотри, 
+            тут всплыл интересный кусок лунной космической истории — НАСА в
+             какой-то момент попросила Хассельблад адаптировать модель SWC 
+             для полетов на Луну. Сейчас мы все знаем что астронавты летали 
+             с моделью 500 EL — и к слову говоря, все тушки этих камер все еще 
+             находятся на поверхности Луны, так как астронавты с собой забрали 
+             только кассеты с пленкой.<br><br>
+
+             Хассельблад в итоге адаптировал SWC 
+             для космоса, но что-то пошло не так и на
+              ракету они так никогда и не попали. Всего их было 
+              произведено 25 штук, одну из них недавно продали 
+              на аукционе за 45000 евро.
+              
+              </div>
+        <div class="chatAreaContent__inbound--date">11:56</div>
+    </div>
+
+    <div class="chatAreaContent__inbound--image">
+        <div class="chatAreaContent__inbound--message">
+            <img src="/static/images/image.png" alt="">
+        </div>
+        <div class="chatAreaContent__inbound--date">11:56</div>
+    </div>  
+        
+    <div class="chatAreaContent__outbound">
+        <div class="chatAreaContent__outbound--message">Круто!</div>
+        <div class="chatAreaContent__outbound--date">12:00</div>
+    </div>
+</div>
+
+<div class="chatAreaInput">
+    <div class="chatAreaInput__attach"></div>
+    <div class="chatAreaInput__input">
+        <label 
+        for="{{inputId}}" 
+        class="">
+        </label>
+        <input 
+        type="text" 
+        id="{{inputId}}" 
+        name="" 
+        value=""
+        class="chatAreaInput__input--input" 
+        placeholder="Сообщение">
+    </div>
+    <div class="chatAreaInput__send">
+        {{> Arrow src="/static/icons/arrow-right.svg"}}
+    </div>
+</div>
+
