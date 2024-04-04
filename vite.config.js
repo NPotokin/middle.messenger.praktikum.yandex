@@ -7,7 +7,8 @@ export default defineConfig({
     },
     root: '.',
     build: {
-        outDir: 'dist'
+        outDir: './dist'
     },
-    assetsDir: 'src/static',
+    assetsDir: './static',
+    base: './'
 });
