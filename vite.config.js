@@ -1,7 +1,13 @@
-import autoprefixer from 'autoprefixer';
+import {defineConfig} from 'vite';
 
-export default {
-  plugins: [
-    autoprefixer
-  ]
-};
+
+export default defineConfig({
+    server: {
+        port: 3000,
+    },
+    root: '.',
+    build: {
+        outDir: 'dist'
+    },
+    assetsDir: 'src/static',
+});
