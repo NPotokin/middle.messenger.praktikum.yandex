@@ -10,5 +10,5 @@ import {Attach} from './attachSomething'
 export {AddUser, DeleteUserModal, 
     UploadAvatar, UploadAvatarNoFile,
      UploadAvatarError, UploadedAvatar, 
-     PreAddDeleteUser, Attach };
-     
+     PreAddDeleteUser, Attach 
+};
