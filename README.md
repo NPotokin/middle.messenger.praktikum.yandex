@@ -46,5 +46,3 @@
 ```npm run dev```
 2. Запустить билд проекта и превью
 ```npm run start```
-3. Запустить билд фронта и Express сервер
-```npm run startWithServer```
