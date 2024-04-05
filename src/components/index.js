@@ -11,7 +11,6 @@ import { Arrow } from './shared/arrowButton'
 import { UserInput } from './userProfile/userInput'
 import {Inactive} from './chat/chatArea/inactive'
 
-
 export {Input, 
     Button, 
     Image, 
@@ -23,6 +22,5 @@ export {Input,
     Error,
     Arrow,
     UserInput,
-    Inactive
-    
+    Inactive,
 }

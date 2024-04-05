@@ -37,7 +37,6 @@ function navigate(page) {
     container.innerHTML = Handlebars.compile(source)(context);
   }
   
-
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));
 
 document.addEventListener('click', e => {
