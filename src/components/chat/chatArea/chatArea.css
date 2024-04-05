@@ -25,13 +25,13 @@
     align-items: center;
     justify-content: center;
     margin-top: 5px;
-    background-image: url('/static/icons/menu.svg');
+    background-image: url('/icons/menu.svg');
     transform: rotate(90deg);
     cursor: pointer;
 }
 
 .chatAreaHeader__menu:hover {
-    background-image: url('/static/icons/menuActive.svg');
+    background-image: url('/icons/menuActive.svg');
     transform: rotate(90deg);
     background-color: #F5F5F5;
 }
@@ -115,7 +115,7 @@ div.chatAreaContent__inbound--message img {
     text-align: right;
     color: #3369F3;
     transform: translate(-10px, -10px);
-    background: url('/static/icons/doubleTick.svg') no-repeat;
+    background: url('/icons/doubleTick.svg') no-repeat;
     background-position: 80px;
 }
 
@@ -134,7 +134,7 @@ div.chatAreaContent__inbound--message img {
     height: 20px;
     cursor: pointer;
     margin-top: 5px;
-    background-image: url('/static/icons/attachGray.svg');
+    background-image: url('/icons/attachGray.svg');
 }
 
 .chatAreaInput__send {
@@ -142,7 +142,7 @@ margin-top: 3px;
 }
 
 .chatAreaInput__attach:hover{
-    background-image: url('/static/icons/attachBlue.svg');
+    background-image: url('/icons/attachBlue.svg');
 }
 
 .chatAreaInput__input {
