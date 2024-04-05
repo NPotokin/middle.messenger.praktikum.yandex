@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "start": "vite build && vite preview",
+    "start": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
