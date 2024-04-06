@@ -3,7 +3,7 @@
         {{> Arrow src="/icons/arrow-left.svg"}}
     </div>
     <div class="profile__main">
-        <div class="profileContainer">
+        <form class="profileContainer">
             {{> Image imgSize="40px" contSize="__128" imgSrc="/icons/image.svg"}}
             <div class="profile__info">
                 {{> UserInput inputId="email" inputName="email" label="Почта" inputType="email" inputValue="pochta@yandex.ru" userInputContainerClass="loginChange"}}
@@ -14,6 +14,6 @@
                 {{> UserInput inputId="phone" inputName="phone" label="Телефон" inputType="tel" inputValue="+7 (909) 967 30 30"}}
             </div>
             {{> Button buttonClass="primary--user" buttonText="Сохранить"}}
-        </div>
+        </form>
     </div>
 </div>
