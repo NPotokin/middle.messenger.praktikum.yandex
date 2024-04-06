@@ -12,7 +12,6 @@
     color: rgba(153, 153, 153, 1);
     text-decoration: none;
     margin: 21px 0 22px 0;
-
 }
 
 .listHeader__link:active, .listHeader__link:visited, 
@@ -51,12 +50,11 @@
     background-position: 10px;
 }
 
- .listHeader__input::placeholder {
+.listHeader__input::placeholder {
     margin-left: 20px;
     text-align: center;
- }
+}
 
- .listHeader__input:focus::placeholder {
+.listHeader__input:focus::placeholder {
     opacity: 0;
- }
- 
+}
