@@ -1,0 +1,23 @@
+.userData {
+    border-bottom: 1px solid #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    width: 510px;
+}
+
+.userData__key {
+    width: 50%;
+    text-align: left;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+}
+
+.userData__value {
+    width: 50%;
+    text-align: right;
+    color: var(--text-secondary-color);
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+}
