@@ -6,7 +6,7 @@
 }
 
 .chatAreaInactive__text {
-    color: rgba(153, 153, 153, 1);
+    color: rgb(153 153 153 / 100%);
     font-size: 12px;
     font-weight: 500;
     line-height: 12px;

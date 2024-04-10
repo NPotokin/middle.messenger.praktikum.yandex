@@ -30,7 +30,7 @@
   height: 32px;
   font-size: 12px;
   line-height: 16px;
-  margin: 20px auto auto auto;
+  margin: 20px auto auto;
   color: var(--primary-color);
   text-decoration: underline;
   cursor: pointer;
@@ -40,7 +40,7 @@
   width: 122px;
   font-size: 14px;
   line-height: 16px;
-  margin: 10px auto auto auto;
+  margin: 10px auto auto;
   color: #8D8D8D;
   cursor: pointer;
 }
