@@ -1,4 +1,4 @@
-import { ChatArea } from "./chatArea";
-import { ChatList } from "./chatList";
+import { ChatArea } from './chatArea';
+import { ChatList } from './chatList';
 
 export {ChatArea, ChatList};

@@ -1,3 +1,3 @@
-import { UserData } from "./userData";
+import { UserData } from './userData';
 
 export {UserData};

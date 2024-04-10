@@ -1,3 +1,3 @@
-import './userInput.css'
+import './userInput.css';
 
-export { default as UserInput } from './userInput.hbs?raw'
+export { default as UserInput } from './userInput.hbs?raw';

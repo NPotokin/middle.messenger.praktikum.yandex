@@ -1,3 +1,3 @@
-import './arrowButton.css'
+import './arrowButton.css';
 
-export {default as Arrow} from './arrowButton.hbs?raw'
+export {default as Arrow} from './arrowButton.hbs?raw';

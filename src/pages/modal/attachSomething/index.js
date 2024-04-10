@@ -1,2 +1,2 @@
-import '../modal.css'
-export { default as Attach} from './attachSomething.hbs?raw'
+import '../modal.css';
+export { default as Attach} from './attachSomething.hbs?raw';

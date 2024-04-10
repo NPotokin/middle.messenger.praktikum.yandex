@@ -1,3 +1,3 @@
-import './chatArea.css'
+import './chatArea.css';
 
-export {default as ChatArea} from './chatArea.hbs?raw'
+export {default as ChatArea} from './chatArea.hbs?raw';

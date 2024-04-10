@@ -1,1 +1,1 @@
-export {default as Navigation} from './nav.hbs?raw'
+export {default as Navigation} from './nav.hbs?raw';

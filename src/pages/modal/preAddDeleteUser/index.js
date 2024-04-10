@@ -1,3 +1,3 @@
-import '../modal.css'
+import '../modal.css';
 
-export { default as PreAddDeleteUser } from './preAddDeleteUser.hbs?raw'
+export { default as PreAddDeleteUser } from './preAddDeleteUser.hbs?raw';
