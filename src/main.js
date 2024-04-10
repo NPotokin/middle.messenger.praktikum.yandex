@@ -1,18 +1,17 @@
 import Handlebars from 'handlebars';
 import * as Components from './components';
 import * as Pages from './pages';
+import * as Modules from './modules';
 
 
 const pages = {
   'nav': [ Pages.Navigation],
+  'loginPage': [Pages.LoginPage],
+  'signInPage': [Pages.SignInPage],
   'emptyChat': [Pages.EmptyChat],
   'chat': [Pages.Chat],
   'error404': [Pages.Error404],
   'error500': [Pages.Error500],
-  'emptyLogin': [Pages.EmptyFields],
-  'filledLogin': [Pages.FilledFields],
-  'wrongLogin': [Pages.WrongLogin],
-  'wrongPassword': [Pages.WrongPassword],
   'addUser': [Pages.AddUser],
   'uploadAvatar': [Pages.UploadAvatar],
   'uploadedAvararError': [Pages.UploadAvatarError],
@@ -24,10 +23,13 @@ const pages = {
   'profile': [Pages.Profile],
   'profileChangeData': [Pages.ProfileChangeData],
   'profileChangePassword': [Pages.ProfileChangePassword],
-  'signIn': [Pages.SignIn],
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
+  Handlebars.registerPartial(name, component);
+});
+
+Object.entries(Modules).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
 });
 
