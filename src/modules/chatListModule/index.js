@@ -1,7 +1,6 @@
 import Handlebars from 'handlebars';
-import {default as ChatList } from './chatList.hbs?raw';
+export {default as ChatListModule } from './chatListModule.hbs?raw';
 
-export {ChatList};
 
 Handlebars.registerHelper('listItems', ()=> {
   return [

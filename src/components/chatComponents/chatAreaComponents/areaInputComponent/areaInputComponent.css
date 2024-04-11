@@ -1,0 +1,87 @@
+.chatAreaInput {
+    display: flex;
+    margin: 10px 13px 10px 20px;
+    border-top: 1px solid rgb(234 234 234 / 100%);
+    padding-top: 10px;
+}
+
+.chatAreaInput__attach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 5px;
+    background-image: url('/icons/attachGray.svg');
+}
+
+.chatAreaInput__send {
+margin-top: 3px;
+}
+
+.chatAreaInput__attach:hover{
+    background-image: url('/icons/attachBlue.svg');
+}
+
+.chatAreaInput__input {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.chatAreaInput__input--input {
+    width: 100;
+    background-color:#EFEFEF;
+    border: none;
+    padding: 9px;
+    border-radius: 30px;
+    flex: 1;
+}
+
+.chatAreaInput__input--input:focus {
+    outline: none;
+}
+
+/*Modal Styles*/
+.modalAttach {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 162px;
+    height: 128px;
+    padding: 5px;
+    border: solid var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 14%);
+    box-sizing: border-box;
+    transform: translate(60px, -100px);
+    background-color: rgba(255, 255, 255, 1);;
+}
+
+.modalAttach__attachment {
+    display: flex;
+    flex-direction: row;
+    width: 160px;
+}
+
+
+.modalAttach__text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    text-align: left;
+}
+
+.modalAttach__attachment--icon {
+    margin: 1px;
+    width: 28px;
+    height: 28px;
+    object-fit: fill;
+    margin-top: 4px;
+    margin-left: 5px;
+}
