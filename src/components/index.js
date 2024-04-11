@@ -7,7 +7,6 @@ import { ChatArea } from './chat';
 import { ChatList } from './chat';
 import {ListHeader} from '../components/chat/chatList/listHeader';
 import {ListItem} from '../components/chat/chatList/listItem';
-import { Error } from './error';
 import { UserInput } from './userProfile/userInput';
 import {Inactive} from './chat/chatArea/inactive';
 
@@ -19,11 +18,12 @@ export {Input,
   ChatList,
   ListHeader,
   ListItem,
-  Error,
   ArrowButton,
   UserInput,
   Inactive,
 };
+
+export {ErrorComponent} from './errorComponent'
 
 
 

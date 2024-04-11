@@ -5,38 +5,39 @@
         action="{{formAction}}" 
         class="signin__form">
             {{> Input 
-                inputId="email" inputType="text" inputName="email" inputValue="pochta@yandex.ru"
+                inputId="email" inputType="text" inputName="email" 
+                inputValue=""
                 label="Почта" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="login" inputType="text" inputName="login" 
-                inputValue="ivanivanov"
+                inputValue=""
                 label="Логин" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="first_name" inputType="text" inputName="first_name" 
-                inputValue="Иван"
+                inputValue=""
                 label="Имя" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="second_name" inputType="text" inputName="second_name" 
-                inputValue="Иванов"
+                inputValue=""
                 label="Фамилия" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="phone" inputType="tel" inputName="phone" 
-                inputValue="+7 (909) 967 30 30"
+                inputValue=""
                 label="Телефон" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="password" inputType="password" inputName="password" 
-                inputValue="whatever" modifier="input__text--error"
+                inputValue="" modifier=""
                 label="Пароль" placeholder="" inputText="" 
             }}
             {{> Input 
                 inputId="passwordVCheck" inputType="password" inputName="password" 
-                inputValue="whatever" modifier="input__text--error"
-                label="Пароль (ещё раз)" placeholder="" inputText="Пароли не совпадают" 
+                inputValue="" modifier=""
+                label="Пароль (ещё раз)" placeholder="" inputText="" 
             }}
             {{> Button buttonClass="primary" buttonText="Зарегистрироваться"}}
             {{> Button buttonClass="link" buttonText="Войти"}}
