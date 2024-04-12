@@ -1,4 +1,4 @@
-function handleButtonClick() {
+function handleMenuClick() {
     document.addEventListener('DOMContentLoaded', function() {
         const observer = new MutationObserver(function(mutationsList, observer) {
             const button = document.querySelector('.chatAreaHeader__menu');
@@ -21,4 +21,4 @@ function toggleDisplayStyle() {
     }
 }
 
-export default handleButtonClick;
+export default handleMenuClick;
