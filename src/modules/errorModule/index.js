@@ -1,10 +1,9 @@
-import Handlebars from 'handlebars'
-export {default as ErrorModule} from './errorModule.hbs?raw'
+import Handlebars from 'handlebars';
+export {default as ErrorModule} from './errorModule.hbs?raw';
 
 
 Handlebars.registerHelper('error', () => {
-    return {error404: true}
-})
+  return {error404: true};
+});
 
 
-  

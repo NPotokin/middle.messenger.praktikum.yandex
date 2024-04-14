@@ -1,2 +1,2 @@
 export {ListHeaderComponent} from './listHeaderComponent';
-export {ListItemComponent} from './listItemComponent'
+export {ListItemComponent} from './listItemComponent';

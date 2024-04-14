@@ -1,13 +1,16 @@
 export {default as ChatAreaModule} from'./chatAreaModule.hbs?raw';
 
-import handleMenuClick from './helpers/menuHeaderHandler'
-handleMenuClick();
+// import handleMenuClick from './helpers/menuHeaderHandler';
+// handleMenuClick();
 
-import inputAtachHandler from './helpers/inputAttchHandler';
-inputAtachHandler();
+// import inputAtachHandler from './helpers/inputAttchHandler';
+// inputAtachHandler();
 
-import handleAddUserClick from './helpers/inputAddUserHandler';
-handleAddUserClick();
+// import handleModalButtonClick from './helpers/inputAddDeleteUserHandler';
+// handleModalButtonClick();
 
-import handleDeleteUserClick from './helpers/inputDeleteUserHandler';
-handleDeleteUserClick();
+// import handleAddUserClick from './helpers/inputAddUserHandler';
+// handleAddUserClick();
+
+// import handleDeleteUserClick from './helpers/inputDeleteUserHandler';
+// handleDeleteUserClick();

@@ -9,5 +9,5 @@ export {
   InactiveAreaComponent,
 } from './chatComponents';
 
-export {AddDeleteUserModal} from './chatComponents/chatAreaComponents/areaHeaderComponent/modal'
+export {AddDeleteUserModal} from './chatComponents/chatAreaComponents/areaHeaderComponent/modal';
 

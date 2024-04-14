@@ -44,7 +44,7 @@ margin-top: 3px;
     outline: none;
 }
 
-/*Modal Styles*/
+/* Modal Styles */
 .modalAttach {
     display: none;
     flex-direction: column;
@@ -57,7 +57,7 @@ margin-top: 3px;
     box-shadow: 0 0 10px rgb(0 0 0 / 14%);
     box-sizing: border-box;
     transform: translate(60px, -100px);
-    background-color: rgba(255, 255, 255, 1);;
+    background-color: rgb(255 255 255 / 100%);;
 }
 
 .modalAttach__attachment {

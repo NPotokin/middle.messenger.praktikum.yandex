@@ -1,2 +1,2 @@
-import './areaHeaderComponent.css'
-export {default as AreaHeaderComponent} from './areaHeaderComponent.hbs?raw'
+import './areaHeaderComponent.css';
+export {default as AreaHeaderComponent} from './areaHeaderComponent.hbs?raw';
