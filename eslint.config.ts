@@ -20,7 +20,7 @@ export default [
   },
   {
     ignores: [
-      'node_modules/',           // unignore `node_modules/` directory
+      'node_modules/',         
       'dist/',
     ],
   },
