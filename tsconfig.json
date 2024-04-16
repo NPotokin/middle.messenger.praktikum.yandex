@@ -4,7 +4,7 @@
       "useDefineForClassFields": true,
       "module": "ESNext",
       "outDir": "dist",
-      "declaration": false,
+      // "declaration": false,
      
       "moduleResolution": "bundler",
       "allowImportingTsExtensions": true,
@@ -17,6 +17,6 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "declaration.d.ts", ],
+    "include": ["src", "typings/hbs.d.ts", ],
     "exclude": ["eslint.config.js", "postcss.config.js", "vite.config.ts"],
 }

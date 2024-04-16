@@ -1,2 +1,2 @@
 import './loginModule.css';
-export {default as LoginModule} from './loginModule.hbs?raw';
+export {default as LoginModule} from './loginModule'

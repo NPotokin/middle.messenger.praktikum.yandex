@@ -39,9 +39,17 @@ Object.entries(Modules).forEach(([ name, component ]) => {
 
 function navigate(page: string) {
   //@ts-ignore
-  const [source, context] = pages[page];
-  const container = document.getElementById('app');
-  //@ts-ignore
+  const [ source, context ] = pages[page];
+  const container = document.getElementById('app')!;
+
+  if(source instanceof Object) {
+    const page = new source(context);
+    container.innerHTML = '';
+    container.append(page.getContent());
+    // page.dispatchComponentDidMount();
+    return;
+  }
+
   container.innerHTML = Handlebars.compile(source)(context);
 }
 
