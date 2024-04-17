@@ -1,23 +1,23 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 class Button extends Block {
-    constructor(props) {
-        super({
-            ...props,
-            events: {
-                click: props.onClick
-            }
-        })
-    }
+  constructor(props) {
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
+  }
 
-    render(): string {
-        return `
+  render(): string {
+    return `
             <button class="button button__{{type}}" >
                 {{label}}
             </button>
     
-        `
-    }
+        `;
+  }
 }
 
 export default Button;

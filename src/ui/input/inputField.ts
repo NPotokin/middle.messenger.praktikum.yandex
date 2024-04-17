@@ -1,17 +1,17 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 export default class InputField extends Block {
-    constructor(props){
-        super({
-            ...props,
-        events: {
-            blur: props.onBlur,
-        }
-        })
-    }
+  constructor(props){
+    super({
+      ...props,
+      events: {
+        blur: props.onBlur,
+      },
+    });
+  }
 
-    render() {
-        return(`
+  render() {
+    return(`
         <input 
         type="{{inputType}}" 
         id="{{inputId}}" 
@@ -19,7 +19,7 @@ export default class InputField extends Block {
         value="{{inputValue}}"
         class="input__element {{modifier}}" 
         placeholder="{{placeholder}}">
-        `)
-        
-    }
+        `);
+
+  }
 }
