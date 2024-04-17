@@ -1,6 +1,7 @@
 export {LoginPage} from './loginPage';
 export {SignInPage} from './signinPage';
-export {ErrorPage} from './errorPage';
+export {ErrorPage404} from './errorPage404';
+export {ErrorPage500} from './errorPage500';
 export {Navigation} from './navigation';
 export {ChatPage} from './chatPage';
 

@@ -5,6 +5,6 @@ export function passwordCheckValidator(e) {
   if (isMatch) {
     this.children.PasswordCheckInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.PasswordCheckInput.setProps({ error: true, inputText: 'Passwords do not match' });
+    this.children.PasswordCheckInput.setProps({ error: true, inputText: 'Пароли не совпадают' });
   }
 }
