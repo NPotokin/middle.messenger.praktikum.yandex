@@ -1,3 +1,3 @@
 import './image.css';
-export { default as Image } from './image.hbs?raw';
+export { default as Image } from './image';
 

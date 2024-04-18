@@ -1,2 +1,2 @@
 import './addDeletUser.css';
-export {default as AddDeleteUserModal} from './addDeletUser.hbs?raw';
+export {default as DialogAddDeleteUser} from './dialogAddDeleteUser';

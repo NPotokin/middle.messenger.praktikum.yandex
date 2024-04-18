@@ -1,4 +1,4 @@
-export {default as ChatAreaModule} from'./chatAreaModule.hbs?raw';
+export {default as ChatAreaModule} from'./chatAreaModule';
 
 // import handleMenuClick from './helpers/menuHeaderHandler';
 // handleMenuClick();

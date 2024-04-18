@@ -1,2 +1,2 @@
 import './listHeaderComponent.css';
-export { default as ListHeaderComponent} from './listHeaderComponent.hbs?raw';
+export { default as ListHeaderComponent} from './listHeaderComponent';

@@ -16,7 +16,7 @@ export default class LoginModule extends Block {
     const onChangeLoginBind = loginValidator.bind(this);
     const onChangePasswordBind = passwordValidator.bind(this);
     const loginButtonClickBind = this.onLogin.bind(this);
-    const navigateBind = navigate.bind(this)
+    const navigateBind = navigate.bind(this);
 
     const LoginInput = new Input({
       label: 'Логин',

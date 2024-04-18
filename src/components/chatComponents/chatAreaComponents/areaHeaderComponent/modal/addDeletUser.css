@@ -1,6 +1,3 @@
-
-
-
 .ADUcontainer {
     display: none;
     flex-direction: column;
@@ -16,6 +13,7 @@
     position: absolute;
     top: 25vh;
     left: 75vw;
+    z-index: 1000;
 }
 
 .ADUmodal {
@@ -40,5 +38,6 @@
 }
 
 dialog.ADUcontainer::backdrop {
-    background-color: blueviolet;
+    background-color: black;
+    opacity: 50%;
 }
