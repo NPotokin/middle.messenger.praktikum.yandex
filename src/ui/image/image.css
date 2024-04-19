@@ -24,6 +24,16 @@
     justify-content: center;
 }
 
+.imageContainer__128still {
+    background-color: #EFEFEF;
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .imageContainer__128:hover {
     background-color: rgb(0 0 0 / 50%);
     cursor: pointer;

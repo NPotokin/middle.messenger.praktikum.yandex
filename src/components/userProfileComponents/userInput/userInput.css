@@ -33,3 +33,7 @@
 .loginChange {
     padding-top: 120px;
 }
+
+.userInput__text--error {
+    color: #FF2F2F;
+}
