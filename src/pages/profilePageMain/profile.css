@@ -30,6 +30,7 @@
     justify-content: center; 
     align-items: center; 
     margin: auto 0;
+    position: relative;
  }
 
  .profile__title {
@@ -53,4 +54,11 @@
     flex-direction: column;
     justify-content: left;
     align-items: flex-start;
+}
+
+.profile__modal {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }

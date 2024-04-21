@@ -1,7 +1,9 @@
 import Block from "../../core/Block";
 import { ArrowButton, Image, Button } from "../../ui";
 import navigate from "../utils/navigate";
+import validate from "../utils/validate";
 import { UserInput } from "../../components/userProfileComponents/userInput";
+import { ChangeAvatarModal } from "../../components/userProfileComponents/modals"; 
 
 export default class ProfileMainModule extends Block{
     constructor(props){
@@ -16,8 +18,12 @@ export default class ProfileMainModule extends Block{
                 ...props,
                 imgSize:"40px",
                 contSize:"__128", 
-                imgSrc:"/icons/image.svg"
+                imgSrc:"/icons/image.svg",
+                onClick: () => this.toggleChangeAvatarModalVisibility(),
             }),
+            ChangeAvatarModal: new ChangeAvatarModal({
+                ...props,
+            })
             
         })
     }
@@ -74,8 +80,6 @@ export default class ProfileMainModule extends Block{
             inputValue:"7 (909) 967 30 30",
         });
 
-        
-
         const SaveButton = new Button({
             type: "primary--password", 
             label:"Сохранить",
@@ -102,7 +106,20 @@ export default class ProfileMainModule extends Block{
           password: this.props.newPassword,
           passwordRepeat: this.props.newPasswordRepeat,
         });
-      }
+    }
+
+    toggleChangeAvatarModalVisibility() {
+        const modalComponent = this.children.ChangeAvatarModal;
+        if (modalComponent) {
+            const modalElement = modalComponent.getContent();
+            if (modalElement) {
+                const currentDisplay = modalElement.style.display;
+                modalElement.style.display = currentDisplay === "none" ? "flex" : "none";
+            }
+        }
+    }
+
+
 
     render(){
         return(`
@@ -119,7 +136,10 @@ export default class ProfileMainModule extends Block{
                         {{{FirsNameInput}}}
                         {{{SecondNameInput}}}
                         {{{DisplayNameInput}}}
-                        {{{PhoneInput}}}  
+                        {{{PhoneInput}}}
+                        <div class='profile__modal'>
+                            {{{ChangeAvatarModal}}}
+                        </div>
                     </div>
                         {{{SaveButton}}}
                     </div>

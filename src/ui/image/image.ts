@@ -2,7 +2,12 @@ import Block from "../../core/Block";
 
 export default class Image extends Block{
     constructor(props){
-        super(props)
+        super({
+            ...props,
+            events: {
+                click: props.onClick,
+            }
+        })
     }
 
     render(){

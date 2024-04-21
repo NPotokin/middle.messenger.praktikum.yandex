@@ -26,7 +26,7 @@ export default class Input extends Block {
 
   render(): string {
     return(`
-        <div class="input">
+        <div class="input{{inputClass}}">
             {{{InputField}}}
             <label 
             for="{{inputId}}" 

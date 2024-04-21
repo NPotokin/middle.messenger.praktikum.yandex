@@ -47,8 +47,8 @@
     line-height: 14px;
     color: var(--chat-bg-color);
     position: absolute;
-    top: 15%;
-    left: 50%;
+    top: 50px;
+    left: 45%;
 }
 
 .imageContainer__47 {

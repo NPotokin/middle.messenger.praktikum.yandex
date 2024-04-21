@@ -50,3 +50,7 @@
 .input__text--error {
     color: #FF2F2F;
 }
+
+.input__hidden {
+    display: none;
+}

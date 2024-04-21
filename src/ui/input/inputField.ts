@@ -6,6 +6,7 @@ export default class InputField extends Block {
       ...props,
       events: {
         blur: props.onBlur,
+        change: props.onChange,
       },
     });
   }
