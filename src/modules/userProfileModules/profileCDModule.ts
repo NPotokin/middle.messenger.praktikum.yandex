@@ -1,9 +1,13 @@
 import Block from "../../core/Block";
 import { ArrowButton, Image, Button } from "../../ui";
 import navigate from "../utils/navigate";
-import validate from "../utils/validate";
 import { UserInput } from "../../components/userProfileComponents/userInput";
 import { ChangeAvatarModal } from "../../components/userProfileComponents/modals"; 
+import emailValidator from "../utils/inputValidators/emailValidator";
+import loginValidator from "../utils/inputValidators/loginValidator";
+import firstNameValidator from "../utils/inputValidators/firstNameValidator";
+import lastNameValidator from "../utils/inputValidators/lastNameValidator";
+import phoneValidator from "../utils/inputValidators/phoneValidator";
 
 export default class ProfileMainModule extends Block{
     constructor(props){
@@ -30,6 +34,12 @@ export default class ProfileMainModule extends Block{
 
     init(){
         const onSaveChangesBind = this.onSaveChanges.bind(this)
+        const emailValidatorBind = emailValidator.bind(this)
+        const loginValidatorBind = loginValidator.bind(this)
+        const firstNameValidatorBind = firstNameValidator.bind(this);
+        const lastNameValidatorBind = lastNameValidator.bind(this);
+        const phoneValidatorBind = phoneValidator.bind(this);
+
 
         const EmailInput = new UserInput({
             inputId:"email",
@@ -37,7 +47,8 @@ export default class ProfileMainModule extends Block{
             label:"Почта",
             inputType:"email",
             inputValue:"pochta@yandex.ru",
-            userInputContainerClass:"loginChange"
+            userInputContainerClass:"loginChange",
+            onBlur: emailValidatorBind,
         });
 
         const LoginInput = new UserInput({
@@ -45,15 +56,17 @@ export default class ProfileMainModule extends Block{
             inputName: "login", 
             label: "Логин", 
             inputType: "text", 
-            inputValue: "ivanivanov"
+            inputValue: "ivanivanov",
+            onBlur: loginValidatorBind,
         });
 
-        const FirsNameInput = new UserInput({
+        const FirstNameInput = new UserInput({
             inputId: "first_name" ,
             inputName: "first_name", 
             label: "Имя", 
             inputType: "text", 
             inputValue: "Иван",
+            onBlur: firstNameValidatorBind,
         });
 
         const SecondNameInput = new UserInput({
@@ -62,6 +75,8 @@ export default class ProfileMainModule extends Block{
             label:"Фамилия",
             inputType:"text",
             inputValue:"Иванов",
+            onBlur: lastNameValidatorBind,
+
         });
 
         const DisplayNameInput = new UserInput({
@@ -78,6 +93,8 @@ export default class ProfileMainModule extends Block{
             label:"Телефон",
             inputType:"tel",
             inputValue:"7 (909) 967 30 30",
+            onBlur: phoneValidatorBind,
+
         });
 
         const SaveButton = new Button({
@@ -90,7 +107,7 @@ export default class ProfileMainModule extends Block{
             ...this.children,
             EmailInput,
             LoginInput,
-            FirsNameInput,
+            FirstNameInput,
             SecondNameInput,
             DisplayNameInput,
             PhoneInput,
@@ -100,12 +117,15 @@ export default class ProfileMainModule extends Block{
 
     onSaveChanges(e){
         e.preventDefault();
-    
-        console.log({
-          oldPass: this.props.oldPassword,
-          password: this.props.newPassword,
-          passwordRepeat: this.props.newPasswordRepeat,
-        });
+
+    console.log({
+      email: this.props.email,
+      login: this.props.login,
+      firstName: this.props.firstName,
+      lastName: this.props.lastName,
+      phone: this.props.phone,
+      password: this.props.password,
+    });
     }
 
     toggleChangeAvatarModalVisibility() {
@@ -133,7 +153,7 @@ export default class ProfileMainModule extends Block{
                         <div class="profile_info">
                         {{{EmailInput}}}
                         {{{LoginInput}}}
-                        {{{FirsNameInput}}}
+                        {{{FirstNameInput}}}
                         {{{SecondNameInput}}}
                         {{{DisplayNameInput}}}
                         {{{PhoneInput}}}

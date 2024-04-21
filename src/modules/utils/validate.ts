@@ -33,6 +33,7 @@ const validate = {
     },
     
     login: function(e) {
+        console.log('click')
         const loginRegex = /^[a-zA-Zа-яА-Я0-9_-]{3,20}$/;
         this.input(e, 'LoginInput', loginRegex, 'Попробуйте еще раз, что-то пошло не так')
     },

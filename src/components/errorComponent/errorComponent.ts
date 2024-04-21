@@ -13,7 +13,7 @@ export default class ErrorComponent extends Block{
     const navigateBind = navigate.bind(this);
 
     const BackToChatsButton = new Button({
-      onClick: () => navigateBind('loginPage'),
+      onClick: () => navigateBind('chatPage'),
       label: 'Назад к чатам',
       type: 'link',
     });

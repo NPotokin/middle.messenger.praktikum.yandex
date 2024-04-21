@@ -2,7 +2,8 @@ import Block from "../../core/Block";
 import { ArrowButton, Image, Button } from "../../ui";
 import navigate from "../utils/navigate";
 import { UserInput } from "../../components/userProfileComponents/userInput";
-
+import passwordValidator from "../utils/inputValidators/passwordValidator";
+import { passwordCheckValidator } from "../utils/inputValidators/passwordCheckValidator";
 export default class ProfileMainModule extends Block{
     constructor(props){
         super({
@@ -24,6 +25,9 @@ export default class ProfileMainModule extends Block{
 
     init(){
         const onSaveChangesBind = this.onSaveChanges.bind(this)
+        const passwordValidatorBind = passwordValidator.bind(this)
+        const passwordCheckValidatorBind = passwordCheckValidator.bind(this)
+
 
         const OldPassInput = new UserInput({
             inputId: "oldPassword",
@@ -31,23 +35,26 @@ export default class ProfileMainModule extends Block{
             label: "Старый пароль",
             inputType: "password",
             inputValue: "ivan",
-            userInputContainerClass: "loginChange"
+            userInputContainerClass: "loginChange",
+            onBlur: passwordValidatorBind,
         });
 
-        const NewPassInput = new UserInput({
+        const PasswordInput = new UserInput({
             inputId: "newPassword", 
             inputName: "newPassword", 
             label: "Новый пароль",
             inputType: "password", 
-            inputValue: "ivanivanov"
+            inputValue: "ivanivanov",
+            onBlur: passwordValidatorBind,
         });
 
-        const NewPassInputCheck = new UserInput({
+        const PasswordCheckInput = new UserInput({
             inputId: "newPasswordAgain", 
             inputName: "newPassword", 
             label: "Повторите новый пароль", 
             inputType: "password", 
             inputValue: "ivanivanov",
+            onBlur: passwordCheckValidatorBind,
         });
 
         const SaveButton = new Button({
@@ -59,19 +66,18 @@ export default class ProfileMainModule extends Block{
         this.children = {
             ...this.children,
             OldPassInput,
-            NewPassInput,
-            NewPassInputCheck,
+            PasswordInput,
+            PasswordCheckInput,
             SaveButton
           };
     }
 
     onSaveChanges(e){
         e.preventDefault();
-    
         console.log({
-          oldPass: this.props.oldPassword,
-          password: this.props.newPassword,
-          passwordRepeat: this.props.newPasswordRepeat,
+        //   oldPass: this.props.oldPassword,
+          password: this.props.password,
+        //   passwordRepeat: this.props.newPasswordRepeat,
         });
       }
 
@@ -86,8 +92,8 @@ export default class ProfileMainModule extends Block{
                         {{{AvatarImage}}}
                         <div class="profile_info">
                             {{{OldPassInput}}}
-                            {{{NewPassInput}}}
-                            {{{NewPassInputCheck}}}
+                            {{{PasswordInput}}}
+                            {{{PasswordCheckInput}}}
                         </div>
                         {{{SaveButton}}}
                     </div>

@@ -1,9 +1,9 @@
 import Block from '../../core/Block';
-import { Button } from '../../ui';
+import { Button} from '../../ui';
 import {Input} from '../../ui';
+import navigate from '../utils/navigate';
 import loginValidator from '../utils/inputValidators/loginValidator';
 import passwordValidator from '../utils/inputValidators/passwordValidator';
-import navigate from '../utils/navigate';
 
 export default class LoginModule extends Block {
   constructor(props){
@@ -76,6 +76,7 @@ export default class LoginModule extends Block {
                     {{{LoginInput}}}
                     {{{PasswordInput}}}
                     {{{LogInButton}}}
+                    {{{ErrorLineLogin}}}
                     {{{SignInButton}}}
                 </form>
             </div>

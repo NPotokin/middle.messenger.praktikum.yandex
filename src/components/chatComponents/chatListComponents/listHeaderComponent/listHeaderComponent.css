@@ -12,6 +12,8 @@
     color: rgb(153 153 153 / 100%);
     text-decoration: none;
     margin: 21px 0 22px;
+    border: none;
+    background-color: inherit;
 }
 
 .listHeader__link:active, .listHeader__link:visited, 

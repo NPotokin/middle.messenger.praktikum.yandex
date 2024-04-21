@@ -1,16 +1,24 @@
 import Block from "../../../../core/Block";
+import navigate from "../../../../modules/utils/navigate";
+import ListHeaderLink from "./listHeaderLink";
 
 export default class ListHeaderComponent extends Block{
     constructor(props){
         super({
             ...props,
+            ListHeaderLink: new ListHeaderLink({
+                ...props,
+                onClick: () => navigate('profilePage'),
+            })
         })
+
+
     }
 
     render(){
         return(`
         <div class="listHeader">
-        <a href="" class="listHeader__link">Профиль > </a>
+        {{{ListHeaderLink}}}
         <div class="listHeader__search">
             <label 
             for="{{inputId}}" 
