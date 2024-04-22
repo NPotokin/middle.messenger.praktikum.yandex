@@ -1,22 +1,13 @@
 {
-    "compilerOptions": {
-      "target": "ES2020",
-      "useDefineForClassFields": true,
-      "module": "ESNext",
-      "outDir": "dist",
-      // "declaration": false,
-     
-      "moduleResolution": "bundler",
-      "allowImportingTsExtensions": true,
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "noEmit": true,
-  
-      "strict": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noFallthroughCasesInSwitch": true
-    },
-    "include": ["src", "typings/hbs.d.ts", ],
-    "exclude": ["eslint.config.js", "postcss.config.js", "vite.config.ts"],
-}
+  "compilerOptions": {
+  "outDir": "dist",
+  "target": "ES2020",
+  "declaration": false,
+  "module": "ES2020",
+  "noImplicitAny": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "sourceMap": true,
+  "strictNullChecks": true
+ }
+} 
