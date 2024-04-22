@@ -1,15 +1,15 @@
-import Block from "../../../core/Block";
+import Block from '../../../core/Block';
 
 export default class ModalTitle extends Block {
-    constructor(props){
-        super({
-            ...props,
-        })
-    }
+  constructor(props){
+    super({
+      ...props,
+    });
+  }
 
-    render(){
-        return(`
+  render(){
+    return(`
             <h2 class="modal__title">{{ModalTitleText}}</h2>
-        `)
-    }
+        `);
+  }
 }

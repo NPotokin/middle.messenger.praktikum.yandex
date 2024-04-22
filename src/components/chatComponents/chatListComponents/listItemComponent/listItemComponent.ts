@@ -1,20 +1,20 @@
-import Block from "../../../../core/Block";
-import { Image } from "../../../../ui";
+import Block from '../../../../core/Block';
+import { Image } from '../../../../ui';
 
 export default class ListItemComponent extends Block{
-    constructor(props){
-        super({
+  constructor(props){
+    super({
+      ...props,
+      Image: new Image({
         ...props,
-        Image: new Image({
-            ...props,
-            contSize: '__47'
-        })
+        contSize: '__47',
+      }),
 
-        })
-    }
+    });
+  }
 
-    render(){
-        return(`
+  render(){
+    return(`
         <div class="listItem {{#if active}}listItem--active{{/if}}">
         <div class="listItem__image">
             {{{Image}}}
@@ -29,6 +29,6 @@ export default class ListItemComponent extends Block{
         </div>
         </div>
     
-        `)
-    }
+        `);
+  }
 }

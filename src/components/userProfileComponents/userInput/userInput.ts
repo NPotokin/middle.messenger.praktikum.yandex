@@ -28,12 +28,12 @@ export default class UserInput extends Block {
     return(`
       <div>
         <div class="userInput {{userInputContainerClass}}">
-        <label 
-        for="{{inputId}}" 
-        class="userInput__label">
-        {{label}}
-        </label>
-        {{{UserInputField}}}
+          <label 
+          for="{{inputId}}" 
+          class="userInput__label">
+          {{label}}
+          </label>
+          {{{UserInputField}}}
         </div>
         {{{UserInputErrorText}}}
       </div>

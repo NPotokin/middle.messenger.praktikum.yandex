@@ -11,4 +11,3 @@ export default function loginValidator(e) {
   this.setProps({login: inputValue});
 
 }
-

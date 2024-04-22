@@ -1,1 +1,1 @@
-export {default as ProfilePageCD} from './profilePageCD'
+export {default as ProfilePageCD} from './profilePageCD';

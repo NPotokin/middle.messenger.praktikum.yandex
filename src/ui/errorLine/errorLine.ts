@@ -1,16 +1,16 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 
 export default class ModalError extends Block {
-    constructor(props){
-        super({
-            ...props,
-        })
-    }
+  constructor(props){
+    super({
+      ...props,
+    });
+  }
 
-    render(){
-        return(`
-            <p class="errorLine">Проверьте правильность ввода полей</p>  
-        `)
-    }
+  render(){
+    return(`
+            <p class="errorLine">{{ErrorText}}</p>  
+        `);
+  }
 }

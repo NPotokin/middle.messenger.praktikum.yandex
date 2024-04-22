@@ -1,17 +1,17 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 export default class Image extends Block{
-    constructor(props){
-        super({
-            ...props,
-            events: {
-                click: props.onClick,
-            }
-        })
-    }
+  constructor(props){
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
+  }
 
-    render(){
-        return(`
+  render(){
+    return(`
             <div class="imageContainer{{contSize}}">
                 <img 
                 class="image"
@@ -21,6 +21,6 @@ export default class Image extends Block{
                 height="{{imgSize}}"
                 >
             </div>
-        `)
-    }
+        `);
+  }
 }

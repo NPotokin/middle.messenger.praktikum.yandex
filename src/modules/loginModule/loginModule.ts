@@ -4,11 +4,16 @@ import {Input} from '../../ui';
 import navigate from '../utils/navigate';
 import loginValidator from '../utils/inputValidators/loginValidator';
 import passwordValidator from '../utils/inputValidators/passwordValidator';
+import { ErrorLine } from '../../ui';
 
 export default class LoginModule extends Block {
   constructor(props){
     super({
       ...props,
+      ErrorLine: new ErrorLine({
+        ...props,
+        error: props.ErrorText,
+      }),
     });
   }
 
@@ -56,13 +61,22 @@ export default class LoginModule extends Block {
     };
   }
 
-  onLogin(e){
+  onLogin(e) {
     e.preventDefault();
+    const inputError = this.children.LoginInput.props.error;
+    const passwordError = this.children.PasswordInput.props.error;
 
-    console.log({
-      login: this.props.login,
-      password: this.props.password,
-    });
+
+    if (!inputError && !passwordError) {
+      this.children.ErrorLine.setProps({ error: false, ErrorText: null });
+      console.log({
+        login: this.props.login,
+        password: this.props.password,
+      });
+      navigate('chatPage');
+    } else {
+      this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
+    }
   }
 
   render(): string {
@@ -76,7 +90,7 @@ export default class LoginModule extends Block {
                     {{{LoginInput}}}
                     {{{PasswordInput}}}
                     {{{LogInButton}}}
-                    {{{ErrorLineLogin}}}
+                    {{{ErrorLine}}}
                     {{{SignInButton}}}
                 </form>
             </div>

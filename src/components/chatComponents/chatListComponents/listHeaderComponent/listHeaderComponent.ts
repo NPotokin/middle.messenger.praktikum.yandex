@@ -1,22 +1,22 @@
-import Block from "../../../../core/Block";
-import navigate from "../../../../modules/utils/navigate";
-import ListHeaderLink from "./listHeaderLink";
+import Block from '../../../../core/Block';
+import navigate from '../../../../modules/utils/navigate';
+import ListHeaderLink from './listHeaderLink';
 
 export default class ListHeaderComponent extends Block{
-    constructor(props){
-        super({
-            ...props,
-            ListHeaderLink: new ListHeaderLink({
-                ...props,
-                onClick: () => navigate('profilePage'),
-            })
-        })
+  constructor(props){
+    super({
+      ...props,
+      ListHeaderLink: new ListHeaderLink({
+        ...props,
+        onClick: () => navigate('profilePage'),
+      }),
+    });
 
 
-    }
+  }
 
-    render(){
-        return(`
+  render(){
+    return(`
         <div class="listHeader">
         {{{ListHeaderLink}}}
         <div class="listHeader__search">
@@ -34,6 +34,6 @@ export default class ListHeaderComponent extends Block{
         </div>
         </div>
     
-        `)
-    }
+        `);
+  }
 }

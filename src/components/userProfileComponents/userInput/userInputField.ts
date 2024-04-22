@@ -1,4 +1,4 @@
-import Block from "../../../core/Block";
+import Block from '../../../core/Block';
 
 export default class UserInputField extends Block {
   constructor(props){

@@ -1,23 +1,23 @@
-import Block from "../../core/Block"
-import { ProfileCDModule } from "../../modules"
+import Block from '../../core/Block';
+import { ProfileCDModule } from '../../modules';
 
 export default class ProfilePageCD extends Block{
-    constructor(props){
-        super({
-            ...props,
-            ProfileCDModule: new ProfileCDModule({
-                ...props,
-            })
-        })
+  constructor(props){
+    super({
+      ...props,
+      ProfileCDModule: new ProfileCDModule({
+        ...props,
+      }),
+    });
 
 
-    }
+  }
 
-    render(){
-        return(`
+  render(){
+    return(`
         <div>
             {{{ProfileCDModule}}}
         </div>
-        `)
-    }
+        `);
+  }
 }

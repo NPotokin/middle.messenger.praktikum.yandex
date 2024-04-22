@@ -1,1 +1,1 @@
-export {default as ProfilePageCP} from './profilePageCP'
+export {default as ProfilePageCP} from './profilePageCP';

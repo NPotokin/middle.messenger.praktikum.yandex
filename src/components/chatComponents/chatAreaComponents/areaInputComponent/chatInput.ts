@@ -1,4 +1,4 @@
-import Block from "../../../../core/Block";
+import Block from '../../../../core/Block';
 
 export default class ChatInput extends Block{
   constructor(props){
@@ -6,8 +6,8 @@ export default class ChatInput extends Block{
       ...props,
       events:{
         blur: props.onBlur,
-      }
-    })
+      },
+    });
   }
 
   render(){
@@ -19,6 +19,6 @@ export default class ChatInput extends Block{
         value=""
         class="chatAreaInput__input--input" 
         placeholder="Сообщение">
-    `)
+    `);
   }
 }

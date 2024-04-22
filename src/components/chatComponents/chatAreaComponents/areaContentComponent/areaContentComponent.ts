@@ -1,15 +1,15 @@
-import Block from "../../../../core/Block"
+import Block from '../../../../core/Block';
 
 
 export default class AreaContentComponent extends Block{
-    constructor(props){
-        super({
-            ...props,
+  constructor(props){
+    super({
+      ...props,
 
-        })
-    }
-    render(){
-        return(`
+    });
+  }
+  render(){
+    return(`
         <div class="chatAreaContent">
         <div class="chatAreaContent__date">19 июня</div>
         
@@ -44,7 +44,7 @@ export default class AreaContentComponent extends Block{
             <div class="chatAreaContent__outbound--date">12:00</div>
         </div>
     </div>
-        `)
-    }
+        `);
+  }
 }
 

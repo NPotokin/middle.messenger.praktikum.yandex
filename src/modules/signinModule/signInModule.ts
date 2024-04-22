@@ -1,6 +1,7 @@
 import Block from '../../core/Block';
 import { Button } from '../../ui';
 import {Input} from '../../ui';
+import { ErrorLine } from '../../ui';
 import navigate from '../utils/navigate';
 import loginValidator from '../utils/inputValidators/loginValidator';
 import emailValidator from '../utils/inputValidators/emailValidator';
@@ -14,6 +15,10 @@ export default class SignInModule extends Block{
   constructor(props){
     super({
       ...props,
+      ErrorLine: new ErrorLine({
+        ...props,
+        error: props.ErrorText,
+      }),
     });
   }
 
@@ -114,15 +119,36 @@ export default class SignInModule extends Block{
 
   onSignIn(e){
     e.preventDefault();
+    const emailError = this.children.EmailInput.props.error;
+    const inputError = this.children.LoginInput.props.error;
+    const firstNameError = this.children.FirstNameInput.props.error;
+    const secondtNameError = this.children.SecondNameInput.props.error;
+    const phoneError = this.children.PhoneInput.props.error;
+    const passwordError = this.children.PasswordInput.props.error;
+    const passwordCheckError = this.children.PasswordCheckInput.props.error;
 
-    console.log({
-      email: this.props.email,
-      login: this.props.login,
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      phone: this.props.phone,
-      password: this.props.password,
-    });
+    if(!emailError &&
+       !inputError &&
+       !firstNameError &&
+       !secondtNameError &&
+       !phoneError &&
+       !passwordError &&
+       !passwordCheckError) {
+      this.children.ErrorLine.setProps({ error: false, ErrorText: null });
+      console.log({
+        email: this.props.email,
+        login: this.props.login,
+        firstName: this.props.firstName,
+        lastName: this.props.lastName,
+        phone: this.props.phone,
+        password: this.props.password,
+      });
+      navigate('chatPage');
+    } else {
+      this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
+    }
+
+
   }
 
   render(): string {
@@ -141,6 +167,7 @@ export default class SignInModule extends Block{
                 {{{PasswordInput}}}
                 {{{PasswordCheckInput}}}
                 {{{RegisterButton}}}
+                {{{ErrorLine}}}
                 {{{EnterButton}}}
             </form>
         </div>

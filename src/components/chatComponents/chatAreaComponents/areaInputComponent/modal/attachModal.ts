@@ -1,16 +1,15 @@
-import Block from "../../../../../core/Block";
+import Block from '../../../../../core/Block';
 
 export default class AttachModal extends Block{
-    constructor(props){
-        super({
-            ...props,
-        })
-    }
+  constructor(props){
+    super({
+      ...props,
+    });
+  }
 
-    
 
-    render(){
-        return(`
+  render(){
+    return(`
         <div class="modalAttach">
             <div class="modalAttach__attachment">
                 <img 
@@ -31,6 +30,6 @@ export default class AttachModal extends Block{
                 <p class="modalAttach__text">Локация</p>
             </div>
         </div>
-        `)
-    }
+        `);
+  }
 }
