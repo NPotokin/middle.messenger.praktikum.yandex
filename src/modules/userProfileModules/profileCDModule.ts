@@ -1,14 +1,14 @@
 import Block from '../../core/Block';
 import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../utils/navigate';
+import navigate from '../../utils/navigate';
 import { ErrorLine } from '../../ui';
 import { UserInput } from '../../components/userProfileComponents/userInput';
 import { ChangeAvatarModal } from '../../components/userProfileComponents/modals';
-import emailValidator from '../utils/inputValidators/emailValidator';
-import loginValidator from '../utils/inputValidators/loginValidator';
-import firstNameValidator from '../utils/inputValidators/firstNameValidator';
-import lastNameValidator from '../utils/inputValidators/lastNameValidator';
-import phoneValidator from '../utils/inputValidators/phoneValidator';
+import emailValidator from '../../utils/inputValidators/emailValidator';
+import loginValidator from '../../utils/inputValidators/loginValidator';
+import firstNameValidator from '../../utils/inputValidators/firstNameValidator';
+import lastNameValidator from '../../utils/inputValidators/lastNameValidator';
+import phoneValidator from '../../utils/inputValidators/phoneValidator';
 
 export default class ProfileMainModule extends Block{
   constructor(props){

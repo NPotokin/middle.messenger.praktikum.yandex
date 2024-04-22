@@ -2,7 +2,7 @@ import Block from '../../../core/Block';
 import { Button, Input } from '../../../ui';
 import ModalTitle from './modalTitle';
 import ModalError from './modalError';
-import navigate from '../../../modules/utils/navigate';
+import navigate from '../../../utils/navigate';
 
 export default class ChangeAvatarModal extends Block{
   constructor(props){

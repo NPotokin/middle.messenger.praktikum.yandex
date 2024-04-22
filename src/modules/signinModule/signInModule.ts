@@ -2,14 +2,14 @@ import Block from '../../core/Block';
 import { Button } from '../../ui';
 import {Input} from '../../ui';
 import { ErrorLine } from '../../ui';
-import navigate from '../utils/navigate';
-import loginValidator from '../utils/inputValidators/loginValidator';
-import emailValidator from '../utils/inputValidators/emailValidator';
-import firstNameValidator from '../utils/inputValidators/firstNameValidator';
-import lastNameValidator from '../utils/inputValidators/lastNameValidator';
-import phoneValidator from '../utils/inputValidators/phoneValidator';
-import passwordValidator from '../utils/inputValidators/passwordValidator';
-import { passwordCheckValidator } from '../utils/inputValidators/passwordCheckValidator';
+import navigate from '../../utils/navigate';
+import loginValidator from '../../utils/inputValidators/loginValidator';
+import emailValidator from '../../utils/inputValidators/emailValidator';
+import firstNameValidator from '../../utils/inputValidators/firstNameValidator';
+import lastNameValidator from '../../utils/inputValidators/lastNameValidator';
+import phoneValidator from '../../utils/inputValidators/phoneValidator';
+import passwordValidator from '../../utils/inputValidators/passwordValidator';
+import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator';
 
 export default class SignInModule extends Block{
   constructor(props){

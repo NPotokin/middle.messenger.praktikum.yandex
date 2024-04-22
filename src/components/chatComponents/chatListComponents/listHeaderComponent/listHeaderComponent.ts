@@ -1,5 +1,5 @@
 import Block from '../../../../core/Block';
-import navigate from '../../../../modules/utils/navigate';
+import navigate from '../../../../utils/navigate';
 import ListHeaderLink from './listHeaderLink';
 
 export default class ListHeaderComponent extends Block{

@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { Button } from '../../ui';
-import navigate from '../../modules/utils/navigate';
+import navigate from '../../utils/navigate';
 
 export default class ErrorComponent extends Block{
   constructor(props){

@@ -1,7 +1,7 @@
 import { UserData } from '../../components/userProfileComponents';
 import Block from '../../core/Block';
 import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../utils/navigate';
+import navigate from '../../utils/navigate';
 
 export default class ProfileMainModule extends Block{
   constructor(props){

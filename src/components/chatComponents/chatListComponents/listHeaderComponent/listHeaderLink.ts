@@ -1,5 +1,4 @@
 import Block from '../../../../core/Block';
-import navigate from '../../../../modules/utils/navigate';
 
 export default class ListHeaderLink extends Block{
   constructor(props){

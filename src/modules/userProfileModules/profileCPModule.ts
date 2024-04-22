@@ -1,10 +1,10 @@
 import Block from '../../core/Block';
 import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../utils/navigate';
+import navigate from '../../utils/navigate';
 import { UserInput } from '../../components/userProfileComponents/userInput';
 import { ErrorLine } from '../../ui';
-import passwordValidator from '../utils/inputValidators/passwordValidator';
-import { passwordCheckValidator } from '../utils/inputValidators/passwordCheckValidator';
+import passwordValidator from '../../utils/inputValidators/passwordValidator';
+import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator';
 export default class ProfileMainModule extends Block{
   constructor(props){
     super({

@@ -1,9 +1,9 @@
 import Block from '../../core/Block';
 import { Button} from '../../ui';
 import {Input} from '../../ui';
-import navigate from '../utils/navigate';
-import loginValidator from '../utils/inputValidators/loginValidator';
-import passwordValidator from '../utils/inputValidators/passwordValidator';
+import navigate from '../../utils/navigate';
+import loginValidator from '../../utils/inputValidators/loginValidator';
+import passwordValidator from '../../utils/inputValidators/passwordValidator';
 import { ErrorLine } from '../../ui';
 
 export default class LoginModule extends Block {
