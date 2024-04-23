@@ -1,9 +1,14 @@
-import Block from '../../../../core/Block';
-import navigate from '../../../../utils/navigate';
-import ListHeaderLink from './listHeaderLink';
+import Block from '../../../../core/Block.ts';
+import navigate from '../../../../utils/navigate.ts';
+import ListHeaderLink from './listHeaderLink.ts';
 
+interface ListHeaderComponentInterface{
+  inputId?: string,
+  inputName?: string,
+
+}
 export default class ListHeaderComponent extends Block{
-  constructor(props){
+  constructor(props:ListHeaderComponentInterface){
     super({
       ...props,
       ListHeaderLink: new ListHeaderLink({

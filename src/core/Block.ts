@@ -24,9 +24,9 @@ export default class Block  {
 
   private _element: HTMLElement | null = null;
   private _meta: { tagName: string } | null = null;
-  private _id: string = nanoid(6);
+  public _id: string = nanoid(6);
   private eventBus: () => EventBus;
-  private props: ComponentInterface
+  public props: ComponentInterface
   public children: Record<string, Block>
 
   

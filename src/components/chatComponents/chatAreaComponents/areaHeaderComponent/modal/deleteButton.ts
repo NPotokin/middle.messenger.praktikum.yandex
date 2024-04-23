@@ -1,7 +1,10 @@
-import Block from '../../../../../core/Block';
+import Block from '../../../../../core/Block.ts';
 
+interface DeleteButtonInterface{
+  onDeleteClick?: ()=> void
+}
 export default class DeleteButton extends Block{
-  constructor(props){
+  constructor(props:DeleteButtonInterface){
     super({
       ...props,
       events:{

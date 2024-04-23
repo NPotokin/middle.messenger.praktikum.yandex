@@ -1,2 +1,2 @@
 import './inactiveAreaComponent.css';
-export {default as InactiveAreaComponent} from './inactiveAreaComponent';
+export {default as InactiveAreaComponent} from './inactiveAreaComponent.ts';

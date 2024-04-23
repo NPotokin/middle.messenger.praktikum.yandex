@@ -1,7 +1,9 @@
 import Block from '../../core/Block.ts';
 
 interface ButtonInterface{
-  onClick: () => void;
+  onClick?: () => void;
+  label?: string,
+  type?: string
 }
 class Button extends Block {
   constructor(props: ButtonInterface) {

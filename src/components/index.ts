@@ -1,4 +1,4 @@
-export {ErrorComponent} from './errorComponent';
+export {ErrorComponent} from './errorComponent/index.ts';
 
 export {
   ListHeaderComponent,
@@ -7,6 +7,6 @@ export {
   AreaContentComponent,
   AreaInputComponent,
   InactiveAreaComponent,
-} from './chatComponents';
+} from './chatComponents/index.ts';
 
 

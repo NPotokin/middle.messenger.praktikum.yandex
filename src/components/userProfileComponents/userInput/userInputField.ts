@@ -1,7 +1,15 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block.ts';
 
+interface UIFinterface{
+  onBlur?: () => void,
+  inputType?: string,
+  inputId?: string,
+  inputName?: string,
+  inputValue?: string,
+  placeholder?: string,
+}
 export default class UserInputField extends Block {
-  constructor(props){
+  constructor(props: UIFinterface){
     super({
       ...props,
       events: {

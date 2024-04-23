@@ -1,7 +1,10 @@
-import Block from '../../../../../core/Block';
+import Block from '../../../../../core/Block.ts';
 
+interface AddButtonInterface{
+  onAddClick?: () => void;
+}
 export default class AddButton extends Block{
-  constructor(props){
+  constructor(props:AddButtonInterface){
     super({
       ...props,
       events:{

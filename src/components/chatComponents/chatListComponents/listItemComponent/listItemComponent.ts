@@ -1,8 +1,15 @@
-import Block from '../../../../core/Block';
-import { Image } from '../../../../ui';
+import Block from '../../../../core/Block.ts';
+import { Image } from '../../../../ui/index.ts';
 
+interface ListItemComponentInterface{
+  LItitle?: string,
+  LItext?: string,
+  LIdate?: string,
+  LImodifier?: string,
+  LIbadge?: string,
+}
 export default class ListItemComponent extends Block{
-  constructor(props){
+  constructor(props:ListItemComponentInterface){
     super({
       ...props,
       Image: new Image({

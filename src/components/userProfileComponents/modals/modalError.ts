@@ -1,7 +1,7 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block.ts';
 
 export default class ModalError extends Block {
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
     });

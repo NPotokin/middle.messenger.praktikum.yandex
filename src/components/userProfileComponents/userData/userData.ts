@@ -1,8 +1,8 @@
-import Block from '../../../core/Block';
-import { UserDataLine } from '.';
+import Block from '../../../core/Block.ts';
+import { UserDataLine } from './index.ts';
 
 export default class UserData extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       Email: new UserDataLine({

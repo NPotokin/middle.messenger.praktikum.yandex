@@ -1,9 +1,9 @@
-import Block from '../../../../../core/Block';
-import AddButton from './addButton';
-import DeleteButton from './deleteButton';
+import Block from '../../../../../core/Block.ts';
+import AddButton from './addButton.ts';
+import DeleteButton from './deleteButton.ts';
 
 export default class AddDeleteMain extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       AddButton: new AddButton({
@@ -12,7 +12,6 @@ export default class AddDeleteMain extends Block{
       }),
       DeleteButton: new DeleteButton({
         ...props,
-        // onClick:()=>{console.log('delete clicked')},
       }),
     });
   }

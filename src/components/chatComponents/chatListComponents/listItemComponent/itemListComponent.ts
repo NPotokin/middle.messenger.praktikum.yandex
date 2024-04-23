@@ -1,11 +1,11 @@
-import Block from '../../../../core/Block';
-import ListItemComponent from './listItemComponent';
-import {listItemConfigs} from './listItemConfigs';
+import Block from '../../../../core/Block.ts';
+import ListItemComponent from './listItemComponent.ts';
+import {listItemConfigs} from './listItemConfigs.ts';
 
 export default class ItemListComponent extends Block {
-  constructor(props) {
+  constructor(props:{}) {
 
-    const listItems = listItemConfigs.reduce((acc, itemConfig) => {
+    const listItems = listItemConfigs.reduce<{[key: string]: ListItemComponent}>((acc:any, itemConfig) => {
       const listItem = new ListItemComponent(itemConfig);
       acc[listItem._id] = listItem;
       return acc;
@@ -19,10 +19,11 @@ export default class ItemListComponent extends Block {
   }
 
   render() {
-    const listItemHtml = this.props.listItemComponentKeys.map(key => `{{{ ${key} }}}`).join('');
+    const LIKeys = this.props.listItemComponentKeys as string[]
+    const listItemRender = LIKeys.map(key => `{{{ ${key} }}}`).join('');
     return `
             <div>
-                ${listItemHtml}
+                ${listItemRender}
             </div>
         `;
   }

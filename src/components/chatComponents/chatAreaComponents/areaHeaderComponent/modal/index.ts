@@ -1,2 +1,2 @@
 import './addDeletUser.css';
-export {default as DialogAddDeleteUser} from './dialogAddDeleteUser';
+export {default as DialogAddDeleteUser} from './dialogAddDeleteUser.ts';

@@ -1,7 +1,10 @@
-import Block from '../../../../core/Block';
+import Block from '../../../../core/Block.ts';
 
+interface LHLinterface{
+  onClick?: () => void;
+}
 export default class ListHeaderLink extends Block{
-  constructor(props){
+  constructor(props: LHLinterface){
     super({
       ...props,
       events:{

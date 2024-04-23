@@ -1,7 +1,11 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block.ts';
 
+interface UDLinterface{
+  userKey?: string,
+  userValue?: string,
+}
 export default class UserDateLine extends Block{
-  constructor(props){
+  constructor(props: UDLinterface){
     super({
       ...props,
     });

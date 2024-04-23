@@ -1,2 +1,2 @@
 import './errorComponent.css';
-export { default as ErrorComponent} from './errorComponent';
+export { default as ErrorComponent} from './errorComponent.ts';

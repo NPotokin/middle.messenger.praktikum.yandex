@@ -1,11 +1,11 @@
 export {
   ListItemComponent,
   ListHeaderComponent,
-} from './chatListComponents';
+} from './chatListComponents/index.ts';
 
 export {
   AreaHeaderComponent,
   AreaContentComponent,
   AreaInputComponent,
   InactiveAreaComponent,
-} from './chatAreaComponents';
+} from './chatAreaComponents/index.ts';

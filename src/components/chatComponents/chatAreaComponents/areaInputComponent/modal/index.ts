@@ -1,1 +1,1 @@
-export {default as AttachModal} from './attachModal';
+export {default as AttachModal} from './attachModal.ts';

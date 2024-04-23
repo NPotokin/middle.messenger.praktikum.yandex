@@ -1,9 +1,9 @@
-import Block from '../../../../../core/Block';
-import { Button, Input } from '../../../../../ui';
+import Block from '../../../../../core/Block.ts';
+import { Button, Input } from '../../../../../ui/index.ts';
 
 
 export default class DialogAddDeleteUser extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       Input: new Input({

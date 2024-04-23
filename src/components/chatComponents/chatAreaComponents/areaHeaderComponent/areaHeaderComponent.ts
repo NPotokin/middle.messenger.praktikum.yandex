@@ -1,11 +1,11 @@
-import Block from '../../../../core/Block';
-import { Image } from '../../../../ui';
-import AddDeleteMain from './modal/addDeleteUser';
-import AddDeleteDiv from './modal/addDeleteDiv';
-import { DialogAddDeleteUser } from './modal';
+import Block from '../../../../core/Block.ts';
+import { Image } from '../../../../ui/index.ts';
+import AddDeleteMain from './modal/addDeleteUser.ts';
+import AddDeleteDiv from './modal/addDeleteDiv.ts';
+import { DialogAddDeleteUser } from './modal/index.ts';
 
 export default class AreaHeaderComponent extends Block {
-  constructor(props) {
+  constructor(props:{}) {
     super({
       ...props,
       Img: new Image({
@@ -34,17 +34,16 @@ export default class AreaHeaderComponent extends Block {
     });
   }
 
-  toggleDialogVisibility(dialogName) {
+  toggleDialogVisibility(dialogName:string) {
     const dialog = this.children[dialogName];
     const dialogElement = dialog.getContent();
 
-    // Hide the dialog if it's already visible
+
     if (dialogElement.style.display !== 'none') {
       dialogElement.style.display = 'none';
       return;
     }
 
-    // Hide the other dialog if it's visible
     const otherDialogName = dialogName === 'DialogAddUser' ? 'DialogDeleteUser' : 'DialogAddUser';
     const otherDialog = this.children[otherDialogName];
     const otherDialogElement = otherDialog.getContent();
@@ -52,7 +51,7 @@ export default class AreaHeaderComponent extends Block {
       otherDialogElement.style.display = 'none';
     }
 
-    // Show the clicked dialog
+    
     dialogElement.style.display = 'flex';
   }
 

@@ -1,5 +1,5 @@
-export {AreaHeaderComponent} from './areaHeaderComponent';
-export {AreaContentComponent} from './areaContentComponent';
-export {AreaInputComponent} from './areaInputComponent';
-export {InactiveAreaComponent} from './inactiveAreaComponent';
+export {AreaHeaderComponent} from './areaHeaderComponent/index.ts';
+export {AreaContentComponent} from './areaContentComponent/index.ts';
+export {AreaInputComponent} from './areaInputComponent/index.ts';
+export {InactiveAreaComponent} from './inactiveAreaComponent/index.ts';
 

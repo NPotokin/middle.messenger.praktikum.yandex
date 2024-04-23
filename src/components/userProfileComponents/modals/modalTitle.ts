@@ -1,7 +1,10 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block.ts';
 
+interface MTinterface{
+  ModalTitleText: string,
+}
 export default class ModalTitle extends Block {
-  constructor(props){
+  constructor(props: MTinterface){
     super({
       ...props,
     });

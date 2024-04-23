@@ -1,9 +1,9 @@
-import Block from '../../core/Block';
-import { Button } from '../../ui';
-import navigate from '../../utils/navigate';
+import Block from '../../core/Block.ts';
+import { Button } from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
 
 export default class ErrorComponent extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
     });

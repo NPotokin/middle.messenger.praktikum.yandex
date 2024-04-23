@@ -1,11 +1,11 @@
-import Block from '../../../../core/Block';
-import { ArrowButton} from '../../../../ui';
-import AttachDiv from './attachDiv';
-import ChatInput from './chatInput';
+import Block from '../../../../core/Block.ts';
+import { ArrowButton} from '../../../../ui/index.ts';
+import AttachDiv from './attachDiv.ts';
+import ChatInput from './chatInput.ts';
 
 
 export default class AreaInputComponent extends Block{
-  constructor(props){
+  constructor(props :{}){
     super({
       ...props,
       ArrowButton: new ArrowButton({
@@ -17,7 +17,7 @@ export default class AreaInputComponent extends Block{
       }),
       ChatInput: new ChatInput({
         ...props,
-        onBlur: ()=>{console.log('По ТЗ необязательно');},
+        onBlur: ()=>{console.log('По Checklist необязательно');},
       }),
 
     });

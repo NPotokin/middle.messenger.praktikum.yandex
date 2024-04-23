@@ -1,7 +1,8 @@
-import Block from '../../../core/Block';
+import Block from '../../../core/Block.ts';
+
 
 export default class UserInputErrorText extends Block{
-  constructor(props){
+  constructor(props: {}){
     super({
       ...props,
     });

@@ -1,10 +1,10 @@
-import Block from '../../../../core/Block';
-import { AttachModal } from './modal';
+import Block, { ComponentInterface } from '../../../../core/Block.ts';
+import { AttachModal } from './modal/index.ts';
 
 export default class AttachDiv extends Block {
   modal: AttachModal;
 
-  constructor(props) {
+  constructor(props: ComponentInterface) {
     super({
       ...props,
       events: {

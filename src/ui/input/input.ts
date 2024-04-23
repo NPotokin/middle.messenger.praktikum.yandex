@@ -3,11 +3,14 @@ import InputField from './inputField.ts';
 import InputErrorsText from './inputErrorsText.ts';
 
 interface InputProps {
-  inputText: string;
-  inputClass: string;
-  label: string;
-  inputId: string;
-  placeholder: string;
+  inputText?: string;
+  inputClass?: string;
+  label?: string;
+  inputId?: string;
+  placeholder?: string,
+  inputType?: string,
+  inputName?: string,
+  onChange?: (event: Event) => void 
 }
 
 export default class Input extends Block {

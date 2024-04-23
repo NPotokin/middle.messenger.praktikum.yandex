@@ -1,5 +1,5 @@
 import './userInput.css';
 
-export { default as UserInput } from './userInput';
-export {default as UserInputField} from './userInputField';
-export { default as UrerInputErrorText} from './userInputErrorText';
+export { default as UserInput } from './userInput.ts';
+export {default as UserInputField} from './userInputField.ts';
+export { default as UrerInputErrorText} from './userInputErrorText.ts';

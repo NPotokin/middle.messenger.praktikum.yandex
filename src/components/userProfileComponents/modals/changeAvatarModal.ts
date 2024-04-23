@@ -1,11 +1,15 @@
-import Block from '../../../core/Block';
-import { Button, Input } from '../../../ui';
-import ModalTitle from './modalTitle';
-import ModalError from './modalError';
-import navigate from '../../../utils/navigate';
+import Block from '../../../core/Block.ts';
+import { Button, Input } from '../../../ui/index.ts';
+import ModalTitle from './modalTitle.ts';
+import ModalError from './modalError.ts';
+import navigate from '../../../utils/navigate.ts';
 
+interface CAMinterface{}
+interface FileInputChangeEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
 export default class ChangeAvatarModal extends Block{
-  constructor(props){
+  constructor(props: CAMinterface){
     super(props);
   }
 
@@ -23,7 +27,7 @@ export default class ChangeAvatarModal extends Block{
     const FileInput = new Input({
       inputType: 'file',
       inputClass: '__hidden',
-      onChange: (event) => this.handleFileInputChange(event),
+      onChange: (event: FileInputChangeEvent) => this.handleFileInputChange(event),
     });
 
     const SubmitButton = new Button({
@@ -50,20 +54,20 @@ export default class ChangeAvatarModal extends Block{
   triggerFileInput() {
     const fileInputComponent = this.children.FileInput;
     if (fileInputComponent) {
-      const fileInputElement = fileInputComponent.getContent().querySelector('input[type="file"]');
+      const fileInputElement = fileInputComponent.getContent().querySelector('input[type="file"]')  as HTMLInputElement;
       if (fileInputElement) {
         fileInputElement.click();
       }
     }
   }
 
-  handleFileInputChange(event) {
+  handleFileInputChange(event: FileInputChangeEvent) {
     const fileName = event.target.files[0].name;
     const inputButtonComponent = this.children.InputButton;
     const modalErrorComponent = this.children.ModalErrorLine;
     if (modalErrorComponent) {
       const modalErrorElement = modalErrorComponent.getContent();
-      modalErrorElement.style.display = 'none'; // Hide the error line
+      modalErrorElement.style.display = 'none'; 
     }
     if (inputButtonComponent) {
       inputButtonComponent.setProps({
@@ -80,7 +84,7 @@ export default class ChangeAvatarModal extends Block{
     if (fileInputComponent && modalErrorComponent) {
       const fileInputElement = fileInputComponent
         .getContent()
-        .querySelector('input[type="file"]');
+        .querySelector('input[type="file"]') as HTMLInputElement;
       if (!fileInputElement || !fileInputElement.files[0]) {
         const modalErrorElement = modalErrorComponent.getContent();
         modalErrorElement.style.display = 'block';
@@ -93,7 +97,7 @@ export default class ChangeAvatarModal extends Block{
   }
 
 
-  render(){
+  render(): string {
     return(`
             <dialog class="modal">
                 {{{ModalTitleLine}}}

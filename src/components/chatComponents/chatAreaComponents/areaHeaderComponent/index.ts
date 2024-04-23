@@ -1,2 +1,2 @@
 import './areaHeaderComponent.css';
-export {default as AreaHeaderComponent} from './areaHeaderComponent';
+export {default as AreaHeaderComponent} from './areaHeaderComponent.ts';

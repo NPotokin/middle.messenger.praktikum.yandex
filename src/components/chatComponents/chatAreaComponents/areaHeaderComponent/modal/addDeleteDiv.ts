@@ -1,7 +1,10 @@
-import Block from '../../../../../core/Block';
+import Block from '../../../../../core/Block.ts';
 
+interface AddDeleteDivInterface{
+  onClick?: () => void,
+}
 export default class AddDeleteDiv extends Block{
-  constructor(props){
+  constructor(props: AddDeleteDivInterface){
     super({
       ...props,
       events:{

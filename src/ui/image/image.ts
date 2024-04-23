@@ -1,7 +1,11 @@
 import Block from '../../core/Block.ts';
 
 interface ImageInterface {
-  onClick: () => void;
+  onClick?: () => void;
+  contSize?: string,
+  imgSrc?: string,
+  imgAlt?: string,
+  imgSize?: string,
 }
 export default class Image extends Block{
   constructor(props: ImageInterface){
