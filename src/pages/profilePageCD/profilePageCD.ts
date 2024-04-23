@@ -1,8 +1,8 @@
-import Block from '../../core/Block';
-import { ProfileCDModule } from '../../modules';
+import Block from '../../core/Block.ts';
+import { ProfileCDModule } from '../../modules/index.ts';
 
 export default class ProfilePageCD extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       ProfileCDModule: new ProfileCDModule({

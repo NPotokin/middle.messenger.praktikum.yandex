@@ -10,7 +10,8 @@ interface InputProps {
   placeholder?: string,
   inputType?: string,
   inputName?: string,
-  onChange?: (event: Event) => void 
+  onChange?: (event: Event) => void,
+  onBlur?: ()=>void,
 }
 
 export default class Input extends Block {

@@ -1,12 +1,16 @@
-import Block from '../../core/Block';
-import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../../utils/navigate';
-import { UserInput } from '../../components/userProfileComponents/userInput';
-import { ErrorLine } from '../../ui';
-import passwordValidator from '../../utils/inputValidators/passwordValidator';
-import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator';
+import Block from '../../core/Block.ts';
+import { ArrowButton, Image, Button } from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
+import { UserInput } from '../../components/userProfileComponents/userInput/index.ts';
+import { ErrorLine } from '../../ui/index.ts';
+import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
+import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator.ts';
+
+interface ProfileMainModuleInterface{
+  ErrorText?: string,
+}
 export default class ProfileMainModule extends Block{
-  constructor(props){
+  constructor(props: ProfileMainModuleInterface){
     super({
       ...props,
       BackButton: new ArrowButton({
@@ -76,7 +80,7 @@ export default class ProfileMainModule extends Block{
     };
   }
 
-  onSaveChanges(e){
+  onSaveChanges(e: Event){
     e.preventDefault();
     const passwordError = this.children.PasswordInput.props.error;
     const passwordErrorCheck = this.children.PasswordCheckInput.props.error;

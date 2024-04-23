@@ -1,13 +1,18 @@
-import Block from '../../core/Block';
-import { Button} from '../../ui';
-import {Input} from '../../ui';
-import navigate from '../../utils/navigate';
-import loginValidator from '../../utils/inputValidators/loginValidator';
-import passwordValidator from '../../utils/inputValidators/passwordValidator';
-import { ErrorLine } from '../../ui';
+import Block from '../../core/Block.ts';
+import { Button} from '../../ui/index.ts';
+import {Input} from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
+import loginValidator from '../../utils/inputValidators/loginValidator.ts';
+import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
+import { ErrorLine } from '../../ui/index.ts';
 
+interface LoginModuleInterface{
+  error?:string,
+  ErrorText?: string,
+  formAction?: string,
+}
 export default class LoginModule extends Block {
-  constructor(props){
+  constructor(props:LoginModuleInterface){
     super({
       ...props,
       ErrorLine: new ErrorLine({
@@ -61,7 +66,7 @@ export default class LoginModule extends Block {
     };
   }
 
-  onLogin(e) {
+  onLogin(e: Event) {
     e.preventDefault();
     const inputError = this.children.LoginInput.props.error;
     const passwordError = this.children.PasswordInput.props.error;

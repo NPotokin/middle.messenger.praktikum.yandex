@@ -1,8 +1,8 @@
-import Block from '../../core/Block';
-import { ProfileCPModule } from '../../modules';
+import Block from '../../core/Block.ts';
+import { ProfileCPModule } from '../../modules/index.ts';
 
 export default class ProfilePageCP extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       ProfileCPModule: new ProfileCPModule({

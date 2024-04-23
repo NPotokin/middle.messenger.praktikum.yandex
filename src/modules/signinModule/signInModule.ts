@@ -1,18 +1,23 @@
-import Block from '../../core/Block';
-import { Button } from '../../ui';
-import {Input} from '../../ui';
-import { ErrorLine } from '../../ui';
-import navigate from '../../utils/navigate';
-import loginValidator from '../../utils/inputValidators/loginValidator';
-import emailValidator from '../../utils/inputValidators/emailValidator';
-import firstNameValidator from '../../utils/inputValidators/firstNameValidator';
-import lastNameValidator from '../../utils/inputValidators/lastNameValidator';
-import phoneValidator from '../../utils/inputValidators/phoneValidator';
-import passwordValidator from '../../utils/inputValidators/passwordValidator';
-import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator';
+import Block from '../../core/Block.ts';
+import { Button } from '../../ui/index.ts';
+import {Input} from '../../ui/index.ts';
+import { ErrorLine } from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
+import loginValidator from '../../utils/inputValidators/loginValidator.ts';
+import emailValidator from '../../utils/inputValidators/emailValidator.ts';
+import firstNameValidator from '../../utils/inputValidators/firstNameValidator.ts';
+import lastNameValidator from '../../utils/inputValidators/lastNameValidator.ts';
+import phoneValidator from '../../utils/inputValidators/phoneValidator.ts';
+import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
+import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator.ts';
 
+interface SignInModuleinterface{
+  error?: string,
+  ErrorText?: string,
+  formAction?: string,
+}
 export default class SignInModule extends Block{
-  constructor(props){
+  constructor(props:SignInModuleinterface){
     super({
       ...props,
       ErrorLine: new ErrorLine({
@@ -117,7 +122,7 @@ export default class SignInModule extends Block{
     };
   }
 
-  onSignIn(e){
+  onSignIn(e: Event){
     e.preventDefault();
     const emailError = this.children.EmailInput.props.error;
     const inputError = this.children.LoginInput.props.error;

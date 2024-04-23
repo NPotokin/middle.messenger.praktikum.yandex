@@ -1,8 +1,8 @@
-import Block from '../../core/Block';
-import { SignInModule } from '../../modules';
+import Block from '../../core/Block.ts';
+import { SignInModule } from '../../modules/index.ts';
 
 export default class SignInPage extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       SignInModule: new SignInModule({

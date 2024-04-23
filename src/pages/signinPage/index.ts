@@ -1,1 +1,1 @@
-export {default as SignInPage } from './signInPage';
+export {default as SignInPage } from './signInPage.ts';

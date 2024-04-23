@@ -1,8 +1,8 @@
-import Block from '../../core/Block';
-import { ErrorComponent } from '../../components';
+import Block from '../../core/Block.ts';
+import { ErrorComponent } from '../../components/index.ts';
 
 export default class ErrorPage500 extends Block {
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       Error500: new ErrorComponent({

@@ -3,13 +3,17 @@ import UserInputField from './userInputField.ts';
 import UserInputErrorText from './userInputErrorText.ts';
 
 interface userInputInterface {
-  userInputContainerClass: string,
-  inputId: string,
-  label: string,
-  UserInputField: string,
-  UserInputErrorText: string,
-  inputText: string,
-  error: string
+  userInputContainerClass?: string,
+  inputId?: string,
+  label?: string,
+  UserInputField?: string,
+  UserInputErrorText?: string,
+  inputText?: string,
+  error?: string,
+  inputName?: string,
+  inputType?: string,
+  inputValue?: string,
+  onBlur?: () => void,
 }
 export default class UserInput extends Block {
   constructor(props: userInputInterface){

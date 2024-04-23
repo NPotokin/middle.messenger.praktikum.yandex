@@ -1,10 +1,10 @@
-import { UserData } from '../../components/userProfileComponents';
-import Block from '../../core/Block';
-import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../../utils/navigate';
+import { UserData } from '../../components/userProfileComponents/index.ts';
+import Block from '../../core/Block.ts';
+import { ArrowButton, Image, Button } from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
 
 export default class ProfileMainModule extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       BackButton: new ArrowButton({

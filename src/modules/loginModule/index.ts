@@ -1,2 +1,2 @@
 import './loginModule.css';
-export {default as LoginModule} from './loginModule';
+export {default as LoginModule} from './loginModule.ts';

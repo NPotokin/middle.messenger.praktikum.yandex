@@ -1,8 +1,8 @@
-import Block from '../../core/Block';
-import { LoginModule } from '../../modules';
+import Block from '../../core/Block.ts';
+import { LoginModule } from '../../modules/index.ts';
 
 export default class LoginPage extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       LoginModule: new LoginModule({

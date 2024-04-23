@@ -1,9 +1,9 @@
-import Block from '../../core/Block';
-import { ListHeaderComponent } from '../../components';
-import { ItemListComponent } from '../../components/chatComponents/chatListComponents/listItemComponent';
+import Block from '../../core/Block.ts';
+import { ListHeaderComponent } from '../../components/index.ts';
+import { ItemListComponent } from '../../components/chatComponents/chatListComponents/listItemComponent/index.ts';
 
 export default class ChatListModule extends Block{
-  constructor(props){
+  constructor(props:{}){
     super({
       ...props,
       ListHeader: new ListHeaderComponent({

@@ -1,17 +1,20 @@
-import Block from '../../core/Block';
-import { ArrowButton, Image, Button } from '../../ui';
-import navigate from '../../utils/navigate';
-import { ErrorLine } from '../../ui';
-import { UserInput } from '../../components/userProfileComponents/userInput';
-import { ChangeAvatarModal } from '../../components/userProfileComponents/modals';
-import emailValidator from '../../utils/inputValidators/emailValidator';
-import loginValidator from '../../utils/inputValidators/loginValidator';
-import firstNameValidator from '../../utils/inputValidators/firstNameValidator';
-import lastNameValidator from '../../utils/inputValidators/lastNameValidator';
-import phoneValidator from '../../utils/inputValidators/phoneValidator';
+import Block from '../../core/Block.ts';
+import { ArrowButton, Image, Button } from '../../ui/index.ts';
+import navigate from '../../utils/navigate.ts';
+import { ErrorLine } from '../../ui/index.ts';
+import { UserInput } from '../../components/userProfileComponents/userInput/index.ts';
+import { ChangeAvatarModal } from '../../components/userProfileComponents/modals/index.ts';
+import emailValidator from '../../utils/inputValidators/emailValidator.ts';
+import loginValidator from '../../utils/inputValidators/loginValidator.ts';
+import firstNameValidator from '../../utils/inputValidators/firstNameValidator.ts';
+import lastNameValidator from '../../utils/inputValidators/lastNameValidator.ts';
+import phoneValidator from '../../utils/inputValidators/phoneValidator.ts';
 
+interface ProfileMainModuleInterface{
+  ErrorText?: string,
+}
 export default class ProfileMainModule extends Block{
-  constructor(props){
+  constructor(props: ProfileMainModuleInterface){
     super({
       ...props,
       BackButton: new ArrowButton({
@@ -120,7 +123,7 @@ export default class ProfileMainModule extends Block{
     };
   }
 
-  onSaveChanges(e){
+  onSaveChanges(e: Event){
     e.preventDefault();
     const emailError = this.children.EmailInput.props.error;
     const inputError = this.children.LoginInput.props.error;
