@@ -8,9 +8,6 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   {
     rules: {
-      'no-unused-vars': 'warn',
-      'no-undef': 'warn',
-      'max-len': [1, 100],
       'max-params': [1, 5],
       'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
@@ -19,6 +16,9 @@ export default tseslint.config(
       'no-extra-semi': 'error',
       'no-trailing-spaces': 'error',
       'no-multiple-empty-lines': ['error', { 'max': 2 }],
+      '@typescript-eslint/ban-types': ['off'],
+      'no-undef': 'off',
+      '@typescript-eslint/no-this-alias': 'off',
     },
   },
   {

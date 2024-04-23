@@ -4,13 +4,13 @@ import Handlebars from 'handlebars';
 
 
 export interface ComponentInterface {
-  [prop: string]: {};
+  [prop: string]: unknown;
   events?: { [eventName: string]: (e: Event) => void }
   hasID?: boolean;
 }
 
 export interface BlockInterface {
-  [key: string]: {};
+  [key: string]: unknown;
   events?: { [key: string]: (e: Event) => void };
 }
 
@@ -26,14 +26,13 @@ export default class Block  {
   private _meta: { tagName: string } | null = null;
   public _id: string = nanoid(6);
   private eventBus: () => EventBus;
-  public props: ComponentInterface
-  public children: Record<string, Block>
+  public props: ComponentInterface;
+  public children: Record<string, Block>;
 
-  
 
   constructor(propsWithChildren: {}) {
     const eventBus = new EventBus();
-   
+
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children as Record<string, Block>;
@@ -46,10 +45,10 @@ export default class Block  {
   }
 
   _addEvents() {
-    const {events = {}} = this.props as {events?: {[key: string]: EventListener}}
+    const {events = {}} = this.props as {events?: {[key: string]: EventListener}};
 
     Object.keys(events).forEach(eventName => {
-      this._element.addEventListener(eventName, events[eventName]);
+      this._element?.addEventListener(eventName, events[eventName]);
     });
   }
 
@@ -61,8 +60,12 @@ export default class Block  {
   }
 
   _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
+    if (this._meta) {
+      const { tagName } = this._meta;
+      this._element = this._createDocumentElement(tagName);
+    } else {
+      throw new Error('_meta is null. Cannot create resources.');
+    }
   }
 
   _init() {
@@ -84,7 +87,7 @@ export default class Block  {
   }
 
   componentDidMount(oldProps?: BlockInterface) {
-    console.log(`CDM! oldProps: ${oldProps}`)
+    console.log(`CDM! oldProps: ${oldProps}`);
   }
 
   dispatchComponentDidMount() {
@@ -100,7 +103,7 @@ export default class Block  {
   }
 
   componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {
-    console.log(`CDU! old: ${oldProps}, new:${newProps}`)
+    console.log(`CDU! old: ${oldProps}, new:${newProps}`);
     return true;
   }
 
@@ -108,7 +111,7 @@ export default class Block  {
     const children: ComponentInterface ={};
     const props: ComponentInterface = {};
 
-    
+
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
@@ -142,7 +145,7 @@ export default class Block  {
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
-    const newElement = fragment.content.firstElementChild
+    const newElement = fragment.content.firstElementChild as HTMLElement;
 
     Object.values(this.children).forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
@@ -162,7 +165,7 @@ export default class Block  {
   render() {}
 
   getContent() {
-    return this.element;
+    return this.element as HTMLElement;
   }
 
   _makePropsProxy(props: ComponentInterface) {

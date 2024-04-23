@@ -1,7 +1,4 @@
-import * as Pages from '../pages/index.ts'
-import * as UIs from '../ui/index.ts';
-import * as Components from '../components/index.ts';
-import * as Modules from '../modules/index.ts';
+import * as Pages from '../pages/index.ts';
 import Handlebars from 'handlebars';
 
 interface PageComponent {
@@ -22,23 +19,12 @@ const pages: { [key: string]: [PageComponent, {}] } = {
   'profilePageCD': [Pages.ProfilePageCD, {}],
 };
 
-Object.entries(UIs).forEach(([ name, component ]) => {
-  Handlebars.registerPartial(name, component);
-});
-
-Object.entries(Components).forEach(([ name, component ]) => {
-  Handlebars.registerPartial(name, component);
-});
-
-Object.entries(Modules).forEach(([ name, component ]) => {
-  Handlebars.registerPartial(name, component);
-});
 
 export default function navigate(page: string) {
   const [Source, context] = pages[page];
   const container = document.getElementById('app')!;
 
-  if (typeof Source === "function") {
+  if (typeof Source === 'function') {
     const pageInstance = new Source(context);
     container.innerHTML = '';
     container.append(pageInstance.getContent());
@@ -50,7 +36,7 @@ export default function navigate(page: string) {
 
 
 document.addEventListener('click', e => {
-  
+
   const target = e.target as HTMLElement;
   const page = target.getAttribute('page');
   if (page) {

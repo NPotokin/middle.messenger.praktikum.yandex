@@ -67,7 +67,7 @@ export default class ChangeAvatarModal extends Block{
     const modalErrorComponent = this.children.ModalErrorLine;
     if (modalErrorComponent) {
       const modalErrorElement = modalErrorComponent.getContent();
-      modalErrorElement.style.display = 'none'; 
+      modalErrorElement.style.display = 'none';
     }
     if (inputButtonComponent) {
       inputButtonComponent.setProps({

@@ -51,7 +51,7 @@ export default class AreaHeaderComponent extends Block {
       otherDialogElement.style.display = 'none';
     }
 
-    
+
     dialogElement.style.display = 'flex';
   }
 

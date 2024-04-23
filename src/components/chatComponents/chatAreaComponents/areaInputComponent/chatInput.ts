@@ -2,7 +2,7 @@ import Block from '../../../../core/Block.ts';
 
 interface ChatInputInterface{
   inputId?: string,
-  inputName?: string, 
+  inputName?: string,
   onBlur: () => void;
 }
 export default class ChatInput extends Block{

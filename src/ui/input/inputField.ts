@@ -9,7 +9,7 @@ interface InputFieldProps {
   inputValue?: string;
   modifier?: string;
   placeholder?: string;
-  
+
 }
 
 export default class InputField extends Block {

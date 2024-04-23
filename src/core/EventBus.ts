@@ -1,4 +1,4 @@
-type Listener = (...args: any[]) => void;
+type Listener = (...args: unknown[]) => void;
 
 interface ListenersMap {
   [event: string]: Listener[];
@@ -25,7 +25,7 @@ export default class EventBus {
     this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
   }
 
-  emit(event: string, ...args: any[]): void {
+  emit(event: string, ...args: unknown[]): void {
     if (!this.listeners[event]) {
       return;
     }
