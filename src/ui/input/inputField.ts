@@ -3,12 +3,13 @@ import Block from '../../core/Block.ts';
 interface InputFieldProps {
   onBlur?: () => void;
   onChange?: (event: Event) => void;
-  inputType: string;
-  inputId: string;
-  inputName: string;
-  inputValue: string;
+  inputType?: string;
+  inputId?: string;
+  inputName?: string;
+  inputValue?: string;
   modifier?: string;
-  placeholder: string;
+  placeholder?: string;
+  
 }
 
 export default class InputField extends Block {

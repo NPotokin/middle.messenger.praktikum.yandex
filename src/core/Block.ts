@@ -3,13 +3,13 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 
 
-interface ComponentInterface {
+export interface ComponentInterface {
   [prop: string]: {};
   events?: { [eventName: string]: (e: Event) => void }
   hasID?: boolean;
 }
 
-interface BlockInterface {
+export interface BlockInterface {
   [key: string]: {};
   events?: { [key: string]: (e: Event) => void };
 }
@@ -27,7 +27,7 @@ export default class Block  {
   private _id: string = nanoid(6);
   private eventBus: () => EventBus;
   private props: ComponentInterface
-  private children: Record<string, Block>
+  public children: Record<string, Block>
 
   
 
@@ -120,7 +120,7 @@ export default class Block  {
     return { children, props };
   }
 
-  setProps = (nextProps: string) => {
+  setProps = (nextProps: BlockInterface) => {
     if (!nextProps) {
       return;
     }

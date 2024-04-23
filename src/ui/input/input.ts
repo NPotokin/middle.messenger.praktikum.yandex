@@ -7,17 +7,14 @@ interface InputProps {
   inputClass: string;
   label: string;
   inputId: string;
-  // Add other props as needed
-  // For example:
   placeholder: string;
-  // Add other props as needed
 }
 
 export default class Input extends Block {
   constructor(props: InputProps){
     super({
       ...props,
-      InputField: new InputField(props),
+      InputField: new InputField({...props}),
       InputErrorsText: new InputErrorsText({
         error: props.inputText,
       }),
@@ -25,7 +22,7 @@ export default class Input extends Block {
     });
   }
 
-  componentDidUpdate(oldProps: string, newProps: string): boolean {
+  componentDidUpdate(oldProps: {}, newProps: {}): boolean {
     if(oldProps === newProps){
       return false;
     }
