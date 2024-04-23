@@ -4,9 +4,13 @@ import * as Components from '../components/index.ts';
 import * as Modules from '../modules/index.ts';
 import Handlebars from 'handlebars';
 
+interface PageComponent {
+  new (props: {}): {
+    getContent: () => HTMLElement;
+  };
+}
 
-
-const pages: { [key: string]: [Function, {}] } = {
+const pages: { [key: string]: [PageComponent, {}] } = {
   'nav': [ Pages.Navigation, {}],
   'loginPage': [Pages.LoginPage, {}],
   'signInPage': [Pages.SignInPage, {}],
@@ -31,18 +35,17 @@ Object.entries(Modules).forEach(([ name, component ]) => {
 });
 
 export default function navigate(page: string) {
-  
-  const [ source, context ] = pages[page];
+  const [Source, context] = pages[page];
   const container = document.getElementById('app')!;
 
-  if(source instanceof Object) {
-    const page = new source(context);
+  if (typeof Source === "function") {
+    const pageInstance = new Source(context);
     container.innerHTML = '';
-    container.append(page.getContent());
+    container.append(pageInstance.getContent());
     return;
   }
 
-  container.innerHTML = Handlebars.compile(source)(context);
+  container.innerHTML = Handlebars.compile(Source)(context);
 }
 
 
