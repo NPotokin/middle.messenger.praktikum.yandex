@@ -1,2 +1,2 @@
 import './arrowButton.css';
-export {default as ArrowButton} from './arrowButton';
+export {default as ArrowButton} from './arrowButton.ts';

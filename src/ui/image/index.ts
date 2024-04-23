@@ -1,3 +1,3 @@
 import './image.css';
-export { default as Image } from './image';
+export { default as Image } from './image.ts';
 

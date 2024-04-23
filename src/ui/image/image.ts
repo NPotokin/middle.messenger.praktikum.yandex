@@ -1,7 +1,10 @@
-import Block from '../../core/Block';
+import Block from '../../core/Block.ts';
 
+interface ImageInterface {
+  onClick: () => void;
+}
 export default class Image extends Block{
-  constructor(props){
+  constructor(props: ImageInterface){
     super({
       ...props,
       events: {

@@ -1,1 +1,1 @@
-export {default as ErrorLine} from './errorLine';
+export {default as ErrorLine} from './errorLine.ts';

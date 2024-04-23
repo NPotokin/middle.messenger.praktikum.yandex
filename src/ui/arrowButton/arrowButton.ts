@@ -1,7 +1,11 @@
-import Block from '../../core/Block';
+import Block from '../../core/Block.ts';
+
+interface ArrowBtnInterface {
+  onClick: () => void;
+}
 
 export default class ArrowButton extends Block{
-  constructor(props){
+  constructor(props: ArrowBtnInterface){
     super({
       ...props,
       events:{
