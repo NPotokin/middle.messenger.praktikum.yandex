@@ -1,4 +1,4 @@
-export default function loginValidator(e) {
+export default function loginValidator(e: { target: { value: string; }; }) {
   const inputValue = e.target.value.trim(); // Remove leading and trailing whitespaces
   const isValid = /^[a-zA-Zа-яА-Я0-9_-]{3,20}$/.test(inputValue); // Regular expression for validation
 

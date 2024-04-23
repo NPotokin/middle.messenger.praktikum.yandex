@@ -1,10 +1,20 @@
-//@ts-nocheck
-
-import EventBus from './EventBus';
-import {nanoid} from 'nanoid';
+import EventBus from './EventBus.ts';
+import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 
-export default class Block {
+
+interface ComponentInterface {
+  [prop: string]: {};
+  events?: { [eventName: string]: (e: Event) => void }
+  hasID?: boolean;
+}
+
+interface BlockInterface {
+  [key: string]: {};
+  events?: { [key: string]: (e: Event) => void };
+}
+
+export default class Block  {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -12,28 +22,21 @@ export default class Block {
     FLOW_RENDER: 'flow:render',
   };
 
-  _element = null;
-  _meta = null;
-  _id = nanoid(6);
+  private _element: HTMLElement | null = null;
+  private _meta: { tagName: string } | null = null;
+  private _id: string = nanoid(6);
+  private eventBus: () => EventBus;
+  private props: ComponentInterface
+  private children: Record<string, Block>
 
-  /** JSDoc
-     * @param {string} tagName
-     * @param {Object} props
-     *
-     * @returns {void}
-     */
+  
 
-  private _eventbus;
-
-  constructor(propsWithChildren = {}) {
+  constructor(propsWithChildren: {}) {
     const eventBus = new EventBus();
-    // this._meta = {
-    //   tagName,
-    //   props
-    // };
+   
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
-    this.children = children;
+    this.children = children as Record<string, Block>;
 
     this.eventBus = () => eventBus;
 
@@ -43,14 +46,14 @@ export default class Block {
   }
 
   _addEvents() {
-    const {events = {}} = this.props;
+    const {events = {}} = this.props as {events?: {[key: string]: EventListener}}
 
     Object.keys(events).forEach(eventName => {
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -73,22 +76,22 @@ export default class Block {
   }
 
   _componentDidMount() {
-    this.componentDidMount();
-    console.log('CDM');
+    this.componentDidMount(this.props); //this.props by me and questinable
 
     Object.values(this.children).forEach(child => {
       child.dispatchComponentDidMount();
     });
   }
 
-  componentDidMount(oldProps) {}
+  componentDidMount(oldProps?: BlockInterface) {
+    console.log(`CDM! oldProps: ${oldProps}`)
+  }
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
-    console.log('CDU');
+  _componentDidUpdate(oldProps: BlockInterface, newProps: BlockInterface) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -96,14 +99,16 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {
+    console.log(`CDU! old: ${oldProps}, new:${newProps}`)
     return true;
   }
 
-  _getChildrenAndProps(propsAndChildren) {
-    const children = {};
-    const props = {};
+  _getChildrenAndProps(propsAndChildren: {}) {
+    const children: ComponentInterface ={};
+    const props: ComponentInterface = {};
 
+    
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
@@ -115,7 +120,7 @@ export default class Block {
     return { children, props };
   }
 
-  setProps = nextProps => {
+  setProps = (nextProps: string) => {
     if (!nextProps) {
       return;
     }
@@ -134,10 +139,10 @@ export default class Block {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    const fragment = this._createDocumentElement('template');
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
-    const newElement = fragment.content.firstElementChild;
+    const newElement = fragment.content.firstElementChild
 
     Object.values(this.children).forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
@@ -149,7 +154,7 @@ export default class Block {
       this._element.replaceWith(newElement);
     }
 
-    this._element = newElement;
+    this._element = newElement as HTMLElement;
 
     this._addEvents();
   }
@@ -160,22 +165,18 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
+  _makePropsProxy(props: ComponentInterface) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop:string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target, prop:string, value) {
         const oldTarget = {...target};
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -185,8 +186,7 @@ export default class Block {
     });
   }
 
-  _createDocumentElement(tagName) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
+  _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 

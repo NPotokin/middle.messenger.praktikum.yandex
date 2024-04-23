@@ -1,14 +1,23 @@
-import Block from '../../core/Block';
-import InputField from './inputField';
-import InputErrorsText from './inputErrorsText';
+import Block from '../../core/Block.ts';
+import InputField from './inputField.ts';
+import InputErrorsText from './inputErrorsText.ts';
+
+interface InputProps {
+  inputText: string;
+  inputClass: string;
+  label: string;
+  inputId: string;
+  // Add other props as needed
+  // For example:
+  placeholder: string;
+  // Add other props as needed
+}
 
 export default class Input extends Block {
-  constructor(props){
+  constructor(props: InputProps){
     super({
       ...props,
-      InputField: new InputField({
-        ...props,
-      }),
+      InputField: new InputField(props),
       InputErrorsText: new InputErrorsText({
         error: props.inputText,
       }),
@@ -16,7 +25,7 @@ export default class Input extends Block {
     });
   }
 
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  componentDidUpdate(oldProps: string, newProps: string): boolean {
     if(oldProps === newProps){
       return false;
     }

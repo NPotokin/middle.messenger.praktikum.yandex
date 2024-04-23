@@ -1,7 +1,18 @@
-import Block from '../../core/Block';
+import Block from '../../core/Block.ts';
+
+interface InputFieldProps {
+  onBlur?: () => void;
+  onChange?: (event: Event) => void;
+  inputType: string;
+  inputId: string;
+  inputName: string;
+  inputValue: string;
+  modifier?: string;
+  placeholder: string;
+}
 
 export default class InputField extends Block {
-  constructor(props){
+  constructor(props: InputFieldProps) {
     super({
       ...props,
       events: {
@@ -21,6 +32,5 @@ export default class InputField extends Block {
         class="input__element {{modifier}}" 
         placeholder="{{placeholder}}">
         `);
-
   }
 }

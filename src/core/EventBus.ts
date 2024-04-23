@@ -1,27 +1,35 @@
-//@ts-nocheck
+type Listener = (...args: any[]) => void;
+
+interface ListenersMap {
+  [event: string]: Listener[];
+}
 
 export default class EventBus {
+  private listeners: ListenersMap;
+
   constructor() {
     this.listeners = {};
   }
-  on(event, callback) {
+
+  on(event: string, callback: Listener): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
     this.listeners[event].push(callback);
   }
-  off(event, callback) {
+
+  off(event: string, callback: Listener): void {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      throw new Error(`No event found: ${event}`);
     }
     this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
   }
-  emit(event, ...args) {
+
+  emit(event: string, ...args: any[]): void {
     if (!this.listeners[event]) {
       return;
-      // throw new Error(`Нет события: ${event}`);
     }
-    this.listeners[event].forEach(function (listener) {
+    this.listeners[event].forEach(listener => {
       listener(...args);
     });
   }

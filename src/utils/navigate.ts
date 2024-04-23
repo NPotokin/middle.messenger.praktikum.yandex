@@ -1,20 +1,21 @@
-import * as Pages from '../pages';
-import * as UIs from '../ui';
-import * as Components from '../components';
-import * as Modules from '../modules';
+import * as Pages from '../pages/index.ts'
+import * as UIs from '../ui/index.ts';
+import * as Components from '../components/index.ts';
+import * as Modules from '../modules/index.ts';
 import Handlebars from 'handlebars';
 
 
-const pages = {
-  'nav': [ Pages.Navigation],
-  'loginPage': [Pages.LoginPage],
-  'signInPage': [Pages.SignInPage],
-  'errorPage404': [Pages.ErrorPage404],
-  'errorPage500': [Pages.ErrorPage500],
-  'chatPage': [Pages.ChatPage],
-  'profilePage': [Pages.ProfilePageMain],
-  'profilePageCP': [Pages.ProfilePageCP],
-  'profilePageCD': [Pages.ProfilePageCD],
+
+const pages: { [key: string]: [Function, {}] } = {
+  'nav': [ Pages.Navigation, {}],
+  'loginPage': [Pages.LoginPage, {}],
+  'signInPage': [Pages.SignInPage, {}],
+  'errorPage404': [Pages.ErrorPage404, {}],
+  'errorPage500': [Pages.ErrorPage500, {}],
+  'chatPage': [Pages.ChatPage, {}],
+  'profilePage': [Pages.ProfilePageMain, {}],
+  'profilePageCP': [Pages.ProfilePageCP, {}],
+  'profilePageCD': [Pages.ProfilePageCD, {}],
 };
 
 Object.entries(UIs).forEach(([ name, component ]) => {
@@ -30,7 +31,7 @@ Object.entries(Modules).forEach(([ name, component ]) => {
 });
 
 export default function navigate(page: string) {
-  //@ts-ignore
+  
   const [ source, context ] = pages[page];
   const container = document.getElementById('app')!;
 
@@ -46,8 +47,9 @@ export default function navigate(page: string) {
 
 
 document.addEventListener('click', e => {
-  //@ts-ignore
-  const page = e.target.getAttribute('page');
+  
+  const target = e.target as HTMLElement;
+  const page = target.getAttribute('page');
   if (page) {
     navigate(page);
     e.preventDefault();

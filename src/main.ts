@@ -1,3 +1,3 @@
-import navigate from './utils/navigate';
+import navigate from './utils/navigate.ts';
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));
 

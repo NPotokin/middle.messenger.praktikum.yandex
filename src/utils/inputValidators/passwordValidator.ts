@@ -1,4 +1,4 @@
-export default function passwordValidator(e) {
+export default function passwordValidator(e: { target: { value: string; }; }) {
   const inputValue = e.target.value.trim(); // Remove leading and trailing whitespaces
   const isValid = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/.test(inputValue); // Regular expression for validation
 

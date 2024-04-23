@@ -1,4 +1,4 @@
-export function passwordCheckValidator(e) {
+export function passwordCheckValidator(e: { target: { value: string; }; }) {
   const inputValue = e.target.value.trim();
   const isMatch = inputValue === this.props.password; // Compare with password set in props
 

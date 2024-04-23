@@ -1,4 +1,4 @@
-export default function phoneValidator(e) {
+export default function phoneValidator(e: { target: { value: string; }; }) {
   const inputValue = e.target.value.trim(); // Remove leading and trailing whitespaces
   const isValid = /^\+?[0-9]{10,15}$/.test(inputValue); // Regular expression for validation
 
