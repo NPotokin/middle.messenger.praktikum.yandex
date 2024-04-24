@@ -62,6 +62,10 @@ export default class ChangeAvatarModal extends Block{
   }
 
   handleFileInputChange(event: FileInputChangeEvent) {
+    if (!event.target.files || event.target.files.length === 0) {
+      console.log('No files selected.');
+      return;
+    }
     const fileName = event.target.files[0].name;
     const inputButtonComponent = this.children.InputButton;
     const modalErrorComponent = this.children.ModalErrorLine;
@@ -85,7 +89,7 @@ export default class ChangeAvatarModal extends Block{
       const fileInputElement = fileInputComponent
         .getContent()
         .querySelector('input[type="file"]') as HTMLInputElement;
-      if (!fileInputElement || !fileInputElement.files[0]) {
+      if (!fileInputElement || !fileInputElement.files || fileInputElement.files.length === 0) {
         const modalErrorElement = modalErrorComponent.getContent();
         modalErrorElement.style.display = 'block';
       } else {

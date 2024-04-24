@@ -1,5 +1,5 @@
 import Block from '../../core/Block.ts';
-import { AreaHeaderComponent, AreaContentComponent, AreaInputComponent } from '../../components';
+import { AreaHeaderComponent, AreaContentComponent, AreaInputComponent } from '../../components/index.ts';
 
 export default class ChatAreaModule extends Block{
   constructor(props:{}){

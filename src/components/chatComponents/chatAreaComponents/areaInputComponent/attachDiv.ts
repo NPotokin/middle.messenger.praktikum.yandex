@@ -1,10 +1,11 @@
-import Block, { ComponentInterface } from '../../../../core/Block.ts';
+import Block, {ComponentInterface} from '../../../../core/Block.ts';
 import { AttachModal } from './modal/index.ts';
+
 
 export default class AttachDiv extends Block {
   modal: AttachModal;
 
-  constructor(props: ComponentInterface) {
+  constructor(props:ComponentInterface) {
     super({
       ...props,
       events: {
@@ -15,8 +16,13 @@ export default class AttachDiv extends Block {
       }),
     });
 
-    this.modal = this.children.Modal;
-    this.props.events.click = this.toggleModalVisibility.bind(this);
+    this.modal = this.children.Modal as AttachModal;
+    if (this.props.events) {
+      const clickHandler = this.props.events['click'];
+      if (clickHandler) {
+        this.props.events.click = clickHandler.bind(this);
+      }
+    }
   }
 
   toggleModalVisibility() {

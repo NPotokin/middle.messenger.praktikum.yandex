@@ -1,5 +1,5 @@
 import Block from '../../core/Block.ts';
-import { ChatListModule, ChatAreaModule } from '../../modules';
+import { ChatListModule, ChatAreaModule } from '../../modules/index.ts';
 
 export default class ChatPage extends Block{
   constructor(props:{}){

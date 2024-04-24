@@ -1,2 +1,2 @@
-import './modal.css'
+import './modal.css';
 export {default as AttachModal} from './attachModal.ts';
