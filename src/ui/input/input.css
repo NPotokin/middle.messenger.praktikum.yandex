@@ -24,8 +24,8 @@
     color: var(--primary-text-color);
     border: none;
     border-bottom: 1px solid var(--primary-color);
-    padding-bottom: 7px;
     padding: 0%;
+    padding-bottom: 7px;
 }
 
 .input__text {
