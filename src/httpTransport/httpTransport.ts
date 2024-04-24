@@ -1,3 +1,24 @@
+export function queryStringify(data: Record<string, unknown>): string {
+  if (typeof data !== 'object' || data === null) {
+      throw new Error('Data must be an object.');
+  }
+
+  const keys = Object.keys(data);
+  if (keys.length === 0) {
+      return ''; 
+  }
+
+  const queryString = keys
+      .map((key) => {
+          const value = data[key];
+          return `${key}=${value ?? ''}`;
+      })
+      .join('&');
+
+  return queryString;
+}
+
+
 export enum METHOD {
     Get = 'GET',
     Post = 'POST',
@@ -6,7 +27,7 @@ export enum METHOD {
 }
 type Options = {
     method: METHOD;
-    data?: string;
+    data?: Record<string, unknown>;
 };
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
@@ -34,6 +55,10 @@ export default class HTTPTransport {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
+      if (method === METHOD.Get && data) {
+				url = `${url}?${queryStringify(data)}`;
+			}
+
       xhr.open(method, url);
 
       xhr.onload = function () {
@@ -47,7 +72,7 @@ export default class HTTPTransport {
       if (method === METHOD.Get || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   }
