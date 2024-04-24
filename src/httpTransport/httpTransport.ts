@@ -12,43 +12,43 @@ type Options = {
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
 export default class HTTPTransport {
-    get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, { ...options, method: METHOD.Get });
-     }
+  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.Get });
+  }
 
-    post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, { ...options, method: METHOD.Post });
-    }
+  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.Post });
+  }
 
-    put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, { ...options, method: METHOD.Put });
-    }
+  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.Put });
+  }
 
-    delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, { ...options, method: METHOD.Delete });
-    }
+  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.Delete });
+  }
 
-    request(url: string, options: Options = { method: METHOD.Get }): Promise<XMLHttpRequest> {
-        const { method, data } = options;
+  request(url: string, options: Options = { method: METHOD.Get }): Promise<XMLHttpRequest> {
+    const { method, data } = options;
 
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
 
-            xhr.open(method, url);
+      xhr.open(method, url);
 
-            xhr.onload = function () {
-                resolve(xhr);
-            };
+      xhr.onload = function () {
+        resolve(xhr);
+      };
 
-            xhr.onabort = reject;
-            xhr.onerror = reject;
-            xhr.ontimeout = reject;
+      xhr.onabort = reject;
+      xhr.onerror = reject;
+      xhr.ontimeout = reject;
 
-            if (method === METHOD.Get || !data) {
-                xhr.send();
-            } else {
-                xhr.send(data);
-            }
-        });
-    }
+      if (method === METHOD.Get || !data) {
+        xhr.send();
+      } else {
+        xhr.send(data);
+      }
+    });
+  }
 }
