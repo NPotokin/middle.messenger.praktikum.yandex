@@ -52,6 +52,14 @@ export default class Block  {
     });
   }
 
+  _removeEvents() {
+    const {events = {}} = this.props as {events?: {[key: string]: EventListener}};
+
+    Object.keys(events).forEach(eventName => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -143,13 +151,16 @@ export default class Block  {
     });
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
+
+    if(this._element){
+      this._removeEvents();
+    }
+
     const newElement = fragment.content.firstElementChild as HTMLElement;
 
     Object.values(this.children).forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
-
       stub?.replaceWith(child.getContent());
     });
 

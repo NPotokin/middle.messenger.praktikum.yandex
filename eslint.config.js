@@ -19,6 +19,7 @@ export default tseslint.config(
       '@typescript-eslint/ban-types': ['off'],
       'no-undef': 'off',
       '@typescript-eslint/no-this-alias': 'off',
+      'eol-last': ['error', 'always'],
     },
   },
   {
