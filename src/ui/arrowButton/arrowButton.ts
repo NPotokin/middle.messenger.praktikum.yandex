@@ -1,7 +1,7 @@
 import Block from '../../core/Block.ts';
 
 interface ArrowBtnInterface {
-  onClick?: () => void;
+  onClick?: (event: Event) => void;
   alt?: string,
   src?: string,
 

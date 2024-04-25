@@ -21,6 +21,13 @@
     position: relative; 
 }
 
+.modal__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 180px
+}
+
 .modalBig {
     display: flex;
     flex-direction: column;

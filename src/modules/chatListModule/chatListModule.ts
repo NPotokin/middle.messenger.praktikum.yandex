@@ -23,7 +23,6 @@ export default class ChatListModule extends Block{
         <div>
             {{{ListHeader}}}
             {{{ItemList}}}
-              
         </div>
         `);
   }

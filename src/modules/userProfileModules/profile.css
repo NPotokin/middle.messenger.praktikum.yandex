@@ -33,6 +33,15 @@
     position: relative;
  }
 
+ .profile__form {
+    width: 512px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    margin: auto 0;
+ }
+ 
  .profile__title {
     padding-top: 21px;
     padding-bottom: 50px;

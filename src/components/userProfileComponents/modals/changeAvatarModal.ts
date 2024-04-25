@@ -21,7 +21,11 @@ export default class ChangeAvatarModal extends Block{
     const InputButton = new Button({
       type: 'link--underscore',
       label: 'Выбрать файл на компьютере',
-      onClick: () => this.triggerFileInput(),
+      onClick: (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.triggerFileInput();
+      },
     });
 
     const FileInput = new Input({
@@ -33,7 +37,9 @@ export default class ChangeAvatarModal extends Block{
     const SubmitButton = new Button({
       type: 'primary',
       label: 'Поменять',
-      onClick: () => this.handleSubmitButtonClick(),
+      onClick: (event) => {
+        event.preventDefault();
+        this.handleSubmitButtonClick();},
     });
 
     const ModalErrorLine = new ModalError({
@@ -104,11 +110,13 @@ export default class ChangeAvatarModal extends Block{
   render(): string {
     return(`
             <dialog class="modal">
+              <form action='' class='modal__form'>
                 {{{ModalTitleLine}}}
                 {{{FileInput}}}
                 {{{InputButton}}}
                 {{{SubmitButton}}}
                 {{{ModalErrorLine}}}
+              </form>
             </dialog>
         `);
   }

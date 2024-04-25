@@ -105,13 +105,15 @@ export default class ProfileMainModule extends Block{
                 <div class="profile__main">
                     <div class="profileContainer">
                         {{{AvatarImage}}}
-                        <div class="profile_info">
+                        <form action='' class="profile__form">
+                          <div class="profile_info">
                             {{{OldPassInput}}}
                             {{{PasswordInput}}}
                             {{{PasswordCheckInput}}}
-                        </div>
-                        {{{SaveButton}}}
-                        {{{ErrorLine}}}
+                          </div>
+                          {{{SaveButton}}}
+                        </form>
+                          {{{ErrorLine}}}
                     </div>
                 </div>
             </div>

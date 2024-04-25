@@ -1,7 +1,7 @@
 import Block from '../../core/Block.ts';
 
 interface ButtonInterface{
-  onClick?: () => void;
+  onClick?: (event: Event) => void;
   label?: string,
   type?: string
 }

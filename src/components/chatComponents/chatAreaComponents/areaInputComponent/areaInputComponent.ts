@@ -10,6 +10,7 @@ export default class AreaInputComponent extends Block{
       ...props,
       ArrowButton: new ArrowButton({
         ...props,
+        onClick: (e: Event) => e.preventDefault(),
         src: '/icons/arrow-right.svg',
       }),
       AttachDiv: new AttachDiv({
@@ -28,14 +29,14 @@ export default class AreaInputComponent extends Block{
   render(){
     return(`
     <div class="chatAreaInput">
-    {{{AttachDiv}}}
-    <form class="chatAreaInput__input">
-        {{{ChatInput}}}
-    </form>
-    <div class="chatAreaInput__send">
-        {{{ArrowButton}}}
+      {{{AttachDiv}}}
+      <form class="chatAreaInput__input">
+          {{{ChatInput}}}
+          <div class="chatAreaInput__send">
+            {{{ArrowButton}}}
+          </div>
+      </form>
     </div>
-</div>
     `);
   }
 }

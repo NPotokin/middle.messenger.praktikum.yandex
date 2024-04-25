@@ -170,16 +170,16 @@ export default class ProfileMainModule extends Block{
                 <div class="profile__buttonArea">
                     {{{BackButton}}}
                 </div>
-                <div class="profile__main">
+                <form action='' class="profile__main">
                     <div class="profileContainer">
                         {{{AvatarImage}}}
                         <div class="profile_info">
-                        {{{EmailInput}}}
-                        {{{LoginInput}}}
-                        {{{FirstNameInput}}}
-                        {{{SecondNameInput}}}
-                        {{{DisplayNameInput}}}
-                        {{{PhoneInput}}}
+                          {{{EmailInput}}}
+                          {{{LoginInput}}}
+                          {{{FirstNameInput}}}
+                          {{{SecondNameInput}}}
+                          {{{DisplayNameInput}}}
+                          {{{PhoneInput}}}
                         <div class='profile__modal'>
                             {{{ChangeAvatarModal}}}
                         </div>
@@ -187,7 +187,7 @@ export default class ProfileMainModule extends Block{
                         {{{SaveButton}}}
                         {{{ErrorLine}}}
                     </div>
-                </div>
+                </form>
             </div>
         `);
   }

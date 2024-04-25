@@ -24,7 +24,7 @@ export default class ListHeaderComponent extends Block{
     return(`
         <div class="listHeader">
         {{{ListHeaderLink}}}
-        <div class="listHeader__search">
+        <form acrion='' class="listHeader__search">
             <label 
             for="{{inputId}}" 
             class="listHeader__label">
@@ -36,7 +36,7 @@ export default class ListHeaderComponent extends Block{
             value=""
             class="listHeader__input" 
             placeholder="Поиск">
-        </div>
+        </а>
         </div>
     
         `);
