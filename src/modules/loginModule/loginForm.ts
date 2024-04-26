@@ -16,7 +16,7 @@ export default class LoginForm extends Block{
         super({
             ...props,
             events:{
-                submit: props.onSubmit
+                submit: (e: Event) => this.onLogin(e)
             },
             ErrorLine: new ErrorLine({
                 ...props,
@@ -49,7 +49,7 @@ export default class LoginForm extends Block{
           const LogInButton = new Button({
             label: 'Авторизоваться',
             type: 'primary',
-            onClick: (e) => this.onLogin(e)
+            buttonType: 'submit'
           });
       
           const SignInButton = new Button({

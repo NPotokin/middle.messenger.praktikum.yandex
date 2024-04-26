@@ -6,7 +6,7 @@ export default function loginValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.LoginInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.LoginInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.LoginInput.setProps({ error: true, inputText: 'Как будто закралась ошибка' });
   }
 
   this.setProps({login: inputValue});

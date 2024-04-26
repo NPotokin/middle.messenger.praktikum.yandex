@@ -3,7 +3,8 @@ import Block from '../../core/Block.ts';
 interface ButtonInterface{
   onClick?: (event: Event) => void;
   label?: string,
-  type?: string
+  type?: string,
+  buttonType?: string,
 }
 class Button extends Block {
   constructor(props: ButtonInterface) {
@@ -17,7 +18,7 @@ class Button extends Block {
 
   render(): string {
     return `
-            <button class="button button__{{type}}" >
+            <button class="button button__{{type}}" type={{buttonType}} >
                 {{label}}
             </button>
     

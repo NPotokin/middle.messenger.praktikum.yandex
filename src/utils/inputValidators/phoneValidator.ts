@@ -5,7 +5,7 @@ export default function phoneValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.PhoneInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.PhoneInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.PhoneInput.setProps({ error: true, inputText: 'Мы не смогли дозвониться по этому номеру' });
   }
 
   this.setProps({phone: inputValue});

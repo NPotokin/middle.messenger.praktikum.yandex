@@ -4,7 +4,7 @@ import navigate from '../../utils/navigate.ts';
 import { UserInput } from '../../components/userProfileComponents/userInput/index.ts';
 import { ErrorLine } from '../../ui/index.ts';
 import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
-import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator.ts';
+import passwordCheckValidator  from '../../utils/inputValidators/passwordCheckValidator.ts';
 
 interface ProfileMainModuleInterface{
   ErrorText?: string,
