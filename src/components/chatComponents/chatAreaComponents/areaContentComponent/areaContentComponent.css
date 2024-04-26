@@ -1,0 +1,84 @@
+.chatAreaContent {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.chatAreaContent__date {
+    margin: 48px auto 30px;
+    display: flex;
+    justify-content: center;
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.chatAreaContent__inbound {
+    background-color: #F8F8F8;
+    border-radius: 0 12px 12px;
+    width: 380px;
+    margin-bottom: 10px;
+}
+
+.chatAreaContent__inbound--message {
+    margin: 10px 10px 0;
+    color: #1E1E1E;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.chatAreaContent__inbound--date {
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: 500;
+    text-align: right;
+    color: #999;
+    transform: translate(-10px, -10px);
+}
+
+div.chatAreaContent__inbound--message img {
+    width: 306px;
+    height: 211px;
+    border-radius: 12px;
+    object-fit: scale-down;
+}
+
+.chatAreaContent__inbound--image {
+    background-color: #FFF;
+    border-radius: 12px;
+    width: 316px;
+    margin-bottom: 10px;
+    border: 1px solid #EAEAEA;
+}
+
+.chatAreaContent__outbound {
+    background-color: #E4EDFD;
+    border-radius: 12px 12px 0;
+    width: 114px;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+.chatAreaContent__outbound--message {
+    margin: 10px 10px 0;
+    color: #1E1E1E;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.chatAreaContent__outbound--date {
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: 500;
+    text-align: right;
+    color: #3369F3;
+    transform: translate(-10px, -10px);
+    background: url('/icons/doubleTick.svg') no-repeat;
+    background-position: 80px;
+}
+
+

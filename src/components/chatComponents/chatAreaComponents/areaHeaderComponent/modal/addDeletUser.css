@@ -1,0 +1,43 @@
+.ADUcontainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    padding: 0;
+    width: 350px;
+    height: 260px;
+    transform: translate(-60vh, 10vh);
+    background-color: rgb(255 255 255 / 100%);
+    position: absolute;
+    top: 25vh;
+    left: 75vw;
+    z-index: 1000;
+}
+
+.ADUmodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 340px;
+    height: 257px;
+    padding: 40px 30px;
+    border: solid var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 14%);
+    box-sizing: border-box;
+    background-color: rgb(255 255 255 / 100%);
+    
+}
+
+.ADUmodal__title {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+dialog.ADUcontainer::backdrop {
+    background-color: black;
+    opacity: 0.5;
+}

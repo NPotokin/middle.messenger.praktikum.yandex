@@ -1,0 +1,14 @@
+.chatAreaInactive {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.chatAreaInactive__text {
+    color: rgb(153 153 153 / 100%);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+}
+

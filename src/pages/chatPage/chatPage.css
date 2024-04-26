@@ -1,0 +1,18 @@
+.chat {
+    display: flex;
+    height: 100vh;
+}
+
+.chatList {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    background-color: rgb(251 251 251 / 100%);
+    border-right: 1px solid rgb(234 234 234 / 100%);
+}
+
+.chatArea {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}

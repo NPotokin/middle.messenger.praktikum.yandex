@@ -1,0 +1,96 @@
+.chatAreaHeader {
+    display: flex;
+    margin: 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(234 234 234 / 100%);
+    
+}
+
+.chatAreaHeader__title {
+    margin: 11px;
+    text-align: left;
+    align-items: flex-start;
+    color: rgb(30 30 30 / 100%);
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+}
+
+.chatAreaHeader__menu  {
+    margin-left: auto;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    background-image: url('/icons/menu.svg');
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.chatAreaHeader__menu:hover {
+    background-image: url('/icons/menuActive.svg');
+    transform: rotate(90deg);
+    background-color: #F5F5F5;
+}
+
+/* Modal styles */
+
+.modalSmall {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 210px;
+    height: 90px;
+    padding: 5px;
+    border: solid var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 14%);
+    box-sizing: border-box;
+    background-color: rgb(255 255 255 / 100%);
+    position: absolute;
+    top: 10vh;
+    right: 2vw;
+    
+   
+}
+
+.modalSmall__add, .modalSmall__delete {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+}
+
+.modalSmall__icon--add {
+    margin: 1px;
+    width: 30px;
+    height: 30px;
+    object-fit: fill;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+.modalSmall__icon--delete {
+    margin: 1px;
+    width: 30px;
+    height: 30px;
+    object-fit: fill;
+    margin-top: 4px;
+    margin-left: 5px;
+    transform: rotate(45deg);
+}
+
+.modalSmall__text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    margin: 2px;
+    margin-left: 15px;
+    text-align: left;
+}
+
+

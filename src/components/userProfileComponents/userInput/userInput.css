@@ -1,0 +1,49 @@
+.userInput {
+    border-bottom: 1px solid #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    width: 510px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.userInput__label {
+    width: 50%;
+    text-align: left;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+    align-content: center;
+}
+
+.userInput__element {
+    width: 50%;
+    text-align: right;
+    color: var(--text-secondary-color);
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+    border: none;
+}
+
+.userInput__element:focus-visible{
+    outline: none;
+}
+
+.loginChange {
+    padding-top: 120px;
+}
+
+.userInput__text--error {
+    color: #FF2F2F;
+}
+
+.userInput__text {
+    color: #FF2F2F;
+    font-size: 8px;
+    line-height: 8px;
+    font-weight: 400;
+    padding-top: 3px;
+    text-align: right;
+}
+

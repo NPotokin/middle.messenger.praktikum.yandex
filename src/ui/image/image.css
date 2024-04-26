@@ -1,0 +1,72 @@
+.imageContainer {
+    color: #EFEFEF;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image {
+    margin: auto;
+}
+
+
+.imageContainer__128 {
+    background-color: #EFEFEF;
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imageContainer__128still {
+    background-color: #EFEFEF;
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imageContainer__128:hover {
+    background-color: rgb(0 0 0 / 50%);
+    cursor: pointer;
+}
+
+.imageContainer__128:hover::before{
+    content: 'Поменять аватар';
+    width: 64px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14px;
+    color: var(--chat-bg-color);
+    position: absolute;
+    top: 50px;
+    left: 45%;
+}
+
+.imageContainer__47 {
+    background-color: rgb(239 239 239 / 100%);
+    border-radius: 50%;
+    width: 47px;
+    height: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imageContainer__38 {
+    background-color: rgb(239 239 239 / 100%);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

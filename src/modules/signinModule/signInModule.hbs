@@ -1,0 +1,46 @@
+<div class="signin">
+    <div class="signin__modal">
+        <h1 class="signin__title">Регистрация</h1>
+        <form 
+        action="{{formAction}}" 
+        class="signin__form">
+            {{> Input 
+                inputId="email" inputType="text" inputName="email" 
+                inputValue=""
+                label="Почта" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="login" inputType="text" inputName="login" 
+                inputValue=""
+                label="Логин" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="first_name" inputType="text" inputName="first_name" 
+                inputValue=""
+                label="Имя" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="second_name" inputType="text" inputName="second_name" 
+                inputValue=""
+                label="Фамилия" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="phone" inputType="tel" inputName="phone" 
+                inputValue=""
+                label="Телефон" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="password" inputType="password" inputName="password" 
+                inputValue="" modifier=""
+                label="Пароль" placeholder="" inputText="" 
+            }}
+            {{> Input 
+                inputId="passwordCheck" inputType="password" inputName="password" 
+                inputValue="" modifier=""
+                label="Пароль (ещё раз)" placeholder="" inputText="" 
+            }}
+            {{> Button buttonClass="primary" buttonText="Зарегистрироваться"}}
+            {{> Button buttonClass="link" buttonText="Войти"}}
+        </form>
+    </div>
+</div>
