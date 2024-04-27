@@ -6,7 +6,7 @@ import navigate from "../../utils/navigate.ts";
 
 interface LoginFormInterface{
     onBlur?: (e:Event) => void;
-    onSubmit?: (e:Event) => void;
+    // onSubmit?: (e:Event) => void;
     ErrorText?: string,
     formAction?: string,
 }

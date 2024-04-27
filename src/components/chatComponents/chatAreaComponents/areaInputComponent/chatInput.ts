@@ -3,7 +3,8 @@ import Block from '../../../../core/Block.ts';
 interface ChatInputInterface{
   inputId?: string,
   inputName?: string,
-  onBlur: () => void;
+  onBlur?: () => void;
+  placeHolder?: string,
 }
 export default class ChatInput extends Block{
   constructor(props: ChatInputInterface){
@@ -23,7 +24,7 @@ export default class ChatInput extends Block{
         name="{{inputName}}" 
         value=""
         class="chatAreaInput__input--input" 
-        placeholder="Сообщение">
+        placeholder={{placeHolder}}>
     `);
   }
 }
