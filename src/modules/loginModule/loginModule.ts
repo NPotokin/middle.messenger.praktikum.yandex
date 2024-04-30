@@ -7,11 +7,11 @@ export default class LoginModule extends Block {
   constructor(props:LoginModuleInterface){
     super({
       ...props,
-      LoginFormComponent: new LoginForm({...props})
-      })
-    };
+      LoginFormComponent: new LoginForm({...props}),
+    });
+  }
 
-  
+
   render(): string {
     return(`
         <div class="login">

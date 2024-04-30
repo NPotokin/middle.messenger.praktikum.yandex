@@ -6,11 +6,10 @@ export default class SignInModule extends Block{
   constructor(props:SignInModuleinterface){
     super({
       ...props,
-      SignInForm: new SignInForm({...props})
+      SignInForm: new SignInForm({...props}),
     });
   }
 
-  
 
   render(): string {
     return(`

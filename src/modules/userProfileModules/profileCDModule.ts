@@ -16,11 +16,9 @@ export default class ProfileMainModule extends Block{
       }),
       ProfileCDform: new ProfileCDform({
         ...props,
-        })
+      }),
     });
   }
-
-
 
 
   render(){

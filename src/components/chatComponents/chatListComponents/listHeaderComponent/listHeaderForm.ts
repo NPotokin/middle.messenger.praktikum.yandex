@@ -1,4 +1,4 @@
-import Block from "../../../../core/Block.ts";
+import Block from '../../../../core/Block.ts';
 
 interface ListHeaderFormInterface{
     inputId?: string,
@@ -6,23 +6,23 @@ interface ListHeaderFormInterface{
 }
 
 export default class ListHeaderForm extends Block{
-    constructor(props: ListHeaderFormInterface){
-        super({
-            ...props,
-            events:{
-                submit: (e:Event) => this.onNameSearch(e),
-            }
-        })
-    }
+  constructor(props: ListHeaderFormInterface){
+    super({
+      ...props,
+      events:{
+        submit: (e:Event) => this.onNameSearch(e),
+      },
+    });
+  }
 
-    onNameSearch(e:Event){
-        e.preventDefault();
-        console.log(`Search in message submitted`)
+  onNameSearch(e:Event){
+    e.preventDefault();
+    console.log('Search in message submitted');
 
-    }
+  }
 
-    render(): string {
-        return(`
+  render(): string {
+    return(`
         <form action='' class="listHeader__search">
             <label 
             for="{{inputId}}" 
@@ -36,6 +36,6 @@ export default class ListHeaderForm extends Block{
             class="listHeader__input" 
             placeholder="Поиск">
         </form>
-        `)
-    }
+        `);
+  }
 }

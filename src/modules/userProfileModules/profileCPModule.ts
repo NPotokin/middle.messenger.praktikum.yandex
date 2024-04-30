@@ -22,14 +22,13 @@ export default class ProfileMainModule extends Block{
         imgSrc:'/icons/image.svg',
       }),
       ProfileCPform: new ProfileCPform({
-        ...props
-      })
-    
+        ...props,
+      }),
+
 
     });
   }
 
-  
 
   render(){
     return(`

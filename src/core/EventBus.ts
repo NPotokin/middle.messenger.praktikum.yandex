@@ -1,35 +1,29 @@
-type Listener = (...args: unknown[]) => void;
-
-interface ListenersMap {
-  [event: string]: Listener[];
-}
-
-export default class EventBus {
-  private listeners: ListenersMap;
+export default class EventBus<E extends string> {
+  listeners: {[key in E]?: Function[]} = {};
 
   constructor() {
     this.listeners = {};
   }
 
-  on(event: string, callback: Listener): void {
+  on<F extends (...args: Parameters<F>) => void >(event: E, callback: F) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].push(callback);
+    this.listeners[event]!.push(callback);
   }
 
-  off(event: string, callback: Listener): void {
+  off<F extends (...args: Parameters<F>) => void >(event: E, callback: F) {
     if (!this.listeners[event]) {
       throw new Error(`No event found: ${event}`);
     }
-    this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
+    this.listeners[event] = this.listeners[event]!.filter(listener => listener !== callback);
   }
 
-  emit(event: string, ...args: unknown[]): void {
+  emit<F extends (...args: unknown[]) => void >(event: E, ...args: Parameters<F>) {
     if (!this.listeners[event]) {
       return;
     }
-    this.listeners[event].forEach(listener => {
+    this.listeners[event]!.forEach(function (listener) {
       listener(...args);
     });
   }

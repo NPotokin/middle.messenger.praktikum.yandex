@@ -1,6 +1,6 @@
 export default function loginValidator(e: { target: { value: string; }; }) {
-  const inputValue = e.target.value.trim(); 
-  const isValid = /^[a-zA-Zа-яА-Я0-9_-]{3,20}$/.test(inputValue); 
+  const inputValue = e.target.value.trim();
+  const isValid = /^[a-zA-Zа-яА-Я0-9_-]{3,20}$/.test(inputValue);
 
 
   if (isValid) {

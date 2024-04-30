@@ -10,8 +10,8 @@ export default class AreaInputComponent extends Block{
       AttachDiv: new AttachDiv({
         ...props,
       }),
-      AreaInputForm: new AreaInputForm({...props})
-        
+      AreaInputForm: new AreaInputForm({...props}),
+
     });
 
 

@@ -25,7 +25,7 @@ export default class Block  {
   private _element: HTMLElement | null = null;
   private _meta: { tagName: string } | null = null;
   public _id: string = nanoid(6);
-  private eventBus: () => EventBus;
+  private eventBus: () => EventBus<string>;
   public props: ComponentInterface;
   public children: Record<string, Block>;
 
@@ -60,7 +60,7 @@ export default class Block  {
     });
   }
 
-  _registerEvents(eventBus: EventBus) {
+  _registerEvents(eventBus: EventBus<string>) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));

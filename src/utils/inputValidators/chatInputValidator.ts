@@ -3,7 +3,6 @@ export default function chatInputValidator(e: { target: { value: string; }; }) {
   const isValid = /.+/.test(inputValue); // Regular expression for validation
 
 
-
   if (isValid) {
     this.children.ErrorLine.setProps({ error: false, ErrorText: null });
   } else {

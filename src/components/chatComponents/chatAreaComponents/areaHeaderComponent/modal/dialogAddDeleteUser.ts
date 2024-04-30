@@ -5,7 +5,7 @@ export default class DialogAddDeleteUser extends Block{
   constructor(props:{}){
     super({
       ...props,
-      DialogAddDeleteUserForm: new DialoAddDeleteUserForm({...props})
+      DialogAddDeleteUserForm: new DialoAddDeleteUserForm({...props}),
     });
   }
 

@@ -16,7 +16,7 @@ export default class ListHeaderComponent extends Block{
         ...props,
         onClick: () => navigate('profilePage'),
       }),
-      ListHeaderForm: new ListHeaderForm({...props})
+      ListHeaderForm: new ListHeaderForm({...props}),
     });
 
 
