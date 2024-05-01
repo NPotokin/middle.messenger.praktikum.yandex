@@ -1,5 +1,6 @@
 import Block from "../core/Block.ts";
 import Route from "./route.ts";
+import { ErrorPage404 } from "../pages/index.ts";
 
 export default class Router {
     private static __instance: Router;
@@ -38,6 +39,9 @@ export default class Router {
     private _onRoute(pathname: string): void {
         const route = this.getRoute(pathname);
         if (!route) {
+            // If no matching route is found, redirect to ErrorPage404
+            this._currentRoute = new Route(pathname, ErrorPage404, { rootQuery: this._rootQuery });
+            this._currentRoute.render();
             return;
         }
         if (this._currentRoute) {

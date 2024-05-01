@@ -2,7 +2,7 @@ import Block from '../../../core/Block.ts';
 import { Button, Input } from '../../../ui/index.ts';
 import ModalTitle from './modalTitle.ts';
 import ModalError from './modalError.ts';
-import navigate from '../../../utils/navigate.ts';
+// import navigate from '../../../utils/navigate.ts';
 
 interface CAMinterface{}
 interface FileInputChangeEvent extends Event {
@@ -101,7 +101,7 @@ export default class ChangeAvatarModal extends Block{
       } else {
         const modalErrorElement = modalErrorComponent.getContent();
         modalErrorElement.style.display = 'none';
-        navigate('profilePage');
+        // navigate('profilePage');
       }
     }
   }

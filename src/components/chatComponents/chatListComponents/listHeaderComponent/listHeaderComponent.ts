@@ -1,5 +1,5 @@
 import Block from '../../../../core/Block.ts';
-import navigate from '../../../../utils/navigate.ts';
+// import navigate from '../../../../utils/navigate.ts';
 import ListHeaderLink from './listHeaderLink.ts';
 import ListHeaderForm from './listheaderForm.ts';
 
@@ -14,7 +14,8 @@ export default class ListHeaderComponent extends Block{
       ...props,
       ListHeaderLink: new ListHeaderLink({
         ...props,
-        onClick: () => navigate('profilePage'),
+        onClick: () => {},
+        // onClick: () => navigate('profilePage'),
       }),
       ListHeaderForm: new ListHeaderForm({...props}),
     });

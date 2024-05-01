@@ -1,6 +1,6 @@
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
-import navigate from '../../utils/navigate.ts';
+// import navigate from '../../utils/navigate.ts';
 import * as validators from '../../utils/inputValidators/index.ts';
 
 interface SignInFormInterface{
@@ -25,7 +25,7 @@ export default class SignInForm extends Block{
   }
 
   init(){
-    const navigateBind = navigate.bind(this);
+    // const navigateBind = navigate.bind(this);
     const loginValidatorBind = validators.loginValidator.bind(this);
     const emailValidatorBind = validators.emailValidator.bind(this);
     const firstNameValidatorBind = validators.firstNameValidator.bind(this);
@@ -99,7 +99,8 @@ export default class SignInForm extends Block{
     const EnterButton = new Button({
       label: 'Войти',
       type: 'link',
-      onClick: () => navigateBind('loginPage'),
+      onClick: () => {},
+      // onClick: () => navigateBind('loginPage'),
     });
 
 
@@ -144,7 +145,7 @@ export default class SignInForm extends Block{
         phone: this.props.phone,
         password: this.props.password,
       });
-      navigate('chatPage');
+      // navigate('chatPage');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }
