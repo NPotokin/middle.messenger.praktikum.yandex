@@ -31,7 +31,8 @@ export default class InputField extends Block {
         name="{{inputName}}" 
         value="{{inputValue}}"
         class="input__element {{modifier}}" 
-        placeholder="{{placeholder}}">
+        placeholder="{{placeholder}}"
+        >
         `);
   }
 }

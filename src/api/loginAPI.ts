@@ -1,14 +1,11 @@
 import baseURL from "./apiBaseURL.ts";
 import HTTPTransport from "../httpTransport/httpTransport.ts";
-// import { BaseAPI } from "./baseAPI.ts";
 
-
-
-const loginAPIinstance = new HTTPTransport()
 const base = baseURL;
+const loginAPIinstance = new HTTPTransport()
 
-export class loginAPI {
-    create(data:{}) {
-        return loginAPIinstance.post(`${base}/auth/sighin`, data)
+export class LoginAPI {
+    static login(data: Record<string, unknown> ){
+        return loginAPIinstance.post(`${base}/auth/signin`, {data})
     }
 }

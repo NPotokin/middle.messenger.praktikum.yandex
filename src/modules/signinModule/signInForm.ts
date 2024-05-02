@@ -2,6 +2,8 @@ import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
 // import navigate from '../../utils/navigate.ts';
 import * as validators from '../../utils/inputValidators/index.ts';
+import { SignupAPI } from '../../api/signupApi.ts';
+import SignupController from '../../controllers/signupController.ts';
 
 interface SignInFormInterface{
     onBlur?: (e:Event) => void;
@@ -14,6 +16,7 @@ export default class SignInForm extends Block{
   constructor(props: SignInFormInterface){
     super({
       ...props,
+      formAction: 'POST',
       events:{
         submit: (e: Event) => this.onSignIn(e),
       },
@@ -137,14 +140,20 @@ export default class SignInForm extends Block{
            !passwordError && this.props.password &&
            !passwordCheckError) {
       this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      console.log({
-        email: this.props.email,
+      
+      const userData: Record<string, unknown> = {
+        first_name: this.props.firstName,
+        second_name: this.props.lastName,
         login: this.props.login,
-        firstName: this.props.firstName,
-        lastName: this.props.lastName,
-        phone: this.props.phone,
+        email: this.props.email,
         password: this.props.password,
-      });
+        phone: this.props.phone,
+      }
+      
+      console.log(userData)
+      
+      SignupController.createNewUser(userData)
+      
       // navigate('chatPage');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

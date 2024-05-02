@@ -1,3 +1,3 @@
-const baseURL = 'ya-praktikum.tech/api/v2';
+const baseURL = 'https://ya-praktikum.tech/api/v2';
 
 export default baseURL;

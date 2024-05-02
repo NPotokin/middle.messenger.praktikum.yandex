@@ -6,7 +6,6 @@ import Handlebars from 'handlebars';
 export interface ComponentInterface {
   [prop: string]: unknown;
   events?: { [eventName: string]: (e: Event) => void }
-  hasID?: boolean;
 }
 
 export interface BlockInterface {
