@@ -28,6 +28,7 @@ export enum METHOD {
 type Options = {
     method: METHOD;
     data?: Record<string, unknown>;
+    headers?: Record<string, string>
 };
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
@@ -50,13 +51,19 @@ export default class HTTPTransport {
   }
 
   request(url: string, options: Options = { method: METHOD.Get }): Promise<XMLHttpRequest> {
-    const { method, data } = options;
+    const { method, headers, data } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
       if (method === METHOD.Get && data) {
         url = `${url}?${queryStringify(data)}`;
+      }
+
+      if (headers){
+        Object.keys(headers).forEach(key => {
+          xhr.setRequestHeader(key, headers[key])
+        })
       }
 
       xhr.open(method, url);
