@@ -1,9 +1,15 @@
 import { SignupAPI } from "../api/signupApi.ts";
 
 class SignupController{
-    public static createNewUser(data: Record<string, unknown>){
-        SignupAPI.signup(data)
-        // .then(data => store.set('user', data))
+    public static async createNewUser(data: Record<string, unknown>){
+         
+        try{
+            await SignupAPI.signup(data)
+            console.log('signup succesful')
+        } catch(error){
+            console.log('error')
+        }
+
     }
 }
 
