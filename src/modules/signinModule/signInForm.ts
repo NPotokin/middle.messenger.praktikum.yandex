@@ -1,8 +1,6 @@
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
-// import navigate from '../../utils/navigate.ts';
 import * as validators from '../../utils/inputValidators/index.ts';
-import { SignupAPI } from '../../api/signupApi.ts';
 import SignupController from '../../controllers/signupController.ts';
 
 interface SignInFormInterface{
@@ -28,7 +26,6 @@ export default class SignInForm extends Block{
   }
 
   init(){
-    // const navigateBind = navigate.bind(this);
     const loginValidatorBind = validators.loginValidator.bind(this);
     const emailValidatorBind = validators.emailValidator.bind(this);
     const firstNameValidatorBind = validators.firstNameValidator.bind(this);
@@ -102,8 +99,7 @@ export default class SignInForm extends Block{
     const EnterButton = new Button({
       label: 'Войти',
       type: 'link',
-      onClick: () => {},
-      // onClick: () => navigateBind('loginPage'),
+      onClick: () => window.router.go('/login'),
     });
 
 
@@ -140,7 +136,7 @@ export default class SignInForm extends Block{
            !passwordError && this.props.password &&
            !passwordCheckError) {
       this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      
+
       const userData: Record<string, unknown> = {
         first_name: this.props.firstName,
         second_name: this.props.lastName,
@@ -148,12 +144,12 @@ export default class SignInForm extends Block{
         email: this.props.email,
         password: this.props.password,
         phone: this.props.phone,
-      }
-      
-      console.log(userData)
-      
-      SignupController.createNewUser(userData)
-      
+      };
+
+      console.log(userData);
+
+      SignupController.createNewUser(userData);
+
       // navigate('chatPage');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

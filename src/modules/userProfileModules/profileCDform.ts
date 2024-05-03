@@ -3,7 +3,6 @@ import {UserInput} from '../../components/userProfileComponents/userInput/index.
 import Block from '../../core/Block.ts';
 import { Image, ErrorLine, Button } from '../../ui/index.ts';
 import * as validate from '../../utils/inputValidators/index.ts';
-// import navigate from '../../utils/navigate.ts';
 
 interface ProfileCDformInterface{
     ErrorText?: string,
@@ -136,7 +135,7 @@ export default class ProfileCDform extends Block{
         lastName: this.props.lastName,
         phone: this.props.phone,
       });
-      // navigate('profilePage');
+      window.router.go('/profile')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

@@ -1,7 +1,6 @@
 import Block from '../../../../../core/Block.ts';
 import { Button, Input, ErrorLine } from '../../../../../ui/index.ts';
 import loginValidator from '../../../../../utils/inputValidators/loginValidator.ts';
-// import navigate from '../../../../../utils/navigate.ts';
 
 interface DialoAddDeleteUserFormInterface{
 
@@ -52,7 +51,7 @@ export default class DialoAddDeleteUserForm extends Block{
       console.log({
         login: this.props.login,
       });
-      // navigate('chatPage');
+
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

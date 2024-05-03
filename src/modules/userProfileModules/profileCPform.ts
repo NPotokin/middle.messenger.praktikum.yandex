@@ -1,7 +1,6 @@
 import UserInput from '../../components/userProfileComponents/userInput/userInput.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine } from '../../ui/index.ts';
-// import navigate from '../../utils/navigate.ts';
 import {passwordValidator, passwordCheckValidator} from '../../utils/inputValidators/index.ts';
 
 interface ProfileCPformInterface{
@@ -79,7 +78,7 @@ export default class ProfileCPform extends Block{
       console.log({
         password: this.props.password,
       });
-      // navigate('profilePage');
+      window.router.go('/profile')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

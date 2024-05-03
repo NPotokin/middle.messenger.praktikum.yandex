@@ -1,6 +1,5 @@
 import Block from '../../core/Block.ts';
 import { ArrowButton, Image } from '../../ui/index.ts';
-// import navigate from '../../utils/navigate.ts';
 import ProfileCPform from './profileCPform.ts';
 
 interface ProfileMainModuleInterface{
@@ -13,8 +12,7 @@ export default class ProfileMainModule extends Block{
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => {},
-        // onClick: () => navigate('profilePage'),
+        onClick: () => window.router.go('/profile'),
       }),
       AvatarImage: new Image({
         ...props,

@@ -1,7 +1,6 @@
 import { UserData } from '../../components/userProfileComponents/index.ts';
 import Block from '../../core/Block.ts';
 import { ArrowButton, Image, Button } from '../../ui/index.ts';
-// import navigate from '../../utils/navigate.ts';
 
 export default class ProfileMainModule extends Block{
   constructor(props:{}){
@@ -10,8 +9,7 @@ export default class ProfileMainModule extends Block{
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => {},
-        // onClick: () => {navigate('chatPage')},
+        onClick: () => window.router.go('/chat'),
       }),
       AvatarImage: new Image({
         ...props,
@@ -26,22 +24,19 @@ export default class ProfileMainModule extends Block{
         ...props,
         type: 'link--profile',
         label:'Изменить данные',
-        onClick: () => {},
-        // onClick: () => navigate('profilePageCD'),
+        onClick: () => window.router.go('/profile-change-data'),
       }),
       ChangePasswordButton: new Button({
         ...props,
         type: 'link--profile',
         label:'Изменить пароль',
-        onClick: () => {},
-        // onClick: () => navigate('profilePageCP'),
+        onClick: () => window.router.go('/profile-change-password'),
       }),
       ExitButton: new Button({
         ...props,
         type: 'link--profileError',
         label:'Выйти',
-        onClick: () => {},
-        // onClick: () => navigate('loginPage'),
+        onClick: () => window.router.go('/login'),
       }),
     });
   }

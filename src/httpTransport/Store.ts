@@ -1,11 +1,11 @@
-import EventBus from "../core/EventBus.ts";
+import EventBus from '../core/EventBus.ts';
 
 export enum StoreEvents {
     Updated = 'updated',
   }
 
 class Store extends EventBus<StoreEvents>{
-    private state: Indexed = {};
+  private state: Indexed = {};
 
   public getState() {
     return state;
@@ -13,7 +13,7 @@ class Store extends EventBus<StoreEvents>{
 
   public set(path: string, value: unknown) {
     set(this.state, path, value);
-  };
+  }
 }
 
-export default new Store()
+export default new Store();

@@ -1,8 +1,6 @@
 import Block from '../../core/Block.ts';
 import { Button } from '../../ui/index.ts';
-import Router from '../../sprint3/router.ts';
-import { ChatPage } from '../../pages/index.ts';
-// import navigate from '../../utils/navigate.ts';
+
 
 export default class ErrorComponent extends Block{
   constructor(props:{}){
@@ -12,12 +10,8 @@ export default class ErrorComponent extends Block{
   }
 
   init() {
-    // const navigateBind = navigate.bind(this);
-    const router = new Router()
-
     const BackToChatsButton = new Button({
-      onClick: () => router.use('chat', ChatPage).go('chat'),
-      // onClick: () => navigateBind('chatPage'),
+      onClick: () => window.router.go('/chat'),
       label: 'Назад к чатам',
       type: 'link',
     });

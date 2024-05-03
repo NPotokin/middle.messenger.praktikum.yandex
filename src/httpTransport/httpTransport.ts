@@ -62,8 +62,8 @@ export default class HTTPTransport {
 
       if (headers){
         Object.keys(headers).forEach(key => {
-          xhr.setRequestHeader(key, headers[key])
-        })
+          xhr.setRequestHeader(key, headers[key]);
+        });
       }
 
       xhr.open(method, url);

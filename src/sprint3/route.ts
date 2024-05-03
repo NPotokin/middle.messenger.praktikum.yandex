@@ -1,6 +1,5 @@
-import isEqual from './isEqual.ts'
-import Block from "../core/Block.ts"; // Assuming Block is a class you have defined elsewhere.
-import { render } from './render.ts';
+import isEqual from './isEqual.ts';
+import Block from '../core/Block.ts'; // Assuming Block is a class you have defined elsewhere.
 
 interface RouteProps {
   rootQuery: string;
@@ -36,10 +35,15 @@ export default class Route {
     return isEqual(pathname, this._pathname);
   }
 
-  render(): void {
+  _renderDom(query: string, block: Block) {
+    const root = document.querySelector(query);
+    root!.append(block.getContent());
+  }
+
+  render() {
     if (!this._block) {
-      this._block = new this._blockClass({}); // Assuming Block is instantiated here.
-      render(this._props.rootQuery, this._block); // Assuming render is a function that takes a query selector and a Block instance.
+      this._block = new this._blockClass({});
+      this._renderDom(this._props.rootQuery, this._block);
       return;
     }
 

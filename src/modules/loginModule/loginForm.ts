@@ -3,7 +3,6 @@ import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
 import loginValidator from '../../utils/inputValidators/loginValidator.ts';
 import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
-// import navigate from '../../utils/navigate.ts';
 
 interface LoginFormInterface{
     onBlur?: (e:Event) => void;
@@ -29,7 +28,6 @@ export default class LoginForm extends Block{
   init(){
     const onChangeLoginBind = loginValidator.bind(this);
     const onChangePasswordBind = passwordValidator.bind(this);
-    // const navigateBind = navigate.bind(this);
 
     const LoginInput = new Input({
       label: 'Логин',
@@ -56,8 +54,7 @@ export default class LoginForm extends Block{
     const SignInButton = new Button({
       label: 'Нет аккаунта?',
       type: 'link',
-      onClick: () => {},
-      // onClick: () => navigateBind('signInPage'),
+      onClick: () => window.router.go('/signin'),
     });
 
     this.children = {
@@ -85,9 +82,9 @@ export default class LoginForm extends Block{
       const userCredentials = {
         login: this.props.login,
         password: this.props.password,
-      }
+      };
 
-      LoginAPI.login(userCredentials)
+      LoginAPI.login(userCredentials);
       // navigate('chatPage');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

@@ -1,70 +1,67 @@
-import Block from "../core/Block.ts";
-import Route from "./route.ts";
-import { ErrorPage404 } from "../pages/index.ts";
+import Block from '../core/Block.ts';
+import Route from './route.ts';
 
-export default class Router {
-    private static __instance: Router;
-    private routes: Route[] = [];
-    private history: History;
-    private _currentRoute: Route | null;
-    private _rootQuery: string;
+class Router {
+  private static __instance: Router;
+  private routes: Route[] = [];
+  private history: History;
+  private _currentRoute: Route | null;
+  private _rootQuery: string;
 
-    constructor(rootQuery?: string) {
-        if (Router.__instance) {
-            return Router.__instance;
-        }
-
-        this.routes = [];
-        this.history = window.history;
-        this._currentRoute = null;
-        this._rootQuery = rootQuery ?? '#app';  
-
-        Router.__instance = this;
+  constructor(rootQuery?: string) {
+    if (Router.__instance) {
+      return Router.__instance;
     }
 
-    use(pathname: string, block: typeof Block): Router {
-        const route = new Route(pathname, block, { rootQuery: this._rootQuery });
-        this.routes.push(route);
-        return this;
-    }
+    this.routes = [];
+    this.history = window.history;
+    this._currentRoute = null;
+    this._rootQuery = rootQuery ?? '#app';
 
-    start(): void {
-        window.onpopstate = event => {
-            this._onRoute((event.currentTarget as Window).location.pathname);
-        };
+    Router.__instance = this;
+  }
 
-        this._onRoute(window.location.pathname);
-    }
+  use(pathname: string, block: typeof Block): Router {
+    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    this.routes.push(route);
+    return this;
+  }
 
-    private _onRoute(pathname: string): void {
-        const route = this.getRoute(pathname);
-        if (!route) {
-            // If no matching route is found, redirect to ErrorPage404
-            this._currentRoute = new Route(pathname, ErrorPage404, { rootQuery: this._rootQuery });
-            this._currentRoute.render();
-            return;
-        }
-        if (this._currentRoute) {
-            this._currentRoute.leave();
-        }
-        this._currentRoute = route;
-        route.render();
-    }
+  start() {
+    window.onpopstate = ((event: { currentTarget: { location: { pathname: string; }; }; }) => {
+      this._onRoute(event.currentTarget.location.pathname);
+    }).bind(this);
+    this._onRoute(window.location.pathname);
+  }
 
-    go(pathname: string): void {
-        this.history.pushState({}, '', pathname);
-        this._onRoute(pathname);
+  private _onRoute(pathname: string): void {
+    const route = this.getRoute(pathname);
+    if (!route) {
+      return;
     }
+    if (this._currentRoute && this._currentRoute !== route) {
+      this._currentRoute.leave();
+    }
+    this._currentRoute = route;
+    route.render();
+  }
 
-    getRoute(pathname: string): Route | undefined {
-        return this.routes.find(route => route.match(pathname));
-    }
+  go(pathname: string): void {
+    this.history.pushState({}, '', pathname);
+    this._onRoute(pathname);
+  }
 
-    back(): void {
-        this.history.back();
-    }
+  getRoute(pathname: string): Route | undefined {
+    return this.routes.find(route => route.match(pathname));
+  }
 
-    forward(): void {
-        this.history.forward();
-    }
+  back(): void {
+    this.history.back();
+  }
+
+  forward(): void {
+    this.history.forward();
+  }
 }
+
+export default Router;

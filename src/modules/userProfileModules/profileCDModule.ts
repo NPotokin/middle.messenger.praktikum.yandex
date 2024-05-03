@@ -1,6 +1,5 @@
 import Block from '../../core/Block.ts';
 import { ArrowButton } from '../../ui/index.ts';
-// import navigate from '../../utils/navigate.ts';
 import ProfileCDform from './profileCDform.ts';
 interface ProfileMainModuleInterface{
   ErrorText?: string,
@@ -12,8 +11,7 @@ export default class ProfileMainModule extends Block{
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => {},
-        // onClick: () => navigate('profilePage'),
+        onClick: () => window.router.go('/profile'),
       }),
       ProfileCDform: new ProfileCDform({
         ...props,
