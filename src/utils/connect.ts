@@ -2,46 +2,46 @@ import { StoreEvents } from "../core/Store.ts";
 import isEqual from "./isEqual.ts";
 
 export function connect(mapStateToProps, dispatch?) {
-    return function(Component) {
-      return class extends Component{
-        private onChangeStoreCallback: () => void;
-        constructor(props) {
-          const store = window.store;
-          // сохраняем начальное состояние
-          let state = mapStateToProps(store.getState());
-  
-          super({...props, ...state});
+  return function(Component) {
+    return class extends Component{
+      private onChangeStoreCallback: () => void;
+      constructor(props) {
+        const store = window.store;
+        // сохраняем начальное состояние
+        let state = mapStateToProps(store.getState());
 
-          const dispatchHundler = {};
-          Object.entries(dispatch || {}).forEach(([key, hundler]) => {
-            dispatchHundler[key] = (...args) => hundler(window.store.set.bind(window.store), ...args)
-          })
+        super({...props, ...state});
 
-          this.setProps({...dispatchHundler});
+        const dispatchHandler = {};
+        Object.entries(dispatch || {}).forEach(([key, handler]) => {
+          dispatchHandler[key] = (...args) => handler(window.store.set.bind(window.store), ...args)
+        })
 
-          this.onChangeStoreCallback = () => {
+        this.setProps({...dispatchHandler});
 
-            // при обновлении получаем новое состояние
-            const newState = mapStateToProps(store.getState());
+        this.onChangeStoreCallback = () => {
 
-            // если что-то из используемых данных поменялось, обновляем компонент
-            if (!isEqual(state, newState)) {
-              this.setProps({...newState});
-            }
+          // при обновлении получаем новое состояние
+          const newState = mapStateToProps(store.getState());
 
-            // не забываем сохранить новое состояние
-            state = newState;
+          // если что-то из используемых данных поменялось, обновляем компонент
+          if (!isEqual(state, newState)) {
+            this.setProps({...newState});
           }
-  
-          // подписываемся на событие
-          store.on(StoreEvents.Updated, this.onChangeStoreCallback);
+
+          // не забываем сохранить новое состояние
+          state = newState;
         }
 
-
-      componentWillUnmount() {
-        super.componentWillUnmount();
-        window.store.off(StoreEvents.Updated, this.onChangeStoreCallback);
+        // подписываемся на событие
+        store.on(StoreEvents.Updated, this.onChangeStoreCallback);
       }
+
+
+    componentWillUnmount() {
+      super.componentWillUnmount();
+      window.store.off(StoreEvents.Updated, this.onChangeStoreCallback);
     }
   }
+}
 }
