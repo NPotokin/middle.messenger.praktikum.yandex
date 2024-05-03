@@ -1,5 +1,5 @@
-import isEqual from './isEqual.ts';
-import Block from '../core/Block.ts'; // Assuming Block is a class you have defined elsewhere.
+import isEqual from '../utils/isEqual.ts';
+import Block from './Block.ts'; // Assuming Block is a class you have defined elsewhere.
 
 interface RouteProps {
   rootQuery: string;

@@ -15,9 +15,12 @@ export default class ChatPage extends Block{
   }
   render(): string {
     return(`
-            <div class="chat">
+
+            <div class="block">
+              <div class="chat">
                 <div class="chatList">{{{ChatList}}}</div>
                 <div class="chatArea">{{{ChatArea}}}</div>
+              </div>
             </div>
             `);
   }
