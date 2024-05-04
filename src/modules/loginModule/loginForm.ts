@@ -1,4 +1,5 @@
 import { LoginAPI } from '../../api/loginAPI.ts';
+import SignupController from '../../controllers/signupController.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
 import loginValidator from '../../utils/inputValidators/loginValidator.ts';
@@ -84,8 +85,8 @@ export default class LoginForm extends Block{
         password: this.props.password,
       };
 
-      LoginAPI.login(userCredentials);
-      // navigate('chatPage');
+      SignupController.loginUser(userCredentials)
+      
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

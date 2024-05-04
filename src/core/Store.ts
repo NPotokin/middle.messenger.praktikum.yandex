@@ -4,8 +4,23 @@ export enum StoreEvents {
   Updated = 'Updated'
 }
 
+export interface User{
+  id: number,
+  first_name: string,
+  second_name: string,
+  display_name?: string,
+  phone: string,
+  login: string,
+  avatar?: string,
+  email: string,
+}
+
+interface AppState{
+  user?: User
+}
+
 export class Store extends EventBus<StoreEvents> {
-  private state = {};
+  private state: AppState = {};
   private static __instance: Store
 
   constructor(defaultState:{}) {
@@ -20,15 +35,17 @@ export class Store extends EventBus<StoreEvents> {
     Store.__instance = this;
   }
 
-  public getState() {
+  public getState(): AppState {
     return this.state;
   }
 
-  public set(nextState:{}) {
+  public setUser(user: User){
+    this.set({user})
+  }
+
+  private set(nextState: Partial<AppState>) {
     const prevState = { ...this.state };
-
     this.state = { ...this.state, ...nextState };
-
-    this.emit(StoreEvents.Updated, prevState, nextState);
+    this.emit(StoreEvents.Updated, prevState, this.state);
   }
 }

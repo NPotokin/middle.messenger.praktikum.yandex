@@ -77,8 +77,10 @@ export default class HTTPTransport {
       xhr.ontimeout = reject;
 
       if (method === METHOD.Get || !data) {
+        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send();
       } else {
+        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
       }
     });
