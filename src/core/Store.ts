@@ -5,7 +5,7 @@ export enum StoreEvents {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   first_name: string;
   second_name: string;
   display_name?: string;
@@ -15,7 +15,7 @@ export interface User {
   email: string;
 }
 
-interface AppState {
+export interface AppState {
   user?: User;
 }
 

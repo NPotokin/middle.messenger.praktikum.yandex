@@ -2,6 +2,7 @@ import Block from '../../../core/Block.ts';
 import store from '../../../core/Store.ts';
 import { UserDataLine } from './index.ts';
 
+
 export default class UserData extends Block{
   constructor(props:{}){
     super({
@@ -57,9 +58,16 @@ export default class UserData extends Block{
   }
 }
 
-// const mapStateToProps = (store:Store) => {
-//   return{
-//     userValue: store.state.user?.email
-//   }
+// function mapStateToProps(state: AppState ) { 
+ 
+//   return {
+//     Email: state.user?.email,
+//     Login: state.user?.login,
+//     Name: state.user?.first_name,
+//     Surname: state.user?.second_name,
+//     ChatName: state.user?.display_name || 'нужно придумать',
+//     Phone: state.user?.phone,
+//   };
 // }
+
 // export default connect(mapStateToProps)(UserData)
