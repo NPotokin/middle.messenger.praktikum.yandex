@@ -1,12 +1,13 @@
+//@ts-nocheck
 import { StoreEvents } from "../core/Store.ts";
 import isEqual from "./isEqual.ts";
+import store from "../core/Store.ts";
 
 export function connect(mapStateToProps, dispatch?) {
   return function(Component) {
     return class extends Component{
       private onChangeStoreCallback: () => void;
       constructor(props) {
-        const store = window.store;
         // сохраняем начальное состояние
         let state = mapStateToProps(store.getState());
 

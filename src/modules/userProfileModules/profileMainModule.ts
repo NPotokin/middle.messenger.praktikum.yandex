@@ -1,4 +1,5 @@
 import { UserData } from '../../components/userProfileComponents/index.ts';
+import SignupController from '../../controllers/signupController.ts';
 import Block from '../../core/Block.ts';
 import { ArrowButton, Image, Button } from '../../ui/index.ts';
 
@@ -36,7 +37,7 @@ export default class ProfileMainModule extends Block{
         ...props,
         type: 'link--profileError',
         label:'Выйти',
-        onClick: () => window.router.go('/login'),
+        onClick: () => SignupController.logoutUser(),
       }),
     });
   }

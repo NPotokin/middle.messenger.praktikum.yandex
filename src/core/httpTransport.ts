@@ -72,12 +72,13 @@ export default class HTTPTransport {
         resolve(xhr);
       };
 
+      xhr.withCredentials = true;
+
       xhr.onabort = reject;
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
       if (method === METHOD.Get || !data) {
-        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send();
       } else {
         xhr.setRequestHeader("Content-Type", "application/json");

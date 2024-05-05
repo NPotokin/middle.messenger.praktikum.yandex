@@ -1,4 +1,5 @@
 import Block from '../../../core/Block.ts';
+import store from '../../../core/Store.ts';
 import { UserDataLine } from './index.ts';
 
 export default class UserData extends Block{
@@ -8,32 +9,34 @@ export default class UserData extends Block{
       Email: new UserDataLine({
         ...props,
         userKey:'Почта',
-        userValue:'pochta@yandex.ru',
+        userValue: `${store.getState().user?.email}`,
       }),
       Login: new UserDataLine({
         ...props,
         userKey:'Логин',
-        userValue:'ivanivanov',
+        userValue: `${store.getState().user?.login}`,
       }),
       Name: new UserDataLine({
         ...props,
         userKey:'Имя',
-        userValue:'Иван',
+        userValue: `${store.getState().user?.first_name}`,
       }),
       Surname: new UserDataLine({
         ...props,
         userKey:'Фамилия',
-        userValue:'Иванов',
+        userValue:`${store.getState().user?.second_name}`,
       }),
       ChatName: new UserDataLine({
         ...props,
         userKey:'Имя в чате',
-        userValue:'Иван',
+        userValue:`${store.getState().user?.display_name == null 
+          ? 'to be defined' 
+          : store.getState().user?.display_name}`,
       }),
       Phone: new UserDataLine({
         ...props,
         userKey:'Телефон',
-        userValue:'+7 (909) 967 30 30',
+        userValue:`${store.getState().user?.phone}`,
       }),
     });
   }
@@ -51,3 +54,10 @@ export default class UserData extends Block{
         `);
   }
 }
+
+// const mapStateToProps = (store:Store) => {
+//   return{
+//     userValue: store.state.user?.email
+//   }
+// }
+// export default connect(mapStateToProps)(UserData)

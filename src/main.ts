@@ -1,16 +1,8 @@
 import Router from './core/Router.ts';
-import { Store } from './core/Store.ts';
 import * as Pages from './pages/index.ts';
-
 
 const router = new Router('#app');
 window.router = router;
-
-window.store = new Store({
-  
-})
-
-
 
 router
   .use('/', Pages.SignInPage)
