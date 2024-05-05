@@ -2,11 +2,15 @@ import { UserData } from '../../components/userProfileComponents/index.ts';
 import SignupController from '../../controllers/signupController.ts';
 import Block from '../../core/Block.ts';
 import { ArrowButton, Image, Button } from '../../ui/index.ts';
+import store from '../../core/Store.ts';
 
 export default class ProfileMainModule extends Block{
   constructor(props:{}){
     super({
       ...props,
+      NameInChat: `${store.getState().user?.display_name == null 
+        ? 'Нужно придумать имя'
+        : store.getState().user?.display_name}` ,
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
@@ -51,7 +55,7 @@ export default class ProfileMainModule extends Block{
                 <div class="profile__main">
                     <div class="profileContainer">
                         {{{AvatarImage}}}
-                        <p class="profile__title">Иван</p>
+                        <p class="profile__title">{{NameInChat}}</p>
                         <div class="profile_info">
                             {{{ProfileInfo}}}
                         </div>
