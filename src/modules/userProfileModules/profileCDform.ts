@@ -136,7 +136,7 @@ export default class ProfileCDform extends Block{
       const userInfo = {
         email: this.props.email,
         login: this.props.login,
-        first_Name: this.props.firstName,
+        first_name: this.props.firstName,
         second_name: this.props.lastName,
         phone: this.props.phone,
         display_name: this.props.displayName,

@@ -113,7 +113,7 @@ export default class Block  {
   }
 
   componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {
-    console.log(`CDU! old: ${oldProps}, new:${newProps}`);
+    // console.log(`CDU! old: ${oldProps}, new:${newProps}`);
     return true;
   }
 

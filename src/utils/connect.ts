@@ -8,22 +8,17 @@ function connect(mapStateToProps: (state: AppState) => AppState) {
   return function(Component: typeof Block) {
     return class extends Component {
       constructor(props: {}) {
-                // сохраняем начальное состояние
-                let state = mapStateToProps(store.getState());
-
+          let state = mapStateToProps(store.getState());
+          console.log('old:', state)
           super({...props, ...state});
 
-          // подписываемся на событие
             store.on(StoreEvents.Updated, () => {
-                    // при обновлении получаем новое состояние
                     const newState = mapStateToProps(store.getState());
-              
-                    // если что-то из используемых данных поменялось, обновляем компонент
+                    console.log('new:', newState)
                     if (!isEqual(state, newState)) {
                   this.setProps({...newState});
                     }
 
-                    // не забываем сохранить новое состояние
                     state = newState;
             });
         }
