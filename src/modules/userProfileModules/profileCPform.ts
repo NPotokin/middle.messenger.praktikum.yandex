@@ -1,7 +1,8 @@
 import UserInput from '../../components/userProfileComponents/userInput/userInput.ts';
+import UserController from '../../controllers/userController.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine } from '../../ui/index.ts';
-import {passwordValidator, passwordCheckValidator} from '../../utils/inputValidators/index.ts';
+import {oldPasswordValidator, newPasswordValidator, passwordCheckValidatorProfile} from '../../utils/inputValidators/index.ts';
 
 interface ProfileCPformInterface{
     ErrorText?: string,
@@ -22,8 +23,9 @@ export default class ProfileCPform extends Block{
   }
 
   init(){
-    const passwordValidatorBind = passwordValidator.bind(this);
-    const passwordCheckValidatorBind = passwordCheckValidator.bind(this);
+    const oldPasswordValidatorBind = oldPasswordValidator.bind(this);
+    const newPasswordValidatorBind = newPasswordValidator.bind(this);
+    const passwordCheckValidatorBind = passwordCheckValidatorProfile.bind(this);
 
 
     const OldPassInput = new UserInput({
@@ -32,6 +34,7 @@ export default class ProfileCPform extends Block{
       label: 'Старый пароль',
       inputType: 'password',
       inputValue: 'ivan',
+      onBlur: oldPasswordValidatorBind,
       userInputContainerClass: 'loginChange',
     });
 
@@ -41,7 +44,7 @@ export default class ProfileCPform extends Block{
       label: 'Новый пароль',
       inputType: 'password',
       inputValue: 'ivanivanov',
-      onBlur: passwordValidatorBind,
+      onBlur: newPasswordValidatorBind,
     });
 
     const PasswordCheckInput = new UserInput({
@@ -73,11 +76,16 @@ export default class ProfileCPform extends Block{
     const passwordError = this.children.PasswordInput.props.error;
     const passwordErrorCheck = this.children.PasswordCheckInput.props.error;
 
-    if(!passwordError && !passwordErrorCheck && this.props.password){
+    if(!passwordError && !passwordErrorCheck && this.props.newPassword){
       this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      console.log({
-        password: this.props.password,
-      });
+
+      const userPasswordsData = {
+        oldPassword: this.props.oldPassword,
+        newPassword: this.props.newPassword,
+      }
+      console.log(userPasswordsData)
+      UserController.changePassword(userPasswordsData)
+      
       window.router.go('/profile')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

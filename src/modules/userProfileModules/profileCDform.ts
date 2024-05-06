@@ -1,8 +1,10 @@
 import ChangeAvatarModal from '../../components/userProfileComponents/modals/changeAvatarModal.ts';
 import {UserInput} from '../../components/userProfileComponents/userInput/index.ts';
+import UserController from '../../controllers/userController.ts';
 import Block from '../../core/Block.ts';
 import { Image, ErrorLine, Button } from '../../ui/index.ts';
 import * as validate from '../../utils/inputValidators/index.ts';
+import store from '../../core/Store.ts';
 
 interface ProfileCDformInterface{
     ErrorText?: string,
@@ -36,6 +38,7 @@ export default class ProfileCDform extends Block{
     const emailValidatorBind = validate.emailValidator.bind(this);
     const loginValidatorBind = validate.loginValidator.bind(this);
     const firstNameValidatorBind = validate.firstNameValidator.bind(this);
+    const displayNameValidatorBind = validate.displayNameValidator.bind(this);
     const lastNameValidatorBind = validate.lastNameValidator.bind(this);
     const phoneValidatorBind = validate.phoneValidator.bind(this);
 
@@ -45,7 +48,7 @@ export default class ProfileCDform extends Block{
       inputName:'email',
       label:'Почта',
       inputType:'email',
-      inputValue:'pochta@yandex.ru',
+      inputValue: `${store.getState().user?.email}`,
       userInputContainerClass:'loginChange',
       onBlur: emailValidatorBind,
     });
@@ -55,7 +58,7 @@ export default class ProfileCDform extends Block{
       inputName: 'login',
       label: 'Логин',
       inputType: 'text',
-      inputValue: 'ivanivanov',
+      inputValue: `${store.getState().user?.login}`,
       onBlur: loginValidatorBind,
     });
 
@@ -64,7 +67,7 @@ export default class ProfileCDform extends Block{
       inputName: 'first_name',
       label: 'Имя',
       inputType: 'text',
-      inputValue: 'Иван',
+      inputValue: `${store.getState().user?.first_name}`,
       onBlur: firstNameValidatorBind,
     });
 
@@ -73,7 +76,7 @@ export default class ProfileCDform extends Block{
       inputName:'second_name',
       label:'Фамилия',
       inputType:'text',
-      inputValue:'Иванов',
+      inputValue: `${store.getState().user?.second_name}`,
       onBlur: lastNameValidatorBind,
 
     });
@@ -83,7 +86,8 @@ export default class ProfileCDform extends Block{
       inputName:'display_name',
       label:'Имя в чате',
       inputType:'text',
-      inputValue:'Иван',
+      inputValue: `${store.getState().user?.display_name}`,
+      onBlur: displayNameValidatorBind,
     });
 
     const PhoneInput = new UserInput({
@@ -91,7 +95,7 @@ export default class ProfileCDform extends Block{
       inputName:'phone',
       label:'Телефон',
       inputType:'tel',
-      inputValue:'7 (909) 967 30 30',
+      inputValue: `${store.getState().user?.phone}`,
       onBlur: phoneValidatorBind,
 
     });
@@ -128,13 +132,20 @@ export default class ProfileCDform extends Block{
             !secondtNameError && this.props.lastName &&
             !phoneError && this.props.phone ) {
       this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      console.log({
+      
+      const userInfo = {
         email: this.props.email,
         login: this.props.login,
-        firstName: this.props.firstName,
-        lastName: this.props.lastName,
+        first_Name: this.props.firstName,
+        second_name: this.props.lastName,
         phone: this.props.phone,
-      });
+        display_name: this.props.displayName,
+      };
+
+      console.log(userInfo)
+
+      UserController.changeInfo(userInfo)
+      
       window.router.go('/profile')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

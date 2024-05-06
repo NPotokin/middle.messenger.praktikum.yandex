@@ -27,7 +27,7 @@ export enum METHOD {
 }
 type Options = {
     method: METHOD;
-    data?: Record<string, unknown>;
+    data?: Record<string, any>;
     headers?: Record<string, string>
 };
 
@@ -80,6 +80,9 @@ export default class HTTPTransport {
 
       if (method === METHOD.Get || !data) {
         xhr.send();
+      } else if(data instanceof FormData){
+        // xhr.setRequestHeader("Content-Type", "multipart/form-data")
+        xhr.send(data);
       } else {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
