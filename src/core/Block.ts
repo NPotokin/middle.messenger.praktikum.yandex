@@ -110,6 +110,7 @@ export default class Block  {
       return;
     }
     this._render();
+    // console.log('Updated')
   }
 
   componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {

@@ -3,7 +3,7 @@ import store, {User} from '../../../core/Store.ts';
 import { UserDataLine } from './index.ts';
 import connect from '../../../utils/connect.ts';
 
- export default class UserData extends Block{
+class UserData extends Block{
   constructor(props:{}){
     super({
       ...props,
@@ -42,6 +42,20 @@ import connect from '../../../utils/connect.ts';
     });
   }
 
+  componentDidUpdate(oldProps: {}, newProps: {}): boolean {
+    if(oldProps === newProps){
+      return false;
+    }
+    console.log('updating')
+    this.children.Email.setProps(newProps);
+    this.children.Login.setProps(newProps);
+    this.children.Name.setProps(newProps);
+    this.children.Surname.setProps(newProps);
+    this.children.ChatName.setProps(newProps);
+    this.children.Phone.setProps(newProps);
+    return true;
+  }
+
   
 
   render(){
@@ -58,10 +72,10 @@ import connect from '../../../utils/connect.ts';
   }
 }
 
-// function mapStateToProps(store: { user: User}) { 
-//   return{     
-//     user: store.user
-//   }
-// }
+function mapStateToProps(store: { user: User}) { 
+  return{     
+    user: store.user
+  }
+}
 
-// export default connect(mapStateToProps)(UserData)
+export default connect(mapStateToProps)(UserData)

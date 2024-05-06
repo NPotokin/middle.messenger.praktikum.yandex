@@ -14,9 +14,9 @@ function connect(mapStateToProps: (state: AppState) => AppState) {
 
             store.on(StoreEvents.Updated, () => {
                     const newState = mapStateToProps(store.getState());
-                    console.log('new:', newState)
                     if (!isEqual(state, newState)) {
                   this.setProps({...newState});
+                  console.log('new:', newState)
                     }
 
                     state = newState;
