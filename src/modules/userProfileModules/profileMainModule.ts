@@ -20,7 +20,7 @@ export default class ProfileMainModule extends Block{
         ...props,
         imgSize:'40px',
         contSize:'__128still',
-        imgSrc:'/icons/image.svg',
+        imgSrc: `https://ya-praktikum.tech/api/v2${store.getState().user?.avatar}`,
       }),
       ProfileInfo: new UserData({
         ...props,

@@ -1,5 +1,6 @@
 import Block from './Block.ts';
 import Route from './Route.ts';
+import store from './Store.ts';
 
 class Router {
   private static __instance: Router;
@@ -26,13 +27,45 @@ class Router {
     this.routes.push(route);
     return this;
   }
+  private isAuthenticated(): boolean {
+    return !!store.getState().user;
+  }
 
   start() {
     window.onpopstate = ((event: { currentTarget: { location: { pathname: string; }; }; }) => {
+      if (!this.isAuthenticated() 
+        && event.currentTarget.location.pathname !== '/login' 
+        && event.currentTarget.location.pathname !== '/' 
+        && event.currentTarget.location.pathname !== '/signin') {
+        window.router.go('/login');
+        return;
+      }
+      if (this.isAuthenticated() 
+        && (event.currentTarget.location.pathname === '/login' 
+        || event.currentTarget.location.pathname === '/signin'
+        || event.currentTarget.location.pathname === '/')) {
+        window.router.go('/chat');
+        return;
+      }
       this._onRoute(event.currentTarget.location.pathname);
     }).bind(this);
+  
+    if (!this.isAuthenticated() 
+      && window.location.pathname !== '/login' 
+      && window.location.pathname !== '/signin') {
+        window.router.go('/login');
+        return;
+      }
+    if (this.isAuthenticated() 
+      && (window.location.pathname === '/login' 
+      || window.location.pathname === '/signin'
+      || window.location.pathname === '/')) {
+        window.router.go('/chat');
+        return;
+      }
     this._onRoute(window.location.pathname);
   }
+  
 
   private _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
@@ -52,7 +85,11 @@ class Router {
   }
 
   getRoute(pathname: string): Route | undefined {
-    return this.routes.find(route => route.match(pathname));
+    const route = this.routes.find(route => route.match(pathname));
+    if (!route){
+      return this.routes.find(route => route.match('*'));
+    }
+    return route;
   }
 
   back(): void {
@@ -62,6 +99,7 @@ class Router {
   forward(): void {
     this.history.forward();
   }
+  
 }
 
 export default Router;

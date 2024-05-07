@@ -12,7 +12,7 @@ router
   .use('/profile', Pages.ProfilePageMain)
   .use('/profile-change-data', Pages.ProfilePageCD)
   .use('/profile-change-password', Pages.ProfilePageCP)
-  .use('/error404', Pages.ErrorPage404)
+  .use('*', Pages.ErrorPage404)
   .use('/error500', Pages.ErrorPage500);
 router.start();
 
