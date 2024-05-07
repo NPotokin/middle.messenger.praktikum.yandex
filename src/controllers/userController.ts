@@ -21,7 +21,7 @@ class UserController {
               } else {
                 throw new Error('Failed to fetch user data: ' + xhr.statusText);}
         } catch (error) {
-            console.log('Error changing data')
+            console.log('Error changing data', `${error}`)
         }
      }
 

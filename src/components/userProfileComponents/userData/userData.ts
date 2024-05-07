@@ -1,62 +1,70 @@
 import Block from '../../../core/Block.ts';
-import store, {User} from '../../../core/Store.ts';
+import {User} from '../../../core/Store.ts';
 import { UserDataLine } from './index.ts';
 import connect from '../../../utils/connect.ts';
 
+interface UserDataInterface{
+  user:{
+    email:string,
+    login:string,
+    first_name:string,
+    second_name:string,
+    display_name?:string,
+    phone:string,
+  }
+}
 class UserData extends Block{
-  constructor(props:{}){
+  constructor(props:UserDataInterface){
     super({
       ...props,
       Email: new UserDataLine({
         ...props,
         userKey:'Почта',
-        userValue: `${store.getState().user?.email}`,
+        userValue: props.user.email,
       }),
       Login: new UserDataLine({
         ...props,
         userKey:'Логин',
-        userValue: `${store.getState().user?.login}`,
+        userValue: props.user.login,
       }),
       Name: new UserDataLine({
         ...props,
         userKey:'Имя',
-        userValue: `${store.getState().user?.first_name}`,
+        userValue: props.user.first_name,
       }),
       Surname: new UserDataLine({
         ...props,
         userKey:'Фамилия',
-        userValue:`${store.getState().user?.second_name}`,
+        userValue: props.user.second_name,
       }),
       ChatName: new UserDataLine({
         ...props,
         userKey:'Имя в чате',
-        userValue:`${store.getState().user?.display_name == null 
-          ? 'to be defined' 
-          : store.getState().user?.display_name}`,
+        userValue: props.user.display_name == null 
+          ? props.user.first_name 
+          : props.user.display_name,
       }),
       Phone: new UserDataLine({
         ...props,
         userKey:'Телефон',
-        userValue:`${store.getState().user?.phone}`,
+        userValue: props.user.phone,
       }),
     });
   }
 
-  componentDidUpdate(oldProps: {}, newProps: {}): boolean {
+  componentDidUpdate(oldProps: {user:User}, newProps: {user:User}): boolean {
     if(oldProps === newProps){
       return false;
     }
-    console.log('updating')
-    this.children.Email.setProps(newProps);
-    this.children.Login.setProps(newProps);
-    this.children.Name.setProps(newProps);
-    this.children.Surname.setProps(newProps);
-    this.children.ChatName.setProps(newProps);
-    this.children.Phone.setProps(newProps);
+    this.children.Email.setProps({userValue:newProps.user.email});
+    this.children.Login.setProps({userValue:newProps.user.login});
+    this.children.Name.setProps({userValue:newProps.user.first_name});
+    this.children.Surname.setProps({userValue:newProps.user.second_name});
+    this.children.ChatName.setProps({userValue:newProps.user.display_name});
+    this.children.Phone.setProps({userValue:newProps.user.phone});
     return true;
-  }
 
-  
+  }
 
   render(){
     return(`

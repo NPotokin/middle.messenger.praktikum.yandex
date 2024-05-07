@@ -109,8 +109,8 @@ export default class Block  {
     if (!response) {
       return;
     }
+    console.log('Block _CDU render')
     this._render();
-    // console.log('Updated')
   }
 
   componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {
