@@ -1,4 +1,3 @@
-import { LoginAPI } from '../../api/loginAPI.ts';
 import SignupController from '../../controllers/signupController.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
@@ -55,7 +54,7 @@ export default class LoginForm extends Block{
     const SignInButton = new Button({
       label: 'Нет аккаунта?',
       type: 'link',
-      onClick: () => window.router.go('/signin'),
+      onClick: () => window.router.go('/sign-up'),
     });
 
     this.children = {

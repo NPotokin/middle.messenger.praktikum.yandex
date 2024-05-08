@@ -13,7 +13,7 @@ export default class ListHeaderComponent extends Block{
       ...props,
       ListHeaderLink: new ListHeaderLink({
         ...props,
-        onClick: () => window.router.go('/profile'),
+        onClick: () => window.router.go('/settings'),
       }),
       ListHeaderForm: new ListHeaderForm({...props}),
     });

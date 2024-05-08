@@ -24,8 +24,8 @@
 .modal__form{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    min-height: 180px
+    justify-content: space-between;
+    min-height: 257px
 }
 
 .modalBig {
@@ -67,3 +67,4 @@
     color: var(--text-error-color);
     font-weight: 500;
 }
+

@@ -1,17 +1,17 @@
 import Block from '../../core/Block.ts';
 import { ArrowButton } from '../../ui/index.ts';
 import ProfileCDform from './profileCDform.ts';
-interface ProfileMainModuleInterface{
+interface ProfileCDModuleInterface{
   ErrorText?: string,
 }
-export default class ProfileMainModule extends Block{
-  constructor(props: ProfileMainModuleInterface){
+export default class ProfileCDModule extends Block{
+  constructor(props: ProfileCDModuleInterface){
     super({
       ...props,
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => window.router.go('/profile'),
+        onClick: () => window.router.go('/settings'),
       }),
       ProfileCDform: new ProfileCDform({
         ...props,

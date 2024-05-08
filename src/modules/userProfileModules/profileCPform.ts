@@ -86,7 +86,7 @@ export default class ProfileCPform extends Block{
       console.log(userPasswordsData)
       UserController.changePassword(userPasswordsData)
       
-      window.router.go('/profile')
+      window.router.go('/settings')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

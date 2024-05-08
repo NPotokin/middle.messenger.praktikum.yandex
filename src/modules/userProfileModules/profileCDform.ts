@@ -4,13 +4,18 @@ import UserController from '../../controllers/userController.ts';
 import Block from '../../core/Block.ts';
 import { Image, ErrorLine, Button } from '../../ui/index.ts';
 import * as validate from '../../utils/inputValidators/index.ts';
-import store from '../../core/Store.ts';
+import store, {User} from '../../core/Store.ts';
+import connect from '../../utils/connect.ts';
 
 interface ProfileCDformInterface{
     ErrorText?: string,
+    user:{
+      avatar?: string
+    }
   }
 
-export default class ProfileCDform extends Block{
+class ProfileCDform extends Block{
+  private isModalVisible: boolean = false;
   constructor(props:ProfileCDformInterface){
     super({
       ...props,
@@ -19,9 +24,11 @@ export default class ProfileCDform extends Block{
       },
       AvatarImage: new Image({
         ...props,
-        imgSize:'40px',
+        imgSize:'128px',
         contSize:'__128',
-        imgSrc:'/icons/image.svg',
+        imgSrc: props.user.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+        : 'icons/image.svg',
         onClick: () => this.toggleChangeAvatarModalVisibility(),
       }),
       ChangeAvatarModal: new ChangeAvatarModal({
@@ -118,6 +125,19 @@ export default class ProfileCDform extends Block{
     };
   }
 
+  componentDidUpdate(oldProps: {user:User}, newProps: {user:User}): boolean {
+    if(oldProps === newProps){
+      return false;
+    }
+    this.children.AvatarImage.setProps(
+      {imgSrc:  `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`
+    });
+    if (this.isModalVisible) {
+      this.toggleChangeAvatarModalVisibility();
+    }
+      return true;
+  }
+
   onSaveChanges(e: Event){
     e.preventDefault();
     const emailError = this.children.EmailInput.props.error;
@@ -143,10 +163,9 @@ export default class ProfileCDform extends Block{
       };
 
       console.log(userInfo)
-
       UserController.changeInfo(userInfo)
-      
-      window.router.go('/profile')
+      this.toggleChangeAvatarModalVisibility()
+      window.router.go('/settings')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }
@@ -158,8 +177,8 @@ export default class ProfileCDform extends Block{
     if (modalComponent) {
       const modalElement = modalComponent.getContent();
       if (modalElement) {
-        const currentDisplay = modalElement.style.display;
-        modalElement.style.display = currentDisplay === 'none' ? 'flex' : 'none';
+        this.isModalVisible = !this.isModalVisible;
+        modalElement.style.display = this.isModalVisible ? 'flex' : 'none';
       }
     }
   }
@@ -187,4 +206,12 @@ export default class ProfileCDform extends Block{
         `);
   }
 }
+
+function mapStateToProps(store: { user: User}) { 
+  return{     
+    user: store.user
+  }
+}
+
+export default connect(mapStateToProps)(ProfileCDform)
 

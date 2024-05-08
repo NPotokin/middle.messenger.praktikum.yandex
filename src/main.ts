@@ -5,13 +5,13 @@ const router = new Router('#app');
 window.router = router;
 
 router
-  .use('/', Pages.SignInPage)
-  .use('/signin', Pages.SignInPage)
+  .use('/', Pages.LoginPage)
+  .use('/sign-up', Pages.SignInPage)
   .use('/login', Pages.LoginPage)
-  .use('/chat', Pages.ChatPage)
-  .use('/profile', Pages.ProfilePageMain)
-  .use('/profile-change-data', Pages.ProfilePageCD)
-  .use('/profile-change-password', Pages.ProfilePageCP)
+  .use('/messenger', Pages.ChatPage)
+  .use('/settings', Pages.ProfilePageMain)
+  .use('/settings-change-data', Pages.ProfilePageCD)
+  .use('/settings-change-password', Pages.ProfilePageCP)
   .use('*', Pages.ErrorPage404)
   .use('/error500', Pages.ErrorPage500);
 router.start();

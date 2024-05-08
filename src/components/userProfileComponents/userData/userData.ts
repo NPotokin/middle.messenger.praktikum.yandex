@@ -63,7 +63,6 @@ class UserData extends Block{
     this.children.ChatName.setProps({userValue:newProps.user.display_name});
     this.children.Phone.setProps({userValue:newProps.user.phone});
     return true;
-
   }
 
   render(){

@@ -11,8 +11,8 @@ export default class ErrorComponent extends Block{
 
   init() {
     const BackToChatsButton = new Button({
-      onClick: () => window.router.go('/chat'),
-      label: 'Назад к чатам',
+      onClick: () => window.router.back(),
+      label: 'Давайте попробуем еще раз',
       type: 'link',
     });
 

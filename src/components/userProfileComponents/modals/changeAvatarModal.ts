@@ -103,9 +103,10 @@ export default class ChangeAvatarModal extends Block{
         modalErrorElement.style.display = 'none';
 
         const imageData = new FormData()
-        imageData.append('file', fileInputElement.files[0])
+        console.log(fileInputElement.files[0])
+        imageData.append('avatar', fileInputElement.files[0])
         UserController.changeAvatar(imageData)
-        window.router.go('/profile')
+        window.router.go('/settings')
       }
     }
   }
@@ -114,7 +115,7 @@ export default class ChangeAvatarModal extends Block{
   render(): string {
     return(`
             <dialog class="modal">
-              <form action='' class='modal__form'>
+              <form action='' class='modal__form' id="form">
                 {{{ModalTitleLine}}}
                 {{{FileInput}}}
                 {{{InputButton}}}

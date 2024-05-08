@@ -2,10 +2,17 @@ import { UserData } from '../../components/userProfileComponents/index.ts';
 import SignupController from '../../controllers/signupController.ts';
 import Block from '../../core/Block.ts';
 import { ArrowButton, Image, Button } from '../../ui/index.ts';
-import store from '../../core/Store.ts';
+import store, {User} from '../../core/Store.ts';
+import connect from '../../utils/connect.ts';
 
-export default class ProfileMainModule extends Block{
-  constructor(props:{}){
+
+interface ProfileMainModuleInterface{
+  user:{
+    avatar?:string,
+  }
+}
+class ProfileMainModule extends Block{
+  constructor(props:ProfileMainModuleInterface){
     super({
       ...props,
       NameInChat: `${store.getState().user?.display_name == null 
@@ -14,13 +21,16 @@ export default class ProfileMainModule extends Block{
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => window.router.go('/chat'),
+        onClick: () => window.router.go('/messenger'),
       }),
       AvatarImage: new Image({
         ...props,
-        imgSize:'40px',
+        imgSize:'128px',
         contSize:'__128still',
-        imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState().user?.avatar}`,
+        imgSrc: props.user.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+        : 'icons/image.svg',
+  
       }),
       ProfileInfo: new UserData({
         ...props,
@@ -29,13 +39,13 @@ export default class ProfileMainModule extends Block{
         ...props,
         type: 'link--profile',
         label:'Изменить данные',
-        onClick: () => window.router.go('/profile-change-data'),
+        onClick: () => window.router.go('/settings-change-data'),
       }),
       ChangePasswordButton: new Button({
         ...props,
         type: 'link--profile',
         label:'Изменить пароль',
-        onClick: () => window.router.go('/profile-change-password'),
+        onClick: () => window.router.go('/settings-change-password'),
       }),
       ExitButton: new Button({
         ...props,
@@ -45,6 +55,17 @@ export default class ProfileMainModule extends Block{
       }),
     });
   }
+
+  componentDidUpdate(oldProps: {user:User}, newProps: {user:User}): boolean {
+    if(oldProps === newProps){
+      return false;
+    }
+    this.children.AvatarImage.setProps(
+      {imgSrc:  `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`});
+    return true;
+  }
+
+
 
   render(){
     return(`
@@ -70,3 +91,11 @@ export default class ProfileMainModule extends Block{
         `);
   }
 }
+
+function mapStateToProps(store: { user: User}) { 
+  return{     
+    user: store.user
+  }
+}
+
+export default connect(mapStateToProps)(ProfileMainModule)

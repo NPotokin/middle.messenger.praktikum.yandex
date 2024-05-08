@@ -36,15 +36,17 @@ class Router {
       if (!this.isAuthenticated() 
         && event.currentTarget.location.pathname !== '/login' 
         && event.currentTarget.location.pathname !== '/' 
-        && event.currentTarget.location.pathname !== '/signin') {
+        && event.currentTarget.location.pathname !== '/error404' 
+        && event.currentTarget.location.pathname !== '/error500' 
+        && event.currentTarget.location.pathname !== '/sign-up') {
         window.router.go('/login');
         return;
       }
       if (this.isAuthenticated() 
         && (event.currentTarget.location.pathname === '/login' 
-        || event.currentTarget.location.pathname === '/signin'
+        || event.currentTarget.location.pathname === '/sign-up'
         || event.currentTarget.location.pathname === '/')) {
-        window.router.go('/chat');
+        window.router.go('/messenger');
         return;
       }
       this._onRoute(event.currentTarget.location.pathname);
@@ -52,15 +54,17 @@ class Router {
   
     if (!this.isAuthenticated() 
       && window.location.pathname !== '/login' 
-      && window.location.pathname !== '/signin') {
+      && window.location.pathname !== '/error404' 
+      && window.location.pathname !== '/error500' 
+      && window.location.pathname !== '/sign-up') {
         window.router.go('/login');
         return;
       }
     if (this.isAuthenticated() 
       && (window.location.pathname === '/login' 
-      || window.location.pathname === '/signin'
+      || window.location.pathname === '/sign-up'
       || window.location.pathname === '/')) {
-        window.router.go('/chat');
+        window.router.go('/messenger');
         return;
       }
     this._onRoute(window.location.pathname);
