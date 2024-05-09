@@ -6,10 +6,20 @@ class ChatController{
         const xhr = await ChatAPI.newChat(data)
         if(xhr.status === 200){
             const chatData = JSON.parse(xhr.responseText);
-            store.setChat(chatData);
-            console.log('Chat data updated successfully:', chatData);
+            console.log('new chat created successfully:', chatData);
         } else {
-            console.log("error saving chat to store")
+            console.log("error creating chat")
+        }
+    }
+
+    public static async getChatsSetChats(){
+        const xhr = await ChatAPI.allChatsData()
+        if(xhr.status === 200){
+            const allChatsData = JSON.parse(xhr.responseText);
+            store.setChats(allChatsData)
+            console.log("All chats data now in store")
+        } else {
+            console.log("Error downloading All chats data")
         }
     }
 }

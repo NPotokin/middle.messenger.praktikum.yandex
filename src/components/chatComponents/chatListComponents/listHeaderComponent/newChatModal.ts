@@ -50,6 +50,7 @@ export default class NewChatModal extends Block{
             console.log(value);
             const chatData= {title: value}
             ChatController.createNewChat(chatData)
+            ChatController.getChatsSetChats();
         } else {
             this.children.ErrorLine.setProps({ 
                 error: true, 

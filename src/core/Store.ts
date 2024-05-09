@@ -15,14 +15,22 @@ export interface User {
   email: string;
 }
 
-export interface Chat {
+export interface ChatData {
   id?: number,
-  title?: string
+  title?: string,
+  avatar?: string,
+  unread_count: number,
+  created_by: number,
+  last_message?: {
+    user: User,
+    time?: string,
+    content?: string
+  }
 }
 
 export interface AppState {
   user?: User;
-  chat?: Chat;
+  chats?: ChatData[];
 }
 
 class Store extends EventBus<StoreEvents> {
@@ -50,8 +58,8 @@ class Store extends EventBus<StoreEvents> {
     this.set({ user });
   }
 
-  public setChat(chat: Chat) {
-    this.set({ chat });
+  public setChats(chats: ChatData[]) {
+    this.set({ chats });
   }
 
   private set(nextState: Partial<AppState>) {
