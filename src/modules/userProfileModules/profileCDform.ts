@@ -164,7 +164,6 @@ class ProfileCDform extends Block{
 
       console.log(userInfo)
       UserController.changeInfo(userInfo)
-      this.toggleChangeAvatarModalVisibility()
       window.router.go('/settings')
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

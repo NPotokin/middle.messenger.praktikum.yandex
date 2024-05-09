@@ -10,3 +10,4 @@ export {default as phoneValidator} from './phoneValidator.ts';
 export {default as passwordCheckValidator} from './passwordCheckValidator.ts';
 export {default as passwordCheckValidatorProfile} from './passwordCheckValidatorProfile.ts';
 export {default as chatInputValidator} from './chatInputValidator.ts';
+export {default as newChatValidator} from './newChatValidator.ts'

@@ -103,7 +103,6 @@ export default class ChangeAvatarModal extends Block{
         modalErrorElement.style.display = 'none';
 
         const imageData = new FormData()
-        console.log(fileInputElement.files[0])
         imageData.append('avatar', fileInputElement.files[0])
         UserController.changeAvatar(imageData)
         window.router.go('/settings')
