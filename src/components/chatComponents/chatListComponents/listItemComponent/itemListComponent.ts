@@ -1,11 +1,11 @@
 import Block from '../../../../core/Block.ts';
+import store from '../../../../core/Store.ts';
 import ListItemComponent from './listItemComponent.ts';
-import {listItemConfigs} from './listItemConfigs.ts';
 
 export default class ItemListComponent extends Block {
   constructor(props:{}) {
 
-    const listItems = listItemConfigs.reduce<{[key: string]: ListItemComponent}>((acc, itemConfig) => {
+    const listItems = store.getState().chats!.reduce<{[key: string]: ListItemComponent}>((acc, itemConfig) => {
       const listItem = new ListItemComponent(itemConfig);
       acc[listItem._id] = listItem;
       return acc;

@@ -1,15 +1,9 @@
 import Block from '../../../../core/Block.ts';
 import { Image } from '../../../../ui/index.ts';
 
-interface ListItemComponentInterface{
-  LItitle?: string,
-  LItext?: string,
-  LIdate?: string,
-  LImodifier?: string,
-  LIbadge?: string,
-}
+
 export default class ListItemComponent extends Block{
-  constructor(props:ListItemComponentInterface){
+  constructor(props:{}){
     super({
       ...props,
       Image: new Image({
@@ -27,12 +21,12 @@ export default class ListItemComponent extends Block{
             {{{Image}}}
         </div>
         <div class="listItem__content">
-            <p class="listItem__title">{{LItitle}}</p>
-            <p class="listItem__text">{{LItext}}</p>
+            <p class="listItem__title">{{title}}</p>
+            <p class="listItem__text">{{last_message.content}}</p>
         </div>
         <div class="listItem__info">
-            <p class="listItem__date">{{LIdate}}</p>
-            <div class="listItem__badge{{LImodifier}}">{{LIbadge}}</div>
+            <p class="listItem__date">{{last_message_time}}</p>
+            <div class="listItem__badge{{LImodifier}}">{{unread_count}}</div>
         </div>
         </div>
     
