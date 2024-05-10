@@ -18,15 +18,18 @@ export default class ListItemComponent extends Block{
     });
   }
 
-  onClick(){
+  onClick() {
     //@ts-ignore
-    store.setActiveChat(this.props.id)
-    console.log('active click')
+    store.setActiveChat(this.props.id);
+    console.log('Item clicked:', this.props.id);
   }
 
-  render(){
+  render() {
+    const isActiveChat = store.getState().chats?.some(chat => chat.isActive && chat.id === this.props.id);
+    const activeChatClass = isActiveChat ? ' listItem--active' : '';
+
     return(`
-        <div class="listItem {{#if active}}listItem--active{{/if}}">
+        <div class="listItem${activeChatClass}">
         <div class="listItem__image">
             {{{Image}}}
         </div>
