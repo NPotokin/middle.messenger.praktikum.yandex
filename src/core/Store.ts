@@ -25,7 +25,8 @@ export interface ChatData {
     user: User,
     time?: string,
     content?: string
-  }
+  },
+  isActive?: boolean,
 }
 
 export interface AppState {
@@ -59,6 +60,14 @@ class Store extends EventBus<StoreEvents> {
   }
 
   public setChats(chats: ChatData[]) {
+    this.set({ chats });
+  }
+
+  public setActiveChat(chatId: number) {
+    const chats = this.state.chats?.map(chat => ({
+      ...chat,
+      isActive: chat.id === chatId
+    })) ?? [];
     this.set({ chats });
   }
 

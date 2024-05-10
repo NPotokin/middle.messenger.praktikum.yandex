@@ -1,4 +1,5 @@
 import Block from '../../../../core/Block.ts';
+import store from '../../../../core/Store.ts';
 import { Image } from '../../../../ui/index.ts';
 
 
@@ -6,12 +7,21 @@ export default class ListItemComponent extends Block{
   constructor(props:{}){
     super({
       ...props,
+      events:{
+        click: () => this.onClick()
+      },
       Image: new Image({
         ...props,
         contSize: '__47',
       }),
 
     });
+  }
+
+  onClick(){
+    //@ts-ignore
+    store.setActiveChat(this.props.id)
+    console.log('active click')
   }
 
   render(){

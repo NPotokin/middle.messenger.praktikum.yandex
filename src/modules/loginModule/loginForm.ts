@@ -1,4 +1,6 @@
+import ChatController from '../../controllers/chatController.ts';
 import SignupController from '../../controllers/signupController.ts';
+import UserController from '../../controllers/userController.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
 import loginValidator from '../../utils/inputValidators/loginValidator.ts';
@@ -66,7 +68,7 @@ export default class LoginForm extends Block{
     };
   }
 
-  onLogin(e: Event) {
+   async onLogin(e: Event) {
     e.preventDefault();
     const inputError = this.children.LoginInput.props.error;
     const passwordError = this.children.PasswordInput.props.error;
@@ -84,7 +86,9 @@ export default class LoginForm extends Block{
         password: this.props.password,
       };
 
-      SignupController.loginUser(userCredentials)
+      await SignupController.loginUser(userCredentials)
+      await ChatController.getChatsSetChats()
+      window.router.go('/messenger');
       
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
