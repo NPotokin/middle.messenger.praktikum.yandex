@@ -24,13 +24,14 @@ class ListItemComponent extends Block{
     });
   }
 
-  componentDidUpdate(oldProps?:{chats:ChatData[]}, newProps?: {chats:ChatData[]}): boolean {
-    if(oldProps === newProps){
-      return false;
-    }
-    return true
-  }
-
+  // componentDidUpdate(oldProps?:{chats:ChatData[]}, newProps?: {chats:ChatData[]}): boolean {
+  //   if(oldProps === newProps){
+  //     return false;
+  //   }
+  //   return true  
+  // }
+  // <-----Почему то работает и без CDU
+  
   onClick() {
     //@ts-ignore
     store.setActiveChat(this.props.id);
@@ -66,3 +67,4 @@ function mapStateToProps(store: { chats: ChatData[]}) {
 }
 
 export default connect(mapStateToProps)(ListItemComponent)
+//   !!!!!   Возможно придется потом дополнить - как появятся данные из стора по сообщениям

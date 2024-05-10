@@ -1,9 +1,10 @@
 import { InactiveAreaComponent } from '../../components/index.ts';
 import Block from '../../core/Block.ts';
-import store from '../../core/Store.ts';
+import store, {ChatData} from '../../core/Store.ts';
 import { ChatListModule, ChatAreaModule } from '../../modules/index.ts';
+import connect from '../../utils/connect.ts';
 
-export default class ChatPage extends Block{
+class ChatPage extends Block{
   constructor(props:{}){
     super({
       ...props,
@@ -33,3 +34,11 @@ export default class ChatPage extends Block{
     `;
   }
 }
+
+function mapStateToProps(store: { chats: ChatData[]}) { 
+  return{     
+    chats: store.chats
+  }
+}
+
+export default connect(mapStateToProps)(ChatPage)
