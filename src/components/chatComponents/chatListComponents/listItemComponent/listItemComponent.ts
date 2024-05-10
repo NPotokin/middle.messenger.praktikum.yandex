@@ -1,10 +1,16 @@
-import Block from '../../../../core/Block.ts';
-import store from '../../../../core/Store.ts';
+import store, {ChatData} from '../../../../core/Store.ts';
 import { Image } from '../../../../ui/index.ts';
+import Block from '../../../../core/Block.ts';
+import connect from '../../../../utils/connect.ts';
 
-
-export default class ListItemComponent extends Block{
-  constructor(props:{}){
+interface ChatInterface{
+  chat:{
+    isActive?: boolean,
+    id?: number,
+  }
+}
+class ListItemComponent extends Block{
+  constructor(props: ChatInterface){
     super({
       ...props,
       events:{
@@ -16,6 +22,13 @@ export default class ListItemComponent extends Block{
       }),
 
     });
+  }
+
+  componentDidUpdate(oldProps?:{chats:ChatData[]}, newProps?: {chats:ChatData[]}): boolean {
+    if(oldProps === newProps){
+      return false;
+    }
+    return true
   }
 
   onClick() {
@@ -42,7 +55,14 @@ export default class ListItemComponent extends Block{
             <div class="listItem__badge{{LImodifier}}">{{unread_count}}</div>
         </div>
         </div>
-    
         `);
   }
 }
+
+function mapStateToProps(store: { chats: ChatData[]}) { 
+  return{     
+    chats: store.chats
+  }
+}
+
+export default connect(mapStateToProps)(ListItemComponent)

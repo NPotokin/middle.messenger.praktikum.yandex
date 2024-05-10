@@ -1,5 +1,5 @@
 import Block from '../../../../core/Block.ts';
-import store from '../../../../core/Store.ts';
+import store  from '../../../../core/Store.ts';
 import ListItemComponent from './listItemComponent.ts';
 
 export default class ItemListComponent extends Block {
@@ -16,6 +16,8 @@ export default class ItemListComponent extends Block {
       ...listItems,
     });
   }
+
+
 
   
 

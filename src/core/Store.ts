@@ -19,10 +19,10 @@ export interface ChatData {
   id?: number,
   title?: string,
   avatar?: string,
-  unread_count: number,
-  created_by: number,
+  unread_count?: number,
+  created_by?: number,
   last_message?: {
-    user: User,
+    user?: User,
     time?: string,
     content?: string
   },
