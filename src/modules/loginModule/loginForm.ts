@@ -68,7 +68,7 @@ export default class LoginForm extends Block{
     };
   }
 
-   async onLogin(e: Event) {
+  async onLogin(e: Event) {
     e.preventDefault();
     const inputError = this.children.LoginInput.props.error;
     const passwordError = this.children.PasswordInput.props.error;
@@ -86,10 +86,10 @@ export default class LoginForm extends Block{
         password: this.props.password,
       };
 
-      await SignupController.loginUser(userCredentials)
-      await ChatController.getChatsSetChats()
+      await SignupController.loginUser(userCredentials);
+      await ChatController.getChatsSetChats();
       window.router.go('/messenger');
-      
+
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

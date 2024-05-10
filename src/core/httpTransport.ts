@@ -84,7 +84,7 @@ export default class HTTPTransport {
         // xhr.setRequestHeader('Accept', 'application/json')
         xhr.send(data);
       } else {
-        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));
       }
     });

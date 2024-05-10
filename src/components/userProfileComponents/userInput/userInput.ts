@@ -36,7 +36,7 @@ export default class UserInput extends Block {
     this.children.UserInputErrorText.setProps(newProps);
     return true;
   }
-  
+
 
   render(): string {
     return(`

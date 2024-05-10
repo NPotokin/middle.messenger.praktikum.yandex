@@ -15,8 +15,8 @@ class ChatPage extends Block{
         ...props,
       }),
       InactiveAreaComponent: new InactiveAreaComponent({
-        ...props
-      })
+        ...props,
+      }),
     });
   }
 
@@ -35,10 +35,10 @@ class ChatPage extends Block{
   }
 }
 
-function mapStateToProps(store: { chats: ChatData[]}) { 
-  return{     
-    chats: store.chats
-  }
+function mapStateToProps(store: { chats: ChatData[]}) {
+  return{
+    chats: store.chats,
+  };
 }
 
-export default connect(mapStateToProps)(ChatPage)
+export default connect(mapStateToProps)(ChatPage);

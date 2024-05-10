@@ -23,7 +23,7 @@ class SignupController {
       if (xhr.status === 200) {
         console.log('Login Success');
         await this.getUserDataToStore();
-        
+
       } else {
         throw xhr;
       }
@@ -65,19 +65,19 @@ class SignupController {
   private static handleError(xhr: XMLHttpRequest, defaultMessage: string) {
     console.error(defaultMessage, xhr.statusText);
     switch (xhr.status) {
-      case 400:
-        alert('Bad request: Please check your data and try again.');
-        break;
-      case 401:
-        alert('Unauthorized: Please login again.');
-        window.router.go('/login');
-        break;
-      case 500:
-        window.router.go('/error500');
-        break;
-      default:
-        alert('An unexpected error occurred. Please try again later.');
-        break;
+    case 400:
+      alert('Bad request: Please check your data and try again.');
+      break;
+    case 401:
+      alert('Unauthorized: Please login again.');
+      window.router.go('/login');
+      break;
+    case 500:
+      window.router.go('/error500');
+      break;
+    default:
+      alert('An unexpected error occurred. Please try again later.');
+      break;
     }
   }
 }

@@ -109,7 +109,7 @@ export default class Block  {
     if (!response) {
       return;
     }
-    console.log('Block _CDU render')
+    console.log('Block _CDU render');
     this._render();
   }
 

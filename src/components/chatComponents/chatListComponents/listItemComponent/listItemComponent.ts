@@ -14,7 +14,7 @@ class ListItemComponent extends Block{
     super({
       ...props,
       events:{
-        click: () => this.onClick()
+        click: () => this.onClick(),
       },
       Image: new Image({
         ...props,
@@ -28,10 +28,10 @@ class ListItemComponent extends Block{
   //   if(oldProps === newProps){
   //     return false;
   //   }
-  //   return true  
+  //   return true
   // }
   // <-----Почему то работает и без CDU
-  
+
   onClick() {
     //@ts-ignore
     store.setActiveChat(this.props.id);
@@ -60,11 +60,11 @@ class ListItemComponent extends Block{
   }
 }
 
-function mapStateToProps(store: { chats: ChatData[]}) { 
-  return{     
-    chats: store.chats
-  }
+function mapStateToProps(store: { chats: ChatData[]}) {
+  return{
+    chats: store.chats,
+  };
 }
 
-export default connect(mapStateToProps)(ListItemComponent)
+export default connect(mapStateToProps)(ListItemComponent);
 //   !!!!!   Возможно придется потом дополнить - как появятся данные из стора по сообщениям

@@ -24,14 +24,14 @@ export default class ListHeaderComponent extends Block{
         type: 'primary',
         buttonType: 'button',
         label: 'Новый чат',
-        onClick: () => this.toggleChangeModalVisibility()
+        onClick: () => this.toggleChangeModalVisibility(),
       }),
-      NewChatModal: new NewChatModal({...props})
+      NewChatModal: new NewChatModal({...props}),
     });
   }
 
   toggleChangeModalVisibility() {
-    console.log('toggle modal')
+    console.log('toggle modal');
     const modalComponent = this.children.NewChatModal;
     if (modalComponent) {
       const modalElement = modalComponent.getContent();

@@ -27,8 +27,8 @@ class ProfileCDform extends Block{
         imgSize:'128px',
         contSize:'__128',
         imgSrc: props.user.avatar
-        ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
-        : 'icons/image.svg',
+          ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+          : 'icons/image.svg',
         onClick: () => this.toggleChangeAvatarModalVisibility(),
       }),
       ChangeAvatarModal: new ChangeAvatarModal({
@@ -130,12 +130,12 @@ class ProfileCDform extends Block{
       return false;
     }
     this.children.AvatarImage.setProps(
-      {imgSrc:  `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`
-    });
+      {imgSrc:  `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`,
+      });
     if (this.isModalVisible) {
       this.toggleChangeAvatarModalVisibility();
     }
-      return true;
+    return true;
   }
 
   onSaveChanges(e: Event){
@@ -152,7 +152,7 @@ class ProfileCDform extends Block{
             !secondtNameError && this.props.lastName &&
             !phoneError && this.props.phone ) {
       this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      
+
       const userInfo = {
         email: this.props.email,
         login: this.props.login,
@@ -162,9 +162,9 @@ class ProfileCDform extends Block{
         display_name: this.props.displayName,
       };
 
-      console.log(userInfo)
-      UserController.changeInfo(userInfo)
-      window.router.go('/settings')
+      console.log(userInfo);
+      UserController.changeInfo(userInfo);
+      window.router.go('/settings');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }
@@ -206,11 +206,11 @@ class ProfileCDform extends Block{
   }
 }
 
-function mapStateToProps(store: { user: User}) { 
-  return{     
-    user: store.user
-  }
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
 }
 
-export default connect(mapStateToProps)(ProfileCDform)
+export default connect(mapStateToProps)(ProfileCDform);
 

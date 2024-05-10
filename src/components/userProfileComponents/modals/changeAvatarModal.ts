@@ -102,10 +102,10 @@ export default class ChangeAvatarModal extends Block{
         const modalErrorElement = modalErrorComponent.getContent();
         modalErrorElement.style.display = 'none';
 
-        const imageData = new FormData()
-        imageData.append('avatar', fileInputElement.files[0])
-        UserController.changeAvatar(imageData)
-        window.router.go('/settings')
+        const imageData = new FormData();
+        imageData.append('avatar', fileInputElement.files[0]);
+        UserController.changeAvatar(imageData);
+        window.router.go('/settings');
       }
     }
   }

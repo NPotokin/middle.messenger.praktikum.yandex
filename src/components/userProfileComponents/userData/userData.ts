@@ -40,8 +40,8 @@ class UserData extends Block{
       ChatName: new UserDataLine({
         ...props,
         userKey:'Имя в чате',
-        userValue: props.user.display_name == null 
-          ? props.user.first_name 
+        userValue: props.user.display_name == null
+          ? props.user.first_name
           : props.user.display_name,
       }),
       Phone: new UserDataLine({
@@ -79,10 +79,10 @@ class UserData extends Block{
   }
 }
 
-function mapStateToProps(store: { user: User}) { 
-  return{     
-    user: store.user
-  }
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
 }
 
-export default connect(mapStateToProps)(UserData)
+export default connect(mapStateToProps)(UserData);

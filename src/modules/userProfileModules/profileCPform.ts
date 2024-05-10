@@ -82,11 +82,11 @@ export default class ProfileCPform extends Block{
       const userPasswordsData = {
         oldPassword: this.props.oldPassword,
         newPassword: this.props.newPassword,
-      }
-      console.log(userPasswordsData)
-      UserController.changePassword(userPasswordsData)
-      
-      window.router.go('/settings')
+      };
+      console.log(userPasswordsData);
+      UserController.changePassword(userPasswordsData);
+
+      window.router.go('/settings');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }

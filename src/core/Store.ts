@@ -44,7 +44,7 @@ class Store extends EventBus<StoreEvents> {
     }
     super();
 
-    const storedState = sessionStorage.getItem('appState'); 
+    const storedState = sessionStorage.getItem('appState');
     this.state = storedState ? JSON.parse(storedState) : defaultState;
     this.set(this.state);
 
@@ -66,7 +66,7 @@ class Store extends EventBus<StoreEvents> {
   public setActiveChat(chatId: number) {
     const chats = this.state.chats?.map(chat => ({
       ...chat,
-      isActive: chat.id === chatId
+      isActive: chat.id === chatId,
     })) ?? [];
     this.set({ chats });
   }
@@ -74,11 +74,11 @@ class Store extends EventBus<StoreEvents> {
   private set(nextState: Partial<AppState>) {
     const prevState = { ...this.state };
     this.state = { ...this.state, ...nextState };
-    sessionStorage.setItem('appState', JSON.stringify(this.state)); 
+    sessionStorage.setItem('appState', JSON.stringify(this.state));
     this.emit(StoreEvents.Updated, prevState, this.state);
   }
 }
 
-const store = new Store({})
+const store = new Store({});
 
 export default store;

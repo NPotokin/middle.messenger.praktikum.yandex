@@ -33,17 +33,17 @@ class Router {
 
   start() {
     window.onpopstate = ((event: { currentTarget: { location: { pathname: string; }; }; }) => {
-      if (!this.isAuthenticated() 
-        && event.currentTarget.location.pathname !== '/login' 
-        && event.currentTarget.location.pathname !== '/' 
-        && event.currentTarget.location.pathname !== '/error404' 
-        && event.currentTarget.location.pathname !== '/error500' 
+      if (!this.isAuthenticated()
+        && event.currentTarget.location.pathname !== '/login'
+        && event.currentTarget.location.pathname !== '/'
+        && event.currentTarget.location.pathname !== '/error404'
+        && event.currentTarget.location.pathname !== '/error500'
         && event.currentTarget.location.pathname !== '/sign-up') {
         window.router.go('/login');
         return;
       }
-      if (this.isAuthenticated() 
-        && (event.currentTarget.location.pathname === '/login' 
+      if (this.isAuthenticated()
+        && (event.currentTarget.location.pathname === '/login'
         || event.currentTarget.location.pathname === '/sign-up'
         || event.currentTarget.location.pathname === '/')) {
         window.router.go('/messenger');
@@ -51,25 +51,25 @@ class Router {
       }
       this._onRoute(event.currentTarget.location.pathname);
     }).bind(this);
-  
-    if (!this.isAuthenticated() 
-      && window.location.pathname !== '/login' 
-      && window.location.pathname !== '/error404' 
-      && window.location.pathname !== '/error500' 
+
+    if (!this.isAuthenticated()
+      && window.location.pathname !== '/login'
+      && window.location.pathname !== '/error404'
+      && window.location.pathname !== '/error500'
       && window.location.pathname !== '/sign-up') {
-        window.router.go('/login');
-        return;
-      }
-    if (this.isAuthenticated() 
-      && (window.location.pathname === '/login' 
+      window.router.go('/login');
+      return;
+    }
+    if (this.isAuthenticated()
+      && (window.location.pathname === '/login'
       || window.location.pathname === '/sign-up'
       || window.location.pathname === '/')) {
-        window.router.go('/messenger');
-        return;
-      }
+      window.router.go('/messenger');
+      return;
+    }
     this._onRoute(window.location.pathname);
   }
-  
+
 
   private _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
@@ -103,7 +103,7 @@ class Router {
   forward(): void {
     this.history.forward();
   }
-  
+
 }
 
 export default Router;

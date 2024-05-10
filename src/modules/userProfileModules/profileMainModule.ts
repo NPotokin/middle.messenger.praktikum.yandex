@@ -15,7 +15,7 @@ class ProfileMainModule extends Block{
   constructor(props:ProfileMainModuleInterface){
     super({
       ...props,
-      NameInChat: `${store.getState().user?.display_name == null 
+      NameInChat: `${store.getState().user?.display_name == null
         ? 'Нужно придумать имя'
         : store.getState().user?.display_name}` ,
       BackButton: new ArrowButton({
@@ -28,9 +28,9 @@ class ProfileMainModule extends Block{
         imgSize:'128px',
         contSize:'__128still',
         imgSrc: props.user.avatar
-        ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
-        : 'icons/image.svg',
-  
+          ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+          : 'icons/image.svg',
+
       }),
       ProfileInfo: new UserData({
         ...props,
@@ -66,7 +66,6 @@ class ProfileMainModule extends Block{
   }
 
 
-
   render(){
     return(`
             <div class="profile">
@@ -92,10 +91,10 @@ class ProfileMainModule extends Block{
   }
 }
 
-function mapStateToProps(store: { user: User}) { 
-  return{     
-    user: store.user
-  }
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
 }
 
-export default connect(mapStateToProps)(ProfileMainModule)
+export default connect(mapStateToProps)(ProfileMainModule);

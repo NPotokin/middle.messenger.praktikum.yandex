@@ -24,8 +24,8 @@ class ProfileCPModule extends Block{
         imgSize:'128px',
         contSize:'__128still',
         imgSrc: props.user.avatar
-        ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
-        : 'icons/image.svg',
+          ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+          : 'icons/image.svg',
       }),
       ProfileCPform: new ProfileCPform({
         ...props,
@@ -62,10 +62,10 @@ class ProfileCPModule extends Block{
   }
 }
 
-function mapStateToProps(store: { user: User}) { 
-  return{     
-    user: store.user
-  }
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
 }
 
-export default connect(mapStateToProps)(ProfileCPModule)
+export default connect(mapStateToProps)(ProfileCPModule);

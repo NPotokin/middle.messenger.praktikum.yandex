@@ -14,10 +14,10 @@ export class SignupAPI {
   }
 
   static getUser(){
-    return signupAPIinstance.get(`${base}/auth/user`)
+    return signupAPIinstance.get(`${base}/auth/user`);
   }
 
   static logout(){
-    return signupAPIinstance.post(`${base}/auth/logout`)
+    return signupAPIinstance.post(`${base}/auth/logout`);
   }
 }
