@@ -1,4 +1,4 @@
-import UserController from '../../../../../controllers/userController.ts';
+import ChatController from '../../../../../controllers/chatController.ts';
 import Block from '../../../../../core/Block.ts';
 import { Button, Input, ErrorLine } from '../../../../../ui/index.ts';
 import loginValidator from '../../../../../utils/inputValidators/loginValidator.ts';
@@ -54,7 +54,7 @@ export default class DialogAddUserForm extends Block{
       });
 
       const login = this.props.login
-      await UserController.getUserData({login})
+      await ChatController.getUserData({login})
       
 
     } else {

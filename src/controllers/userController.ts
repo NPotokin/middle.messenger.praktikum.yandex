@@ -45,20 +45,7 @@ class UserController {
     }
   }
 
-  public static async getUserData(data: Record<string, unknown>){
-    try {
-      const xhr = await UserAPI.addUser(data);
-      if (xhr.status === 200) {
-        const userData = JSON.parse(xhr.responseText);
-        console.log('User found:', userData);
-        return userData
-      } else {
-        throw xhr;
-      }
-    } catch (xhr) {
-      this.handleError(xhr, 'Error finding user');
-    }
-  }
+
 
   private static handleError(xhr: XMLHttpRequest, defaultMessage: string) {
     console.error(defaultMessage, xhr.statusText);

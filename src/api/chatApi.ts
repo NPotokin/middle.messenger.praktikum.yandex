@@ -13,6 +13,16 @@ export class ChatAPI {
     return chatAPIinstance.get(`${base}/chats`);
   }
 
+  static findUserByID(data: Record<string, unknown>){
+    return chatAPIinstance.post(`${base}/user/search`, {data})
+  }
+
+  static addUser(data: Record<string, unknown>){
+    return chatAPIinstance.put(`${base}/chats/users`, {data})
+  }
+
+
+
   
 
 

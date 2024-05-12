@@ -8,12 +8,9 @@
     padding: 0;
     width: 350px;
     height: 260px;
-    transform: translate(-60vh, 10vh);
     background-color: rgb(255 255 255 / 100%);
-    position: absolute;
-    top: 25vh;
-    left: 75vw;
     z-index: 1000;
+    margin-top: 25vh;
 }
 
 .ADUmodal {

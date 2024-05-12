@@ -22,6 +22,21 @@ class ChatController{
       console.log('Error downloading All chats data');
     }
   }
+
+  public static async getUserData(data: Record<string, unknown>) {
+    const xhr = await ChatAPI.findUserByID(data);
+    if (xhr.status === 200) {
+        const userData = await JSON.parse(xhr.responseText);
+        console.log('User found:', userData);
+        const chatId = store.getState().chats?.find(chat => chat.isActive)?.id;
+        if (chatId !== undefined) { 
+            const userId = userData[0].id
+            await ChatAPI.addUser({ users: [userId], chatId: chatId });
+        } else {
+            console.log('Active chat ID is undefined.');
+        }
+    }
+  }
 }
 
 export default ChatController;
