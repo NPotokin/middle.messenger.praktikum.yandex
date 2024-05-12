@@ -26,7 +26,7 @@ export default class ChatListModule extends Block{
   //   if(oldProps === newProps){
   //     return false
   //   }
-    
+
 
   //   return true
   // }

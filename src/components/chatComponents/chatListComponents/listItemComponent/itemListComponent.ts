@@ -4,7 +4,6 @@ import connect from '../../../../utils/connect.ts';
 import ListItemComponent from './listItemComponent.ts';
 
 
-
 class ItemListComponent extends Block {
   constructor(props: AppState) {
     const listItems = props.chats ? props.chats!
@@ -21,13 +20,13 @@ class ItemListComponent extends Block {
   }
 
   componentDidUpdate(oldProps?:{} , newProps?: {}): boolean {
-    console.log('list CDU old', oldProps)
-    console.log('list CDU new', newProps)    
+    console.log('list CDU old', oldProps);
+    console.log('list CDU new', newProps);
     if(oldProps === newProps){
       return false;
     }
-  // <----- Боль, Страдание, Непонимание    
-    return true
+    // <----- Боль, Страдание, Непонимание
+    return true;
   }
 
 

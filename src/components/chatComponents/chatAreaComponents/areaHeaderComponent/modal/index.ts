@@ -1,3 +1,4 @@
 import './addDeletUser.css';
 import './modal.css';
-export {default as DialogAddDeleteUser} from './dialogAddDeleteUser.ts';
+export {default as DialogAddUser} from './dialogAddUser.ts';
+export {default as DialogDeleteUser} from './dialogDeleteUser.ts';

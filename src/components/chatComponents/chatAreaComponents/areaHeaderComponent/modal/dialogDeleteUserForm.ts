@@ -2,12 +2,12 @@ import Block from '../../../../../core/Block.ts';
 import { Button, Input, ErrorLine } from '../../../../../ui/index.ts';
 import loginValidator from '../../../../../utils/inputValidators/loginValidator.ts';
 
-interface DialoAddDeleteUserFormInterface{
+interface DialogDeleteUserFormInterface{
 
 }
 
-export default class DialoAddDeleteUserForm extends Block{
-  constructor(props: DialoAddDeleteUserFormInterface){
+export default class DialogDeleteUserForm extends Block{
+  constructor(props: DialogDeleteUserFormInterface){
     super({
       ...props,
       events:{

@@ -16,4 +16,8 @@ export class UserAPI {
   static profileChangeAvatar(data: FormData){
     return userAPIinstance.put(`${base}/user/profile/avatar`, {data});
   }
+
+  static addUser(data: Record<string, unknown>){
+    return userAPIinstance.post(`${base}/user/search`, {data})
+  }
 }

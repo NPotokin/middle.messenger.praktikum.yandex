@@ -51,7 +51,7 @@ export default class NewChatModal extends Block{
       const chatData= {title: value};
       await ChatController.createNewChat(chatData);
       await ChatController.getChatsSetChats();
-      this.hide()
+      this.hide();
     } else {
       this.children.ErrorLine.setProps({
         error: true,

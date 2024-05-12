@@ -2,7 +2,7 @@ import Block from '../../../../core/Block.ts';
 import { Image } from '../../../../ui/index.ts';
 import AddDeleteMain from './modal/addDeleteUser.ts';
 import AddDeleteDiv from './modal/addDeleteDiv.ts';
-import { DialogAddDeleteUser } from './modal/index.ts';
+import { DialogAddUser, DialogDeleteUser } from './modal/index.ts';
 import connect from '../../../../utils/connect.ts';
 import store, { ChatData } from '../../../../core/Store.ts';
 
@@ -24,12 +24,12 @@ class AreaHeaderComponent extends Block {
         ...props,
         onClick: () => this.toggleAddDeleteMainVisibility(),
       }),
-      DialogAddUser: new DialogAddDeleteUser({
+      DialogAddUser: new DialogAddUser({
         ...props,
         label: 'Добавить',
         ADUtitleText: 'Добавить пользователя',
       }),
-      DialogDeleteUser: new DialogAddDeleteUser({
+      DialogDeleteUser: new DialogDeleteUser({
         ...props,
         label: 'Удалить',
         ADUtitleText: 'Удалить пользователя',
@@ -62,9 +62,9 @@ class AreaHeaderComponent extends Block {
   toggleAddDeleteMainVisibility() {
     const modalElement = this.children.AddDeleteMain.getContent();
     if (modalElement.style.display === 'none' || modalElement.style.display === '') {
-      modalElement.style.display = 'flex'; 
+      modalElement.style.display = 'flex';
     } else {
-      modalElement.style.display = 'none'; 
+      modalElement.style.display = 'none';
     }
   }
 
