@@ -45,8 +45,6 @@ class UserController {
     }
   }
 
-
-
   private static handleError(xhr: XMLHttpRequest, defaultMessage: string) {
     console.error(defaultMessage, xhr.statusText);
     switch (xhr.status) {

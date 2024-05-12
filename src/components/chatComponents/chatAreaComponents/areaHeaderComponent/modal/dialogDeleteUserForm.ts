@@ -1,9 +1,10 @@
+import ChatController from '../../../../../controllers/chatController.ts';
 import Block from '../../../../../core/Block.ts';
 import { Button, Input, ErrorLine } from '../../../../../ui/index.ts';
 import loginValidator from '../../../../../utils/inputValidators/loginValidator.ts';
 
 interface DialogDeleteUserFormInterface{
-
+  onSubmit: (e:Event) => void
 }
 
 export default class DialogDeleteUserForm extends Block{
@@ -11,7 +12,7 @@ export default class DialogDeleteUserForm extends Block{
     super({
       ...props,
       events:{
-        submit: (e: Event) => this.onLogin(e),
+        submit: props.onSubmit
       },
       Button: new Button({
         ...props,
@@ -41,7 +42,7 @@ export default class DialogDeleteUserForm extends Block{
     };
   }
 
-  onLogin(e: Event) {
+  async onLogin(e: Event) {
     e.preventDefault();
     const inputError = this.children.LoginInput.props.error;
 
@@ -51,6 +52,11 @@ export default class DialogDeleteUserForm extends Block{
       console.log({
         login: this.props.login,
       });
+
+      const login = this.props.login
+      await ChatController.deleteUser({login})
+      await ChatController.getChatsSetChats()
+      this.hide()
 
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

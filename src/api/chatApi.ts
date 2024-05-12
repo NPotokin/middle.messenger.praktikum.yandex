@@ -13,17 +13,15 @@ export class ChatAPI {
     return chatAPIinstance.get(`${base}/chats`);
   }
 
-  static findUserByID(data: Record<string, unknown>){
+  static findUserByLogin(data: Record<string, unknown>){
     return chatAPIinstance.post(`${base}/user/search`, {data})
   }
 
-  static addUser(data: Record<string, unknown>){
+  static addUserToChat(data: Record<string, unknown>){
     return chatAPIinstance.put(`${base}/chats/users`, {data})
   }
 
-
-
-  
-
-
+  static deleteUserFromChat(data: Record<string, unknown>){
+    return chatAPIinstance.delete(`${base}/chats/users`, {data})
+  }
 }

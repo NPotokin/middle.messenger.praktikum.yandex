@@ -4,7 +4,7 @@ import { Button, Input, ErrorLine } from '../../../../../ui/index.ts';
 import loginValidator from '../../../../../utils/inputValidators/loginValidator.ts';
 
 interface DialoAddDeleteUserFormInterface{
-
+  onSubmit: (e:Event)=> void
 }
 
 export default class DialogAddUserForm extends Block{
@@ -12,7 +12,7 @@ export default class DialogAddUserForm extends Block{
     super({
       ...props,
       events:{
-        submit: (e: Event) => this.onLogin(e),
+        submit: props.onSubmit
       },
       Button: new Button({
         ...props,
@@ -54,8 +54,9 @@ export default class DialogAddUserForm extends Block{
       });
 
       const login = this.props.login
-      await ChatController.getUserData({login})
-      
+      await ChatController.addUser({login})
+      await ChatController.getChatsSetChats()
+      this.hide()
 
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
