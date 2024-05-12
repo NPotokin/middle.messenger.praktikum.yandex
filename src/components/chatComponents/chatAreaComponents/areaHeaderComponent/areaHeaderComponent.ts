@@ -3,11 +3,14 @@ import { Image } from '../../../../ui/index.ts';
 import AddDeleteMain from './modal/addDeleteUser.ts';
 import AddDeleteDiv from './modal/addDeleteDiv.ts';
 import { DialogAddDeleteUser } from './modal/index.ts';
+import connect from '../../../../utils/connect.ts';
+import store, { ChatData } from '../../../../core/Store.ts';
 
-export default class AreaHeaderComponent extends Block {
+class AreaHeaderComponent extends Block {
   constructor(props:{}) {
     super({
       ...props,
+      chatName: '',
       Img: new Image({
         ...props,
         contSize: '__38',
@@ -59,13 +62,14 @@ export default class AreaHeaderComponent extends Block {
   toggleAddDeleteMainVisibility() {
     const modalElement = this.children.AddDeleteMain.getContent();
     if (modalElement.style.display === 'none' || modalElement.style.display === '') {
-      modalElement.style.display = 'flex'; // Show the modal
+      modalElement.style.display = 'flex'; 
     } else {
-      modalElement.style.display = 'none'; // Hide the modal
+      modalElement.style.display = 'none'; 
     }
   }
 
   render() {
+    const activeChat = store.getState().chats?.find(chat => chat.isActive)?.title;
     return (`
             <div class="chatAreaHeader">
             {{{DialogAddUser}}}
@@ -74,7 +78,7 @@ export default class AreaHeaderComponent extends Block {
                     {{{Img}}}
                 </div>
                 <div class="chatAreaHeader__title">
-                    Вадим
+                    ${activeChat}
                 </div>
                 <div>{{{AddDeleteMain}}}</div>
                 {{{AddDeleteDiv}}}
@@ -82,3 +86,11 @@ export default class AreaHeaderComponent extends Block {
         `);
   }
 }
+
+function mapStateToProps(store: { chats: ChatData[]}) {
+  return{
+    chats: store.chats,
+  };
+}
+
+export default connect(mapStateToProps)(AreaHeaderComponent);

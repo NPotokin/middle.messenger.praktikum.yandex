@@ -24,14 +24,14 @@ class ChatPage extends Block{
     const activeChat = store.getState().chats?.find(chat => chat.isActive);
     const chatAreaContent = activeChat ? '{{{ChatArea}}}' : '{{{InactiveAreaComponent}}}';
 
-    return `
+    return (`
       <div class="block">
         <div class="chat">
           <div class="chatList">{{{ChatList}}}</div>
           <div class="chatArea">${chatAreaContent}</div> 
         </div>
       </div>
-    `;
+    `);
   }
 }
 
