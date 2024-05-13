@@ -170,6 +170,20 @@ export default class Block  {
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
+    //sprint3 addition
+    const childrenProps = [];
+    Object.entries(propsAndStubs).forEach(([key, value]) => {
+      if(Array.isArray(value)) {
+        propsAndStubs[key] = value.map((item) => {
+          if(item instanceof Block) {
+            childrenProps.push(item)
+            return `<div data-id="${item._id}"></div>`
+          }
+
+          return item;
+        }).join('')
+      }
+    })
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
@@ -180,10 +194,11 @@ export default class Block  {
 
     const newElement = fragment.content.firstElementChild as HTMLElement;
 
-    Object.values(this.children).forEach(child => {
+    [...Object.values(this.children), ...childrenProps].forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+      
       stub?.replaceWith(child.getContent());
-    });
+  });
 
     if (this._element) {
       this._element.replaceWith(newElement);

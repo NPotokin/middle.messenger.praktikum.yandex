@@ -29,10 +29,10 @@ class ListItemComponent extends Block{
   async onClick() {
     store.setActiveChat(this.props.id as number)
     console.log('Item clicked:', this.props.id);
-    const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number
-    await ChatController.getTokenSetToken(chatID)
-    const token = store.getState().token as string
-    wsService.openConnection(chatID, token)
+    // const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number
+    // await ChatController.getTokenSetToken(chatID)
+    // const token = store.getState().token as string
+    // wsService.openConnection(chatID, token)
     // wsService.getOldMessages()
   }
 
@@ -40,7 +40,10 @@ class ListItemComponent extends Block{
     const isActiveChat = store.getState().chats?.some(chat => chat.isActive && chat.id === this.props.id);
     const activeChatClass = isActiveChat ? ' listItem--active' : '';
 
+    console.log('listItem')
+
     return(`
+        
         <div class="listItem${activeChatClass}">
         <div class="listItem__image">
             {{{Image}}}
@@ -65,3 +68,6 @@ function mapStateToProps(store: { chats: ChatData[]}) {
 }
 
 export default connect(mapStateToProps)(ListItemComponent);
+
+
+
