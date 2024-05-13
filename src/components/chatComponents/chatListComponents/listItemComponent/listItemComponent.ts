@@ -2,6 +2,8 @@ import store, {ChatData} from '../../../../core/Store.ts';
 import { Image } from '../../../../ui/index.ts';
 import Block from '../../../../core/Block.ts';
 import connect from '../../../../utils/connect.ts';
+import ChatController from '../../../../controllers/chatController.ts';
+import wsService from '../../../../core/WebSocket.ts';
 
 interface ChatInterface{
   chat:{
@@ -24,18 +26,14 @@ class ListItemComponent extends Block{
     });
   }
 
-  // componentDidUpdate(oldProps?:{chats:ChatData[]}, newProps?: {chats:ChatData[]}): boolean {
-  //   if(oldProps === newProps){
-  //     return false;
-  //   }
-  //   return true
-  // }
-  // <-----Почему то работает и без CDU
-
-  onClick() {
-    //@ts-ignore
-    store.setActiveChat(this.props.id);
+  async onClick() {
+    store.setActiveChat(this.props.id as number)
     console.log('Item clicked:', this.props.id);
+    const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number
+    await ChatController.getTokenSetToken(chatID)
+    const token = store.getState().token as string
+    wsService.openConnection(chatID, token)
+    // wsService.getOldMessages()
   }
 
   render() {
@@ -67,4 +65,3 @@ function mapStateToProps(store: { chats: ChatData[]}) {
 }
 
 export default connect(mapStateToProps)(ListItemComponent);
-//   !!!!!   Возможно придется потом дополнить - как появятся данные из стора по сообщениям

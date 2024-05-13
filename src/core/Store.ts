@@ -32,6 +32,7 @@ export interface ChatData {
 export interface AppState {
   user?: User;
   chats?: ChatData[];
+  token?: string, //может быть только один активный
 }
 
 class Store extends EventBus<StoreEvents> {
@@ -61,6 +62,11 @@ class Store extends EventBus<StoreEvents> {
 
   public setChats(chats: ChatData[]) {
     this.set({ chats });
+  }
+
+  public setToken(token: string){
+    //@ts-expect-error
+    this.set(token)
   }
 
   public setActiveChat(chatId: number) {

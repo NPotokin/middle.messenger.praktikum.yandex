@@ -24,4 +24,8 @@ export class ChatAPI {
   static deleteUserFromChat(data: Record<string, unknown>){
     return chatAPIinstance.delete(`${base}/chats/users`, {data})
   }
+
+  static getChatToken(id: number){
+    return chatAPIinstance.post(`${base}/chats/token/${id}`)
+  }
 }

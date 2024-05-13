@@ -75,6 +75,21 @@ class ChatController {
     }
   }
 
+  public static async getTokenSetToken(id: number) {
+    try {
+      const xhr = await ChatAPI.getChatToken(id);
+      if (xhr.status === 200) {
+        const token = JSON.parse(xhr.responseText);
+        console.log('Token:', token);
+        store.setToken(token)
+      } else {
+        throw xhr;
+      }
+    } catch (xhr) {
+      this.handleError(xhr, 'Error getting token');
+    }
+  }
+
   private static handleError(xhr: XMLHttpRequest, defaultMessage: string) {
     console.error(defaultMessage, xhr.statusText);
     switch (xhr.status) {
