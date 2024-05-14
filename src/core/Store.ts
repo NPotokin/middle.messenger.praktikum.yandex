@@ -40,7 +40,7 @@ export interface AppState {
   user?: User;
   chats?: ChatData[];
   token?: string, 
-  messages: SocketMessage[],
+  messages?: SocketMessage[],
 }
 
 class Store extends EventBus<StoreEvents> {

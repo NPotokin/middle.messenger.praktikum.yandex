@@ -1,7 +1,8 @@
 import Block from '../../../../core/Block.ts';
 import ChatInput from './chatInput.ts';
 import { ArrowButton, ErrorLine} from '../../../../ui/index.ts';
-import chatInputValidator from '../../../../utils/inputValidators/chatInputValidator.ts';
+import store from '../../../../core/Store.ts';
+import wsService from '../../../../core/WebSocket.ts';
 
 interface AreaInputFormInteface{
     message?: string,
@@ -21,6 +22,10 @@ export default class AreaInputForm extends Block{
         src: '/icons/arrow-right.svg',
         buttonType: 'submit',
       }),
+      ChatInputField: new ChatInput({
+        placeHolder: 'Сообщение',
+        inputName: 'SendMessage'
+      }),
       ErrorLine: new ErrorLine({
         ...props,
         error: props.ErrorText,
@@ -36,29 +41,19 @@ export default class AreaInputForm extends Block{
     return true;
   }
 
-  init(){
-    const chatInputBind = chatInputValidator.bind(this);
-
-    const ChatInputField = new ChatInput({
-      placeHolder: 'Сообщение',
-      onBlur: chatInputBind,
-    });
-
-    this.children = {
-      ...this.children,
-      ChatInputField,
-    };
-  }
-
-
-  //to-do -> fix blur event with fixing types
-  onMessage(e:Event){
+  async onMessage(e:Event){
     e.preventDefault();
-    this.children.ChatInputField.props.onBlur;
-    const message = this.props.message;
-    console.log(message);
+    const inputElement = document.getElementsByName('SendMessage')[0] as HTMLInputElement
+    const message = inputElement.value
+    if(message.length === 0){
+      this.children.ErrorLine.setProps({error: true, ErrorText: 'Сообщение не может быть пустым'})
+    } 
     // here add ws.send and ws.getOld
-
+    // const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number;
+    // const token = store.getState().token as string;
+    // wsService.openConnection(chatID, token);
+    wsService.sendMessage(message, 'message')
+    wsService.getOldMessages();
   }
 
 

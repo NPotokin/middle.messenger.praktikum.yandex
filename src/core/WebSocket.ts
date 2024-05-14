@@ -39,6 +39,10 @@ class WebSocketService {
 
   private handleMessage = (event: MessageEvent) => {
     console.log('Получены данные', event.data);
+    const data = event.data
+    if(Array.isArray(data)){
+      store.setMessages(data)
+    }
   };
 
   private handleClose = (event: CloseEvent) => {
