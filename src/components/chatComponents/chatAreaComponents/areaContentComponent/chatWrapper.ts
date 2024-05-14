@@ -11,11 +11,11 @@ class ChatWrapper extends Block {
   }
 
   render(): string {
-    return `
+    return (`
         <div class="chatAreaContent">
             {{{messages}}}
         </div>
-        `;
+        `);
   }
 }
 

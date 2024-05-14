@@ -11,12 +11,11 @@ class ListWrapper extends Block {
   }
 
   render(): string {
-    console.log(this.props.chats);
-    return `
+    return (`
         <div>
             {{{cards}}}
         </div>
-        `;
+        `);
   }
 }
 

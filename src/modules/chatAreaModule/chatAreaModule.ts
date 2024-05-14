@@ -26,17 +26,17 @@ class ChatAreaModule extends Block{
     };
   }
 
-  mapChatWrapper(chatItem: SocketMessage[]){
+  mapChatWrapper(chatItem: SocketMessage[]=[]){
     return chatItem?.map(({id, chat_id, user_id, content, time}) =>
       new AreaContentComponent({
-        modifier: user_id === store.getState().user?.id 
-        ? 'outbound'
-        : 'inbound',
+        modifier: user_id === store.getState().user?.id
+          ? 'outbound'
+          : 'inbound',
         text: content,
         date: time,
         chatID: chat_id,
         userID: user_id,
-        lastMessageID: id
+        lastMessageID: id,
       }));
   }
 
@@ -45,9 +45,18 @@ class ChatAreaModule extends Block{
       this.children.MessageList.setProps({
         messages: this.mapChatWrapper(newProps.messages) || [],
       });
+      // const activeChatID = store.getState().chats?.find(chat => chat.isActive)?.id
+      // const thisChatID = store.getState().messages?.find(chat => chat.chat_id)?.chat_id
+      // console.log('activeChatID', activeChatID)
+      // console.log('thisChatID', thisChatID)
+      // if(thisChatID !== activeChatID){
+      //   this.children.MessageList.hide()
+      // }
     }
     return true;
   }
+
+  
 
   render(){
     return(`

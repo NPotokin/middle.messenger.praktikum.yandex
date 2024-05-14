@@ -8,18 +8,17 @@ export default class AreaContentComponent extends Block{
 
     });
   }
-  render(){
-    //here logic for inbound/uotbound selection
-    // const myId = store.getState().user?.id
-    // const myMessage = store.getState().messages.some(message => message.user_id === myId)//double check - mayme not .some
-    // const modifier = myMessage ? 'outbound' : 'inbound'
 
+  
+  render(){
     return(`
           <div class="chatAreaContent__{{modifier}}">
+          <div class='{{class}}'>
               <div class="chatAreaContent__{{modifier}}--message">
                 {{text}}
               </div>
               <div class="chatAreaContent__{{modifier}}--date">{{date}}</div>
+          </div>
           </div>
         `);
   }
@@ -40,7 +39,7 @@ export default class AreaContentComponent extends Block{
 //         <img src="/images/image.png" alt="">
 //     </div>
 //     <div class="chatAreaContent__inbound--date">11:56</div>
-// </div>  
+// </div>
 // <div class="chatAreaContent__outbound">
 //     <div class="chatAreaContent__outbound--message">Круто!</div>
 //     <div class="chatAreaContent__outbound--date">12:00</div>

@@ -24,7 +24,8 @@ export default class ChatInput extends Block{
         name="{{inputName}}" 
         value=""
         class="chatAreaInput__input--input" 
-        placeholder={{placeHolder}}>
+        placeholder={{placeHolder}}
+        autofocus>
     `);
   }
 }
