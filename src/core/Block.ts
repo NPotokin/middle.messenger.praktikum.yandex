@@ -114,7 +114,7 @@ export default class Block  {
   }
 
   componentDidUpdate(oldProps?: BlockInterface, newProps?: BlockInterface) {
-    // console.log(`CDU! old: ${oldProps}, new:${newProps}`);
+    console.log(`CDU! old: ${oldProps}, new:${newProps}`);
     return true;
   }
 
@@ -171,19 +171,19 @@ export default class Block  {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
     //sprint3 addition
-    const childrenProps = [];
+    const childrenProps: Block[] = [];
     Object.entries(propsAndStubs).forEach(([key, value]) => {
       if(Array.isArray(value)) {
         propsAndStubs[key] = value.map((item) => {
           if(item instanceof Block) {
-            childrenProps.push(item)
-            return `<div data-id="${item._id}"></div>`
+            childrenProps.push(item);
+            return `<div data-id="${item._id}"></div>`;
           }
 
           return item;
-        }).join('')
+        }).join('');
       }
-    })
+    });
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
@@ -196,9 +196,9 @@ export default class Block  {
 
     [...Object.values(this.children), ...childrenProps].forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
-      
+
       stub?.replaceWith(child.getContent());
-  });
+    });
 
     if (this._element) {
       this._element.replaceWith(newElement);

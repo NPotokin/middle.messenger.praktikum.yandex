@@ -66,7 +66,7 @@ class Store extends EventBus<StoreEvents> {
 
   public setToken(token: string){
     //@ts-expect-error
-    this.set(token)
+    this.set(token);
   }
 
   public setActiveChat(chatId: number) {

@@ -17,5 +17,5 @@ export class UserAPI {
     return userAPIinstance.put(`${base}/user/profile/avatar`, {data});
   }
 
-  
+
 }

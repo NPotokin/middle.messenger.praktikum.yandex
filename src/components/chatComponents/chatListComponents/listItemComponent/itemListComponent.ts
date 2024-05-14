@@ -8,32 +8,33 @@ import listWrapper from './listWrapper.ts';
 class ItemListComponent extends Block{
   init(){
 
-    const ChatList = new listWrapper({cards: this.mapListWrapper(store.getState().chats!) || []})
+    const ChatList = new listWrapper({cards: this.mapListWrapper(store.getState().chats!) || []});
 
     this.children = {
-      ChatList
-    }
+      ChatList,
+    };
   }
 
   mapListWrapper(listItem:ChatData[]){
-    return listItem?.map(({title, id, unread_count, last_message, }) => 
+    return listItem?.map(({title, id, unread_count, last_message }) =>
       new ListItemComponent({
-        title: title, 
+        title: title,
         id: id,
         messageContent: last_message?.content,
         messageTime: last_message?.time,
+        //next two lines might need fixing
         LImodifier: unread_count! > 0 ? '' : 'none',
         unreadCount: unread_count! > 0 ? unread_count : '',
-      }))
+      }));
   }
 
   componentDidUpdate(oldProps: {chats: ChatData[]}, newProps: {chats: ChatData[]}): boolean {
     if(oldProps.chats !== newProps.chats) {
-        this.children.ChatList.setProps({
-            cards: this.mapListWrapper(newProps.chats) || [],
-        })
-    };
-    return true
+      this.children.ChatList.setProps({
+        cards: this.mapListWrapper(newProps.chats) || [],
+      });
+    }
+    return true;
   }
 
 
@@ -42,12 +43,10 @@ class ItemListComponent extends Block{
         <div>
           {{{ChatList}}}
         </div>
-    `)
+    `);
   }
 }
 
-export default connect(({chats}) => ({chats}))(ItemListComponent)
-
-
+export default connect(({chats}) => ({chats}))(ItemListComponent);
 
 

@@ -8,7 +8,7 @@ export default class DialogDeleteUser extends Block{
       ...props,
       DialogDeleteUserForm: new DialogDeleteUserForm({
         ...props,
-        onSubmit: (e:Event)=> this.onLogin(e)
+        onSubmit: (e:Event)=> this.onLogin(e),
       }),
     });
   }
@@ -24,10 +24,10 @@ export default class DialogDeleteUser extends Block{
         login: this.children.DialogDeleteUserForm.props.login,
       });
 
-      const login = this.children.DialogDeleteUserForm.props.login
-      await ChatController.deleteUser({login})
-      await ChatController.getChatsSetChats()
-      this.hide()
+      const login = this.children.DialogDeleteUserForm.props.login;
+      await ChatController.deleteUser({login});
+      await ChatController.getChatsSetChats();
+      this.hide();
 
     } else {
       this.children.DialogDeleteUserForm.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

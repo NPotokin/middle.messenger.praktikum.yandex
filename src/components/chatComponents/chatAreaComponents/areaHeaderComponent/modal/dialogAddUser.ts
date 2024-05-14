@@ -8,7 +8,7 @@ export default class DialogAddUser extends Block{
       ...props,
       DialogAddUserForm: new DialogAddUserForm({
         ...props,
-        onSubmit: (e:Event)=> this.onLogin(e)
+        onSubmit: (e:Event)=> this.onLogin(e),
       }),
     });
   }
@@ -24,10 +24,10 @@ export default class DialogAddUser extends Block{
         login: this.children.DialogAddUserForm.props.login,
       });
 
-      const login = this.children.DialogAddUserForm.props.login
-      await ChatController.addUser({login})
-      await ChatController.getChatsSetChats()
-      this.hide()
+      const login = this.children.DialogAddUserForm.props.login;
+      await ChatController.addUser({login});
+      await ChatController.getChatsSetChats();
+      this.hide();
 
     } else {
       this.children.DialogAddUserForm.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });

@@ -12,7 +12,7 @@ export default class DialogAddUserForm extends Block{
     super({
       ...props,
       events:{
-        submit: props.onSubmit
+        submit: props.onSubmit,
       },
       Button: new Button({
         ...props,
@@ -53,10 +53,10 @@ export default class DialogAddUserForm extends Block{
         login: this.props.login,
       });
 
-      const login = this.props.login
-      await ChatController.addUser({login})
-      await ChatController.getChatsSetChats()
-      this.hide()
+      const login = this.props.login;
+      await ChatController.addUser({login});
+      await ChatController.getChatsSetChats();
+      this.hide();
 
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
