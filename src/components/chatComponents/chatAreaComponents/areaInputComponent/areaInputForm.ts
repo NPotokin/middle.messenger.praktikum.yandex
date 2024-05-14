@@ -55,10 +55,9 @@ export default class AreaInputForm extends Block{
   onMessage(e:Event){
     e.preventDefault();
     this.children.ChatInputField.props.onBlur;
-
-
     const message = this.props.message;
     console.log(message);
+    // here add ws.send and ws.getOld
 
   }
 

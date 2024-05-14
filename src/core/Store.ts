@@ -28,11 +28,19 @@ export interface ChatData {
   },
   isActive?: boolean,
 }
+export interface SocketMessage{
+  id?: number,
+  chat_id?: number,
+  user_id?: number,
+  content: string,
+  time?: string,
+}
 
 export interface AppState {
   user?: User;
   chats?: ChatData[];
-  token?: string, //может быть только один активный
+  token?: string, 
+  messages: SocketMessage[],
 }
 
 class Store extends EventBus<StoreEvents> {
@@ -62,6 +70,10 @@ class Store extends EventBus<StoreEvents> {
 
   public setChats(chats: ChatData[]) {
     this.set({ chats });
+  }
+
+  public setMessages(messages: SocketMessage[]) {
+    this.set({ messages });
   }
 
   public setToken(token: string){

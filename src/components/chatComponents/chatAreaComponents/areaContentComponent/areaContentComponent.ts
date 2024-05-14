@@ -9,42 +9,40 @@ export default class AreaContentComponent extends Block{
     });
   }
   render(){
+    //here logic for inbound/uotbound selection
+    // const myId = store.getState().user?.id
+    // const myMessage = store.getState().messages.some(message => message.user_id === myId)//double check - mayme not .some
+    // const modifier = myMessage ? 'outbound' : 'inbound'
+
     return(`
-        <div class="chatAreaContent">
-        <div class="chatAreaContent__date">19 июня</div>
-        
-        <div class="chatAreaContent__inbound">
-            <div class="chatAreaContent__inbound--message">Привет! Смотри, 
-                тут всплыл интересный кусок лунной космической истории — НАСА в
-                 какой-то момент попросила Хассельблад адаптировать модель SWC 
-                 для полетов на Луну. Сейчас мы все знаем что астронавты летали 
-                 с моделью 500 EL — и к слову говоря, все тушки этих камер все еще 
-                 находятся на поверхности Луны, так как астронавты с собой забрали 
-                 только кассеты с пленкой.<br><br>
-    
-                 Хассельблад в итоге адаптировал SWC 
-                 для космоса, но что-то пошло не так и на
-                  ракету они так никогда и не попали. Всего их было 
-                  произведено 25 штук, одну из них недавно продали 
-                  на аукционе за 45000 евро.
-                  
-                  </div>
-            <div class="chatAreaContent__inbound--date">11:56</div>
-        </div>
-    
-        <div class="chatAreaContent__inbound--image">
-            <div class="chatAreaContent__inbound--message">
-                <img src="/images/image.png" alt="">
-            </div>
-            <div class="chatAreaContent__inbound--date">11:56</div>
-        </div>  
-            
-        <div class="chatAreaContent__outbound">
-            <div class="chatAreaContent__outbound--message">Круто!</div>
-            <div class="chatAreaContent__outbound--date">12:00</div>
-        </div>
-    </div>
+          <div class="chatAreaContent__{{modifier}}">
+              <div class="chatAreaContent__{{modifier}}--message">
+                {{text}}
+              </div>
+              <div class="chatAreaContent__{{modifier}}--date">{{date}}</div>
+          </div>
         `);
   }
 }
 
+
+//На всякий случай
+// <div class="chatAreaContent">
+// <div class="chatAreaContent__date">19 июня</div>
+//   <div class="chatAreaContent__inbound">
+//       <div class="chatAreaContent__inbound--message">
+//       Входящее сообщение
+//       </div>
+//       <div class="chatAreaContent__inbound--date">11:56</div>
+//   </div>
+// <div class="chatAreaContent__inbound--image">
+//     <div class="chatAreaContent__inbound--message">
+//         <img src="/images/image.png" alt="">
+//     </div>
+//     <div class="chatAreaContent__inbound--date">11:56</div>
+// </div>  
+// <div class="chatAreaContent__outbound">
+//     <div class="chatAreaContent__outbound--message">Круто!</div>
+//     <div class="chatAreaContent__outbound--date">12:00</div>
+// </div>
+// </div>
