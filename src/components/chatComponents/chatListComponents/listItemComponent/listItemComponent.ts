@@ -50,11 +50,11 @@ class ListItemComponent extends Block{
         </div>
         <div class="listItem__content">
             <p class="listItem__title">{{title}}</p>
-            <p class="listItem__text">{{last_message.content}}</p>
+            <p class="listItem__text">{{messageContent}}</p>
         </div>
         <div class="listItem__info">
-            <p class="listItem__date">{{last_message_time}}</p>
-            <div class="listItem__badge{{LImodifier}}">{{unread_count}}</div>
+            <p class="listItem__date">{{messageTime}}</p>
+            <div class="listItem__badge{{LImodifier}}">{{unreadCount}}</div>
         </div>
         </div>
         `);
