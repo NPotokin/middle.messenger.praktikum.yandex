@@ -11,7 +11,6 @@ class ChatWrapper extends Block {
   }
 
   render(): string {
-    console.log(this.props.messages);
     return `
         <div class="chatAreaContent">
             {{{messages}}}

@@ -39,9 +39,11 @@ class WebSocketService {
 
   private handleMessage = (event: MessageEvent) => {
     console.log('Получены данные', event.data);
-    const data = event.data
+    const data = JSON.parse(event.data)
     if(Array.isArray(data)){
       store.setMessages(data)
+      console.log('old messages', data)
+
     }
   };
 

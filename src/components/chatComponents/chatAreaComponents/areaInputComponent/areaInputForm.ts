@@ -3,6 +3,7 @@ import ChatInput from './chatInput.ts';
 import { ArrowButton, ErrorLine} from '../../../../ui/index.ts';
 import store from '../../../../core/Store.ts';
 import wsService from '../../../../core/WebSocket.ts';
+import ChatController from '../../../../controllers/chatController.ts';
 
 interface AreaInputFormInteface{
     message?: string,
@@ -48,12 +49,9 @@ export default class AreaInputForm extends Block{
     if(message.length === 0){
       this.children.ErrorLine.setProps({error: true, ErrorText: 'Сообщение не может быть пустым'})
     } 
-    // here add ws.send and ws.getOld
-    // const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number;
-    // const token = store.getState().token as string;
-    // wsService.openConnection(chatID, token);
     wsService.sendMessage(message, 'message')
     wsService.getOldMessages();
+    // ChatController.getChatsSetChats()
   }
 
 
