@@ -4,7 +4,6 @@ import { ArrowButton, ErrorLine} from '../../../../ui/index.ts';
 import store from '../../../../core/Store.ts';
 import wsService from '../../../../core/WebSocket.ts';
 import ChatController from '../../../../controllers/chatController.ts';
-import ChatController from '../../../../controllers/chatController.ts';
 
 interface AreaInputFormInteface{
     message?: string,
