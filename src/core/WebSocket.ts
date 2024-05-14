@@ -43,7 +43,6 @@ class WebSocketService {
     if(Array.isArray(data)){
       store.setMessages(data)
       console.log('old messages', data)
-
     }
   };
 

@@ -1,7 +1,6 @@
 import Block from '../../../../core/Block.ts';
 import ChatInput from './chatInput.ts';
 import { ArrowButton, ErrorLine} from '../../../../ui/index.ts';
-import store from '../../../../core/Store.ts';
 import wsService from '../../../../core/WebSocket.ts';
 import ChatController from '../../../../controllers/chatController.ts';
 
@@ -52,6 +51,7 @@ export default class AreaInputForm extends Block{
     wsService.sendMessage(message, 'message');
     wsService.getOldMessages();
     inputElement.value = ''
+    ChatController.getChatsSetChats()
   }
 
 

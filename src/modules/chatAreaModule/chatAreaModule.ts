@@ -45,13 +45,6 @@ class ChatAreaModule extends Block{
       this.children.MessageList.setProps({
         messages: this.mapChatWrapper(newProps.messages) || [],
       });
-      // const activeChatID = store.getState().chats?.find(chat => chat.isActive)?.id
-      // const thisChatID = store.getState().messages?.find(chat => chat.chat_id)?.chat_id
-      // console.log('activeChatID', activeChatID)
-      // console.log('thisChatID', thisChatID)
-      // if(thisChatID !== activeChatID){
-      //   this.children.MessageList.hide()
-      // }
     }
     return true;
   }

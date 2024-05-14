@@ -26,9 +26,14 @@ export interface ChatData {
     time?: string,
     content?: string
   },
-  isActive?: boolean,
+  isActive?: boolean
 }
-export interface SocketMessage{
+
+export interface ActiveChat { 
+  id?: number,
+}
+
+export interface SocketMessage {
   id?: number,
   chat_id?: number,
   user_id?: number,
@@ -39,8 +44,9 @@ export interface SocketMessage{
 export interface AppState {
   user?: User;
   chats?: ChatData[];
-  token?: string,
-  messages?: SocketMessage[],
+  token?: string;
+  messages?: SocketMessage[];
+  activeChat?: ActiveChat; 
 }
 
 class Store extends EventBus<StoreEvents> {
@@ -76,18 +82,21 @@ class Store extends EventBus<StoreEvents> {
     this.set({ messages });
   }
 
-  public setToken(token: string){
+  public setToken(token: string) {
     //@ts-expect-error
-    this.set(token);
+    this.set( token );
   }
 
   public setActiveChat(chatId: number) {
+    const activeChat: ActiveChat = { id: chatId };
+    this.set({ activeChat });
     const chats = this.state.chats?.map(chat => ({
       ...chat,
       isActive: chat.id === chatId,
     })) ?? [];
     this.set({ chats });
   }
+  
 
   private set(nextState: Partial<AppState>) {
     const prevState = { ...this.state };

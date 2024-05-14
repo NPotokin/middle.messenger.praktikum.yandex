@@ -29,15 +29,18 @@ class ListItemComponent extends Block{
   async onClick() {
     store.setActiveChat(this.props.id as number);
     console.log('Item clicked:', this.props.id);
-    const chatID = store.getState().chats?.find(chat => chat.isActive)!.id as number;
+    const chatID = store.getState().activeChat?.id as number;
     await ChatController.getTokenSetToken(chatID);
     const token = store.getState().token as string;
     wsService.openConnection(chatID, token);
     wsService.getOldMessages();
+    ChatController.getChatsSetChats()
+
   }
 
   render() {
-    const isActiveChat = store.getState().chats?.some(chat => chat.isActive && chat.id === this.props.id);
+    const isActiveChat = store.getState().chats?.some(chat => chat.isActive && chat.id  || 
+     store.getState().activeChat?.id === this.props.id);
     const activeChatClass = isActiveChat ? ' listItem--active' : '';
     return(`
         

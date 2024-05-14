@@ -69,7 +69,8 @@ class AreaHeaderComponent extends Block {
   }
 
   render() {
-    const activeChat = store.getState().chats?.find(chat => chat.isActive)?.title;
+    const activeChat =store.getState().chats?.find(chat => chat.isActive)?.title
+     || store.getState().chats?.find(chat => chat.id === store.getState().activeChat?.id)?.title;
     return (`
             <div class="chatAreaHeader">
             {{{DialogAddUser}}}
