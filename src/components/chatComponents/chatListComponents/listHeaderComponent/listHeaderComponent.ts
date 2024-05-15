@@ -1,7 +1,7 @@
 import Block from '../../../../core/Block.ts';
 import { Button } from '../../../../ui/index.ts';
 import ListHeaderLink from './listHeaderLink.ts';
-import ListHeaderForm from './listheaderForm.ts';
+import ListHeaderForm from './listHeaderForm.ts';
 import NewChatModal from './newChatModal.ts';
 
 interface ListHeaderComponentInterface{
