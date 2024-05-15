@@ -29,7 +29,7 @@ class ChatAreaModule extends Block{
   }
 
   mapChatWrapper(chatItem: SocketMessage[]=[]){
-    return chatItem?.reverse().map(({id, chat_id, user_id, content, time}) =>
+    return chatItem?.map(({id, chat_id, user_id, content, time}) =>
       new AreaContentComponent({
         modifier: user_id === store.getState().user?.id
           ? 'outbound'

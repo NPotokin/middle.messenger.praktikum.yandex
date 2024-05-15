@@ -1,12 +1,14 @@
 .chatAreaContent {
     margin: 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    flex: 0.99;
-    /* max-height: 80vh;
-    overflow-y: auto; */
+    flex-direction: column-reverse;
+    height: 80vh; 
+    overflow-y: auto;
+    max-height: 80vh;
+    flex: content;
+    scroll-behavior: smooth;
 }
+
 
 /* .chatAreaContent__date {
     margin: 48px auto 30px;
