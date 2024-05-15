@@ -55,9 +55,10 @@ class WebSocketService {
     const data = JSON.parse(event.data);
     if (Array.isArray(data)) {
       console.log('old messages', data);
-      store.setMessages(data);
+      store.setMessages(data);  
     } else {
       console.log('New message', data);
+      store.addMessage(data)
     }
   };
 

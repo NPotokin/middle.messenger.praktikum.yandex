@@ -49,7 +49,6 @@ export default class AreaInputForm extends Block{
       this.children.ErrorLine.setProps({error: true, ErrorText: 'Сообщение не может быть пустым'});
     }
     wsService.sendMessage(message, 'message');
-    wsService.getOldMessages();
     inputElement.value = ''
   }
 
