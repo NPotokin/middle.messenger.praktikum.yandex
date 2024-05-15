@@ -20,7 +20,7 @@ class ChatAreaModule extends Block{
 
   init(){
     const messages = store.getState().messages || [];
-    const MessageList = new chatWrapper({ messages: this.mapChatWrapper(messages) });
+    const MessageList = new chatWrapper({ messages: this.mapChatWrapper(messages)});
 
     this.children = {
       ...this.children,

@@ -41,7 +41,7 @@ class UserData extends Block{
         ...props,
         userKey:'Имя в чате',
         userValue: props.user.display_name == null
-          ? props.user.first_name
+          ? ''
           : props.user.display_name,
       }),
       Phone: new UserDataLine({

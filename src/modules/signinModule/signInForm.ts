@@ -150,7 +150,6 @@ export default class SignInForm extends Block{
 
       SignupController.createNewUser(userData);
 
-      // navigate('chatPage');
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }
