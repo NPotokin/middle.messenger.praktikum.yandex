@@ -48,8 +48,9 @@
     font-size: 9px;
     font-weight: 500;
     line-height: 13px;
-    margin: 12px 0 4px;
-    padding-left: 20px;
+    margin: 2px;
+    padding-left: 2px;
+    min-width: 60px;
     color: rgb(153 153 153 / 100%);
     display: flex;
     text-align: right;

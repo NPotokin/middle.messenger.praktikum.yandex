@@ -3,6 +3,7 @@ import store, { ChatData }  from '../../../../core/Store.ts';
 import connect from '../../../../utils/connect.ts';
 import ListItemComponent from './listItemComponent.ts';
 import listWrapper from './listWrapper.ts';
+import formatTime from '../../../../utils/timeFormatter.ts';
 
 
 class ItemListComponent extends Block{
@@ -21,8 +22,7 @@ class ItemListComponent extends Block{
         title: title,
         id: id,
         messageContent: last_message?.content,
-        messageTime: last_message?.time,
-        //next two lines might need fixing
+        messageTime: formatTime(last_message?.time || ''),
         LImodifier: unread_count! > 0 ? '' : 'none',
         unreadCount: unread_count! > 0 ? unread_count : '',
       }));

@@ -3,6 +3,7 @@ import { AreaHeaderComponent, AreaContentComponent, AreaInputComponent } from '.
 import chatWrapper from '../../components/chatComponents/chatAreaComponents/areaContentComponent/chatWrapper.ts';
 import store, { SocketMessage } from '../../core/Store.ts';
 import connect from '../../utils/connect.ts';
+import formatTime from '../../utils/timeFormatter.ts';
 class ChatAreaModule extends Block{
   constructor(props:{}){
     super({
@@ -33,7 +34,7 @@ class ChatAreaModule extends Block{
           ? 'outbound'
           : 'inbound',
         text: content,
-        date: time,
+        date: formatTime(time)|| '',
         chatID: chat_id,
         userID: user_id,
         lastMessageID: id,
