@@ -102,7 +102,7 @@ class Store extends EventBus<StoreEvents> {
 
   public addMessage(message:SocketMessage){
     const oldMessages = store.getState().messages ?? [];
-    const newMessages = [message,...oldMessages]
+    const newMessages = [ message, ...oldMessages ]
     store.setMessages(newMessages)
   }
   

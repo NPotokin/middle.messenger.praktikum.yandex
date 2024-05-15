@@ -17,6 +17,7 @@ class ChatAreaModule extends Block{
     });
   }
 
+
   init(){
     const messages = store.getState().messages || [];
     const MessageList = new chatWrapper({ messages: this.mapChatWrapper(messages) });
@@ -34,7 +35,7 @@ class ChatAreaModule extends Block{
           ? 'outbound'
           : 'inbound',
         text: content,
-        date: formatTime(time)|| '',
+        date: formatTime(time!) || '',
         chatID: chat_id,
         userID: user_id,
         lastMessageID: id,
@@ -49,9 +50,7 @@ class ChatAreaModule extends Block{
     }
     return true;
   }
-
-  
-
+ 
   render(){
     return(`
             <div class="chatArea">

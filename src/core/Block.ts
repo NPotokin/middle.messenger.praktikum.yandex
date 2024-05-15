@@ -90,7 +90,7 @@ export default class Block  {
   _componentDidMount() {
     // this._checkInDom();
     this.componentDidMount(this.props); //this.props by me and questinable
-
+    console.log('_cdu')
     Object.values(this.children).forEach(child => {
       child.dispatchComponentDidMount();
     });
