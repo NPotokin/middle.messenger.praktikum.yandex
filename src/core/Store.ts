@@ -87,9 +87,12 @@ class Store extends EventBus<StoreEvents> {
     this.set( token );
   }
 
-  public setActiveChat(chatId: number) {
+  public setActiveChatID(chatId: number) {
     const activeChat: ActiveChat = { id: chatId };
     this.set({ activeChat });
+  }
+
+  public setActiveChat(chatId: number) {
     const chats = this.state.chats?.map(chat => ({
       ...chat,
       isActive: chat.id === chatId,

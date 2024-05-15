@@ -51,7 +51,6 @@ export default class AreaInputForm extends Block{
     wsService.sendMessage(message, 'message');
     wsService.getOldMessages();
     inputElement.value = ''
-    ChatController.getChatsSetChats()
   }
 
 
