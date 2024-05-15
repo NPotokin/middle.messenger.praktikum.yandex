@@ -30,7 +30,7 @@
 }
 
 .chatAreaContent__inbound--message {
-    margin: 10px 10px 5px 10px;
+    margin: 10px 10px 5px;
     color: #1E1E1E;
     font-weight: 500;
     font-size: 12px;
@@ -43,7 +43,7 @@
     font-weight: 500;
     text-align: right;
     color: #999;
-    margin: 5px 10px 10px 10px; 
+    margin: 5px 10px 10px; 
 }
 
 .chatAreaContent__outbound {
@@ -55,7 +55,7 @@
 }
 
 .chatAreaContent__outbound--message {
-    margin: 10px 10px 5px 10px;
+    margin: 10px 10px 5px;
     color: #1E1E1E;
     font-weight: 500;
     font-size: 12px;
@@ -68,7 +68,7 @@
     font-weight: 500;
     text-align: right;
     color: #3369F3;
-    margin: 5px 10px 10px 10px; 
+    margin: 5px 10px 10px; 
 }
 
 
