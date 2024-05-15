@@ -50,7 +50,7 @@ class ChatAreaModule extends Block{
     }
     return true;
   }
- 
+
   render(){
     return(`
             <div class="chatArea">

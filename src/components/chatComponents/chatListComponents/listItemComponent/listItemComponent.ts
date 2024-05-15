@@ -40,11 +40,11 @@ class ListItemComponent extends Block{
     await wsService.closeConnection();
     wsService.openConnection(chatID, token);
 
-    await wsService.getOldMessages(); 
+    await wsService.getOldMessages();
 
     await ChatController.getChatsSetChats();
     store.setActiveChat(chatId);
-}
+  }
 
 
   render() {

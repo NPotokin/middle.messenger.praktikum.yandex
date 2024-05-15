@@ -9,7 +9,7 @@ export default class AreaContentComponent extends Block{
     });
   }
 
-  
+
   render(){
     return(`
           <div class="chatAreaContent__{{modifier}}">

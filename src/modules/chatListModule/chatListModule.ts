@@ -1,8 +1,6 @@
-import Block, { BlockInterface } from '../../core/Block.ts';
+import Block from '../../core/Block.ts';
 import { ListHeaderComponent } from '../../components/index.ts';
 import { ItemListComponent } from '../../components/chatComponents/chatListComponents/listItemComponent/index.ts';
-import connect from '../../utils/connect.ts';
-import store, {ChatData} from '../../core/Store.ts';
 export default class ChatListModule extends Block{
   constructor(props:{}){
     super({

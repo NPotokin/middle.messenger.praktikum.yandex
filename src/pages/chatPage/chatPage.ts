@@ -21,8 +21,8 @@ class ChatPage extends Block{
   }
 
   render(): string {
-    const activeChat = store.getState().chats?.find(chat => chat.id === 
-      store.getState().activeChat?.id
+    const activeChat = store.getState().chats?.find(chat => chat.id ===
+      store.getState().activeChat?.id,
     );
     const chatAreaContent = activeChat ? '{{{ChatArea}}}' : '{{{InactiveAreaComponent}}}';
 

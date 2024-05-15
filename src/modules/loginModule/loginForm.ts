@@ -1,6 +1,5 @@
 import ChatController from '../../controllers/chatController.ts';
 import SignupController from '../../controllers/signupController.ts';
-import UserController from '../../controllers/userController.ts';
 import Block from '../../core/Block.ts';
 import { Button, ErrorLine, Input } from '../../ui/index.ts';
 import loginValidator from '../../utils/inputValidators/loginValidator.ts';

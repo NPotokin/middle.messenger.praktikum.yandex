@@ -81,7 +81,6 @@ export default class HTTPTransport {
       if (method === METHOD.Get || !data) {
         xhr.send();
       } else if(data instanceof FormData){
-        // xhr.setRequestHeader('Accept', 'application/json')
         xhr.send(data);
       } else {
         xhr.setRequestHeader('Content-Type', 'application/json');

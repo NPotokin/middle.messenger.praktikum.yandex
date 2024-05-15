@@ -55,10 +55,10 @@ class WebSocketService {
     const data = JSON.parse(event.data);
     if (Array.isArray(data)) {
       console.log('old messages', data);
-      store.setMessages(data);  
+      store.setMessages(data);
     } else {
       console.log('New message', data);
-      store.addMessage(data)
+      store.addMessage(data);
     }
   };
 
@@ -109,23 +109,23 @@ class WebSocketService {
   }
 
   public closeConnection(): Promise<void> {
-    return new Promise((resolve, reject) => {
-        if (this.socket) {
-            console.log('Closing WebSocket connection');
-            this.socket.addEventListener('close', () => {
-                this.cleanup();
-                resolve();
-            }, { once: true });
-            this.socket.close();
-            this.socket = null;
-        } else {
-            console.warn('No WebSocket connection to close');
-            resolve();
-        }
-        this.connectionPromise = null;
-        this.connectionResolver = null;
+    return new Promise((resolve) => {
+      if (this.socket) {
+        console.log('Closing WebSocket connection');
+        this.socket.addEventListener('close', () => {
+          this.cleanup();
+          resolve();
+        }, { once: true });
+        this.socket.close();
+        this.socket = null;
+      } else {
+        console.warn('No WebSocket connection to close');
+        resolve();
+      }
+      this.connectionPromise = null;
+      this.connectionResolver = null;
     });
-}
+  }
 
 
   private cleanup() {

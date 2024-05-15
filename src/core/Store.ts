@@ -29,7 +29,7 @@ export interface ChatData {
   isActive?: boolean
 }
 
-export interface ActiveChat { 
+export interface ActiveChat {
   id?: number,
 }
 
@@ -46,7 +46,7 @@ export interface AppState {
   chats?: ChatData[];
   token?: string;
   messages?: SocketMessage[];
-  activeChat?: ActiveChat; 
+  activeChat?: ActiveChat;
 }
 
 class Store extends EventBus<StoreEvents> {
@@ -83,7 +83,7 @@ class Store extends EventBus<StoreEvents> {
   }
 
   public setToken(token: string) {
-    //@ts-expect-error
+    //@ts-expect-error due to Partial<> method - but it works
     this.set( token );
   }
 
@@ -102,10 +102,10 @@ class Store extends EventBus<StoreEvents> {
 
   public addMessage(message:SocketMessage){
     const oldMessages = store.getState().messages ?? [];
-    const newMessages = [ message, ...oldMessages ]
-    store.setMessages(newMessages)
+    const newMessages = [ message, ...oldMessages ];
+    store.setMessages(newMessages);
   }
-  
+
 
   private set(nextState: Partial<AppState>) {
     const prevState = { ...this.state };
