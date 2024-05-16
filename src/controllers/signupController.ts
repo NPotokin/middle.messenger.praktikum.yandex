@@ -23,7 +23,7 @@ class SignupController {
       if (xhr.status === 200) {
         console.log('Login Success');
         await this.getUserDataToStore();
-
+        window.router.go('/messenger');
       } else {
         throw xhr;
       }

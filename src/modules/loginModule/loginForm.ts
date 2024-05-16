@@ -87,8 +87,6 @@ export default class LoginForm extends Block{
 
       await SignupController.loginUser(userCredentials);
       await ChatController.getChatsSetChats();
-      window.router.go('/messenger');
-
     } else {
       this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
     }
