@@ -9,7 +9,7 @@ class SignupController {
         console.log('Signup successful');
         await this.getUserDataToStore();
         window.router.go('/messenger');
-      } else {
+      }  else {
         throw xhr;
       }
     } catch (xhr) {
@@ -24,6 +24,13 @@ class SignupController {
         console.log('Login Success');
         await this.getUserDataToStore();
         window.router.go('/messenger');
+      } else if (xhr.status === 400){
+        const responseErrorText = JSON.parse(xhr.responseText)
+        if(responseErrorText.reason === 'User already in system' ){
+          console.log('Already logged in - getting data...');
+          await this.getUserDataToStore();
+          window.router.go('/messenger');
+        }
       } else {
         throw xhr;
       }
