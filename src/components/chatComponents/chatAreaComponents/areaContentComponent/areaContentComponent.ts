@@ -10,15 +10,13 @@ export default class AreaContentComponent extends Block{
   }
 
 
-  render(){
+  render(): string {
     return(`
           <div class="chatAreaContent__{{modifier}}">
-          <div class='{{class}}'>
               <div class="chatAreaContent__{{modifier}}--message">
                 {{text}}
               </div>
               <div class="chatAreaContent__{{modifier}}--date">{{date}}</div>
-          </div>
           </div>
         `);
   }

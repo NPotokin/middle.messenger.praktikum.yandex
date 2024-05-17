@@ -1,10 +1,8 @@
 import Block from '../../../../core/Block.ts';
-import connect from '../../../../utils/connect.ts';
-import { SocketMessage } from '../../../../core/Store.ts';
 
 
-class ChatWrapper extends Block {
-  constructor(props: SocketMessage[]) {
+export default class ChatWrapper extends Block {
+  constructor(props: {}) {
     super({
       ...props,
     });
@@ -20,4 +18,3 @@ class ChatWrapper extends Block {
 }
 
 
-export default connect(({messages}) => ({messages}))(ChatWrapper);
