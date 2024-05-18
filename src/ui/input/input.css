@@ -1,10 +1,11 @@
 .input {
     display: flex;
     flex-direction: column;
+    height: 50px;
 }
 
 .input__label {
-    margin-top: 9px;
+    margin-top: 12px;
     margin-bottom: 6px;
     transform: translateY(1px);
     display: flex;

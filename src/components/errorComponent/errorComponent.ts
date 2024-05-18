@@ -1,6 +1,6 @@
 import Block from '../../core/Block.ts';
 import { Button } from '../../ui/index.ts';
-import navigate from '../../utils/navigate.ts';
+
 
 export default class ErrorComponent extends Block{
   constructor(props:{}){
@@ -10,11 +10,9 @@ export default class ErrorComponent extends Block{
   }
 
   init() {
-    const navigateBind = navigate.bind(this);
-
     const BackToChatsButton = new Button({
-      onClick: () => navigateBind('chatPage'),
-      label: 'Назад к чатам',
+      onClick: () => window.router.back(),
+      label: 'Давайте попробуем еще раз',
       type: 'link',
     });
 

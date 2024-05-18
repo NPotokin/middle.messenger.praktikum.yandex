@@ -1,41 +1,68 @@
 import Block from '../../../core/Block.ts';
+import {User} from '../../../core/Store.ts';
 import { UserDataLine } from './index.ts';
+import connect from '../../../utils/connect.ts';
 
-export default class UserData extends Block{
-  constructor(props:{}){
+interface UserDataInterface{
+  user:{
+    email:string,
+    login:string,
+    first_name:string,
+    second_name:string,
+    display_name?:string,
+    phone:string,
+  }
+}
+class UserData extends Block{
+  constructor(props:UserDataInterface){
     super({
       ...props,
       Email: new UserDataLine({
         ...props,
         userKey:'Почта',
-        userValue:'pochta@yandex.ru',
+        userValue: props.user.email,
       }),
       Login: new UserDataLine({
         ...props,
         userKey:'Логин',
-        userValue:'ivanivanov',
+        userValue: props.user.login,
       }),
       Name: new UserDataLine({
         ...props,
         userKey:'Имя',
-        userValue:'Иван',
+        userValue: props.user.first_name,
       }),
       Surname: new UserDataLine({
         ...props,
         userKey:'Фамилия',
-        userValue:'Иванов',
+        userValue: props.user.second_name,
       }),
       ChatName: new UserDataLine({
         ...props,
         userKey:'Имя в чате',
-        userValue:'Иван',
+        userValue: props.user.display_name == null
+          ? ''
+          : props.user.display_name,
       }),
       Phone: new UserDataLine({
         ...props,
         userKey:'Телефон',
-        userValue:'+7 (909) 967 30 30',
+        userValue: props.user.phone,
       }),
     });
+  }
+
+  componentDidUpdate(oldProps: {user:User}, newProps: {user:User}): boolean {
+    if(oldProps === newProps){
+      return false;
+    }
+    this.children.Email.setProps({userValue:newProps.user.email});
+    this.children.Login.setProps({userValue:newProps.user.login});
+    this.children.Name.setProps({userValue:newProps.user.first_name});
+    this.children.Surname.setProps({userValue:newProps.user.second_name});
+    this.children.ChatName.setProps({userValue:newProps.user.display_name});
+    this.children.Phone.setProps({userValue:newProps.user.phone});
+    return true;
   }
 
   render(){
@@ -51,3 +78,11 @@ export default class UserData extends Block{
         `);
   }
 }
+
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
+}
+
+export default connect(mapStateToProps)(UserData);

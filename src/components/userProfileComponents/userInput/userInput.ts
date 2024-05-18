@@ -19,7 +19,9 @@ export default class UserInput extends Block {
   constructor(props: userInputInterface){
     super({
       ...props,
-      UserInputField: new UserInputField({...props}),
+      UserInputField: new UserInputField({
+        ...props,
+      }),
       UserInputErrorText: new UserInputErrorText({
         error: props.inputText,
       }),
@@ -34,6 +36,7 @@ export default class UserInput extends Block {
     this.children.UserInputErrorText.setProps(newProps);
     return true;
   }
+
 
   render(): string {
     return(`

@@ -1,7 +1,6 @@
 import Block from '../../core/Block.ts';
 import { ListHeaderComponent } from '../../components/index.ts';
 import { ItemListComponent } from '../../components/chatComponents/chatListComponents/listItemComponent/index.ts';
-
 export default class ChatListModule extends Block{
   constructor(props:{}){
     super({
@@ -18,6 +17,18 @@ export default class ChatListModule extends Block{
     });
   }
 
+  // componentDidUpdate(oldProps?: {}, newProps?: {}): boolean {
+  //   console.log('old pros:', oldProps)
+  //   console.log('new pros:', newProps)
+  //   console.log('children:', this.children.ItemList.children)
+  //   if(oldProps === newProps){
+  //     return false
+  //   }
+
+
+  //   return true
+  // }
+
   render(){
     return(`
         <div>
@@ -27,4 +38,12 @@ export default class ChatListModule extends Block{
         `);
   }
 }
+
+// function mapStateToProps(store: { chats: ChatData[]}) {
+//   return{
+//     chats: store.chats,
+//   };
+// }
+
+// export default connect(mapStateToProps)(ChatListModule);
 

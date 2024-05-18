@@ -5,7 +5,7 @@ export default function lastNameValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.SecondNameInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.SecondNameInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.SecondNameInput.setProps({ error: true, inputText: 'Фамилия не значится в реестре ФСБ' });
   }
 
   this.setProps({lastName: inputValue});

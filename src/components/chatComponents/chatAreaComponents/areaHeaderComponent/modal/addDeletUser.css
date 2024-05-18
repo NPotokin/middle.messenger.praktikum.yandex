@@ -8,12 +8,9 @@
     padding: 0;
     width: 350px;
     height: 260px;
-    transform: translate(-60vh, 10vh);
     background-color: rgb(255 255 255 / 100%);
-    position: absolute;
-    top: 25vh;
-    left: 75vw;
     z-index: 1000;
+    margin-top: 25vh;
 }
 
 .ADUmodal {
@@ -28,7 +25,10 @@
     box-shadow: 0 0 10px rgb(0 0 0 / 14%);
     box-sizing: border-box;
     background-color: rgb(255 255 255 / 100%);
-    
+}
+
+.ADUmodal button{
+    margin-top: 30px;
 }
 
 .ADUmodal__title {

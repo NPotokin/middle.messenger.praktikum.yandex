@@ -5,7 +5,7 @@ export default function firstNameValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.FirstNameInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.FirstNameInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.FirstNameInput.setProps({ error: true, inputText: 'А это точно Ваше имя?' });
   }
 
   this.setProps({firstName: inputValue});

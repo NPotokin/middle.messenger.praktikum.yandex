@@ -5,7 +5,7 @@ export default function passwordValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.PasswordInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.PasswordInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.PasswordInput.setProps({ error: true, inputText: 'Давайте попробуем усложнить!' });
   }
   this.setProps({password: inputValue});
 }

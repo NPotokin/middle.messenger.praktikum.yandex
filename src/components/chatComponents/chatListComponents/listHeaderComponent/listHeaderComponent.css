@@ -23,6 +23,7 @@
 
 .listHeader__search {
     margin-bottom: 14px;
+    margin-top: 15px;
     background-color: rgb(239 239 239 / 100%);
     border-radius: 5px;
     border: none;
@@ -59,4 +60,46 @@
 
 .listHeader__input:focus::placeholder {
     opacity: 0;
+}
+
+/* MODAL */
+.newChatModal{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1000;
+}
+
+.newChatModal__dialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 340px;
+    height: 257px;
+    margin-top: 50vh;
+    padding: 40px 30px;
+    border: solid var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 14%);
+    box-sizing: border-box;
+}
+
+.newChatModal__title{
+    text-align: center;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.newChatModal__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.newChatModal__form button{
+    margin-top:40px;
 }

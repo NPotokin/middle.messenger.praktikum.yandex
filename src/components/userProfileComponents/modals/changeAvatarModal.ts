@@ -2,7 +2,7 @@ import Block from '../../../core/Block.ts';
 import { Button, Input } from '../../../ui/index.ts';
 import ModalTitle from './modalTitle.ts';
 import ModalError from './modalError.ts';
-import navigate from '../../../utils/navigate.ts';
+import UserController from '../../../controllers/userController.ts';
 
 interface CAMinterface{}
 interface FileInputChangeEvent extends Event {
@@ -101,7 +101,11 @@ export default class ChangeAvatarModal extends Block{
       } else {
         const modalErrorElement = modalErrorComponent.getContent();
         modalErrorElement.style.display = 'none';
-        navigate('profilePage');
+
+        const imageData = new FormData();
+        imageData.append('avatar', fileInputElement.files[0]);
+        UserController.changeAvatar(imageData);
+        window.router.go('/settings');
       }
     }
   }
@@ -110,7 +114,7 @@ export default class ChangeAvatarModal extends Block{
   render(): string {
     return(`
             <dialog class="modal">
-              <form action='' class='modal__form'>
+              <form action='' class='modal__form' id="form">
                 {{{ModalTitleLine}}}
                 {{{FileInput}}}
                 {{{InputButton}}}

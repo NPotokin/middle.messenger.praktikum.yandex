@@ -1,100 +1,49 @@
 import Block from '../../core/Block.ts';
-import { ArrowButton, Image, Button } from '../../ui/index.ts';
-import navigate from '../../utils/navigate.ts';
-import { UserInput } from '../../components/userProfileComponents/userInput/index.ts';
-import { ErrorLine } from '../../ui/index.ts';
-import passwordValidator from '../../utils/inputValidators/passwordValidator.ts';
-import { passwordCheckValidator } from '../../utils/inputValidators/passwordCheckValidator.ts';
+import {User} from '../../core/Store.ts';
+import { ArrowButton, Image } from '../../ui/index.ts';
+import connect from '../../utils/connect.ts';
+import ProfileCPform from './profileCPform.ts';
 
-interface ProfileMainModuleInterface{
+interface ProfileCPModuleInterface{
   ErrorText?: string,
+  user:{
+    avatar?: string
+  }
 }
-export default class ProfileMainModule extends Block{
-  constructor(props: ProfileMainModuleInterface){
+class ProfileCPModule extends Block{
+  constructor(props: ProfileCPModuleInterface){
     super({
       ...props,
       BackButton: new ArrowButton({
         ...props,
         src: '/icons/arrow-left.svg',
-        onClick: () => navigate('profilePage'),
+        onClick: () => window.router.go('/settings'),
       }),
       AvatarImage: new Image({
         ...props,
-        imgSize:'40px',
+        imgSize:'128px',
         contSize:'__128still',
-        imgSrc:'/icons/image.svg',
+        imgSrc: props.user.avatar
+          ? `https://ya-praktikum.tech/api/v2/resources${props.user.avatar}`
+          : 'icons/image.svg',
       }),
-      ErrorLine: new ErrorLine({
+      ProfileCPform: new ProfileCPform({
         ...props,
-        error: props.ErrorText,
       }),
 
+
     });
   }
 
-  init(){
-    const onSaveChangesBind = this.onSaveChanges.bind(this);
-    const passwordValidatorBind = passwordValidator.bind(this);
-    const passwordCheckValidatorBind = passwordCheckValidator.bind(this);
-
-
-    const OldPassInput = new UserInput({
-      inputId: 'oldPassword',
-      inputName: 'oldPassword',
-      label: 'Старый пароль',
-      inputType: 'password',
-      inputValue: 'ivan',
-      userInputContainerClass: 'loginChange',
-    });
-
-    const PasswordInput = new UserInput({
-      inputId: 'newPassword',
-      inputName: 'newPassword',
-      label: 'Новый пароль',
-      inputType: 'password',
-      inputValue: 'ivanivanov',
-      onBlur: passwordValidatorBind,
-    });
-
-    const PasswordCheckInput = new UserInput({
-      inputId: 'newPasswordAgain',
-      inputName: 'newPassword',
-      label: 'Повторите новый пароль',
-      inputType: 'password',
-      inputValue: 'ivanivanov',
-      onBlur: passwordCheckValidatorBind,
-    });
-
-    const SaveButton = new Button({
-      type: 'primary--password',
-      label:'Сохранить',
-      onClick: onSaveChangesBind,
-    });
-
-    this.children = {
-      ...this.children,
-      OldPassInput,
-      PasswordInput,
-      PasswordCheckInput,
-      SaveButton,
-    };
-  }
-
-  onSaveChanges(e: Event){
-    e.preventDefault();
-    const passwordError = this.children.PasswordInput.props.error;
-    const passwordErrorCheck = this.children.PasswordCheckInput.props.error;
-
-    if(!passwordError && !passwordErrorCheck){
-      this.children.ErrorLine.setProps({ error: false, ErrorText: null });
-      console.log({
-        password: this.props.password,
-      });
-      navigate('profilePage');
-    } else {
-      this.children.ErrorLine.setProps({ error: true, ErrorText: 'Проверьте правильность ввода данных' });
+  componentDidUpdate(oldProps: {user:User}, newProps: {user:User}): boolean {
+    if(oldProps === newProps){
+      return false;
     }
+    this.children.AvatarImage.setProps(
+      {imgSrc:  `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`});
+    return true;
   }
+
 
   render(){
     return(`
@@ -105,18 +54,18 @@ export default class ProfileMainModule extends Block{
                 <div class="profile__main">
                     <div class="profileContainer">
                         {{{AvatarImage}}}
-                        <form action='' class="profile__form">
-                          <div class="profile_info">
-                            {{{OldPassInput}}}
-                            {{{PasswordInput}}}
-                            {{{PasswordCheckInput}}}
-                          </div>
-                          {{{SaveButton}}}
-                        </form>
-                          {{{ErrorLine}}}
+                        {{{ProfileCPform}}}
                     </div>
                 </div>
             </div>
         `);
   }
 }
+
+function mapStateToProps(store: { user: User}) {
+  return{
+    user: store.user,
+  };
+}
+
+export default connect(mapStateToProps)(ProfileCPModule);

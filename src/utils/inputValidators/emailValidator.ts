@@ -5,7 +5,7 @@ export default function emailValidator(e: { target: { value: string; }; }) {
   if (isValid) {
     this.children.EmailInput.setProps({ error: false, inputText: null });
   } else {
-    this.children.EmailInput.setProps({ error: true, inputText: 'Ошибочка' });
+    this.children.EmailInput.setProps({ error: true, inputText: 'Не похоже на адрес электронной почты' });
   }
 
   this.setProps({email: inputValue});

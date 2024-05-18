@@ -6,7 +6,6 @@ import Handlebars from 'handlebars';
 export interface ComponentInterface {
   [prop: string]: unknown;
   events?: { [eventName: string]: (e: Event) => void }
-  hasID?: boolean;
 }
 
 export interface BlockInterface {
@@ -19,13 +18,14 @@ export default class Block  {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
+    // FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render',
   };
 
   private _element: HTMLElement | null = null;
   private _meta: { tagName: string } | null = null;
   public _id: string = nanoid(6);
-  private eventBus: () => EventBus;
+  private eventBus: () => EventBus<string>;
   public props: ComponentInterface;
   public children: Record<string, Block>;
 
@@ -60,10 +60,11 @@ export default class Block  {
     });
   }
 
-  _registerEvents(eventBus: EventBus) {
+  _registerEvents(eventBus: EventBus<string>) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    // eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
@@ -87,8 +88,9 @@ export default class Block  {
   }
 
   _componentDidMount() {
+    // this._checkInDom();
     this.componentDidMount(this.props); //this.props by me and questinable
-
+    console.log('_cdu');
     Object.values(this.children).forEach(child => {
       child.dispatchComponentDidMount();
     });
@@ -107,6 +109,7 @@ export default class Block  {
     if (!response) {
       return;
     }
+    console.log('Block _CDU render');
     this._render();
   }
 
@@ -131,6 +134,24 @@ export default class Block  {
     return { children, props };
   }
 
+  // _checkInDom() {
+  //   const elementInDOM = document.body.contains(this._element);
+
+  //   if (elementInDOM) {
+  //     setTimeout(() => this._checkInDom(), 1000);
+  //     return;
+  //   }
+
+  //   this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
+  // }
+
+  // _componentWillUnmount() {
+  //   this.componentWillUnmount();
+  // }
+
+  // componentWillUnmount() {}
+
+
   setProps = (nextProps: BlockInterface) => {
     if (!nextProps) {
       return;
@@ -149,6 +170,20 @@ export default class Block  {
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
+    //sprint3 addition
+    const childrenProps: Block[] = [];
+    Object.entries(propsAndStubs).forEach(([key, value]) => {
+      if(Array.isArray(value)) {
+        propsAndStubs[key] = value.map((item) => {
+          if(item instanceof Block) {
+            childrenProps.push(item);
+            return `<div data-id="${item._id}"></div>`;
+          }
+
+          return item;
+        }).join('');
+      }
+    });
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
@@ -159,8 +194,9 @@ export default class Block  {
 
     const newElement = fragment.content.firstElementChild as HTMLElement;
 
-    Object.values(this.children).forEach(child => {
+    [...Object.values(this.children), ...childrenProps].forEach(child => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+
       stub?.replaceWith(child.getContent());
     });
 
@@ -205,7 +241,7 @@ export default class Block  {
   }
 
   show() {
-    this.getContent().style.display = 'flex';
+    this.getContent().style.display = 'block';
   }
 
   hide() {

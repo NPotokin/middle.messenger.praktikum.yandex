@@ -1,30 +1,52 @@
 import Block from '../../../../core/Block.ts';
+import store, { ChatData }  from '../../../../core/Store.ts';
+import connect from '../../../../utils/connect.ts';
 import ListItemComponent from './listItemComponent.ts';
-import {listItemConfigs} from './listItemConfigs.ts';
+import listWrapper from './listWrapper.ts';
+import formatTime from '../../../../utils/timeFormatter.ts';
 
-export default class ItemListComponent extends Block {
-  constructor(props:{}) {
 
-    const listItems = listItemConfigs.reduce<{[key: string]: ListItemComponent}>((acc, itemConfig) => {
-      const listItem = new ListItemComponent(itemConfig);
-      acc[listItem._id] = listItem;
-      return acc;
-    }, {});
+class ItemListComponent extends Block{
+  init(){
 
-    super({
-      ...props,
-      listItemComponentKeys: Object.keys(listItems),
-      ...listItems,
-    });
+    const ChatList = new listWrapper({cards: this.mapListWrapper(store.getState().chats!) || []});
+
+    this.children = {
+      ChatList,
+    };
   }
 
-  render() {
-    const LIKeys = this.props.listItemComponentKeys as string[];
-    const listItemRender = LIKeys.map(key => `{{{ ${key} }}}`).join('');
-    return `
-            <div>
-                ${listItemRender}
-            </div>
-        `;
+  mapListWrapper(listItem:ChatData[]){
+    return listItem?.map(({title, id, unread_count, last_message }) =>
+      new ListItemComponent({
+        title: title,
+        id: id,
+        messageContent: last_message?.content,
+        messageTime: formatTime(last_message?.time || ''),
+        LImodifier: unread_count! > 0 ? '' : 'none',
+        unreadCount: unread_count! > 0 ? unread_count : '',
+      }));
+  }
+
+  componentDidUpdate(oldProps: {chats: ChatData[]}, newProps: {chats: ChatData[]}): boolean {
+    if(oldProps.chats !== newProps.chats) {
+      this.children.ChatList.setProps({
+        cards: this.mapListWrapper(newProps.chats) || [],
+      });
+    }
+    return true;
+  }
+
+
+  render(): string {
+    return(`
+        <div>
+          {{{ChatList}}}
+        </div>
+    `);
   }
 }
+
+export default connect(({chats}) => ({chats}))(ItemListComponent);
+
+
