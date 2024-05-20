@@ -18,6 +18,7 @@
     flex-direction: column;
     width: 190px;
     margin: 6px 0;
+    overflow: hidden;
 }
 
 .listItem__title {

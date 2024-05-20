@@ -32,7 +32,7 @@ margin-top: 3px;
 }
 
 .chatAreaInput__input--input {
-    width: 100;
+    width: 100%;
     background-color:#EFEFEF;
     border: none;
     padding: 6px 1px 6px 5px;
@@ -41,7 +41,7 @@ margin-top: 3px;
 }
 
 .chatAreaInput__inputWithError{
-    width: 100;
+    width: 100%;
     background-color:#EFEFEF;
     border: none;
     padding: 1px;

@@ -30,6 +30,9 @@ class ChatAreaModule extends Block{
   mapChatWrapper(chatItem: SocketMessage[]=[]){
     return chatItem?.map(({id, chat_id, user_id, content, time}) =>
       new AreaContentComponent({
+        name: user_id === store.getState().user?.id
+        ? 'You'
+        : 'Someone else',
         modifier: user_id === store.getState().user?.id
           ? 'outbound'
           : 'inbound',
