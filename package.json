@@ -12,13 +12,21 @@
     "preview": "vite preview",
     "build": "vite build",
     "code linter": "npx eslint .",
-    "style linter": "npx stylelint **/*.css"
+    "style linter": "npx stylelint **/*.css",
+    "test": "mocha"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.12",
+    "@types/sinon": "^17.0.3",
     "autoprefixer": "^10.4.19",
+    "chai": "^5.1.1",
     "eslint": "^8.57.0",
+    "mocha": "^10.4.0",
     "postcss": "^8.4.38",
+    "sinon": "^18.0.0",
     "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.0",
     "ts-node": "^10.9.2",

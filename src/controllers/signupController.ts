@@ -25,7 +25,7 @@ class SignupController {
         await this.getUserDataToStore();
         window.router.go('/messenger');
       } else if (xhr.status === 400){
-        const responseErrorText = JSON.parse(xhr.responseText)
+        const responseErrorText = JSON.parse(xhr.responseText);
         if(responseErrorText.reason === 'User already in system' ){
           console.log('Already logged in - getting data...');
           await this.getUserDataToStore();
