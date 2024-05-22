@@ -1,4 +1,3 @@
-// global.d.ts
 import Router from './core/Router.ts';
 
 declare global {
@@ -6,3 +5,4 @@ declare global {
     router: Router;
   }
 }
+
