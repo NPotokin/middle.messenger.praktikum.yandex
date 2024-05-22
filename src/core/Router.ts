@@ -27,7 +27,8 @@ class Router {
     this.routes.push(route);
     return this;
   }
-  private isAuthenticated(): boolean {
+  
+  protected isAuthenticated(): boolean {
     return !!store.getState().user;
   }
 
