@@ -13,12 +13,8 @@
     "build": "vite build",
     "code linter": "npx eslint .",
     "style linter": "npx stylelint **/*.css",
-    "test": "mocha --require mock-local-storage"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run code linter"
-    }
+    "test": "mocha --require mock-local-storage",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
