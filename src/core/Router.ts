@@ -5,7 +5,7 @@ import store from './Store.ts';
 class Router {
   private static __instance: Router;
   public routes: Route[] = [];
-  private history: History;
+  public history: History;
   private _currentRoute: Route | null;
   private _rootQuery: string;
 
