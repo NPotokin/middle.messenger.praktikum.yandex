@@ -17,7 +17,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx exlint . --fix && npx stylelint **/*.css --fix && npm run test"
+      "pre-commit": "npm run code linter"
     }
   },
   "devDependencies": {
