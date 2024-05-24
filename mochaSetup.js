@@ -9,5 +9,5 @@ global.window = jsdom.window;
 global.document = jsdom.window.document;
 global.Node = jsdom.window.Node;
 global.MouseEvent = jsdom.window.MouseEvent;
-global.window.onpopstate = jsdom.window.onpopstate; 
+global.window.onpopstate = jsdom.window.onpopstate;
 
