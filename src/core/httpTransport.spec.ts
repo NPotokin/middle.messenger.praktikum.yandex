@@ -60,7 +60,9 @@ describe('HTTPTransport', () => {
 
     it('should make a POST request with proper data', async () => {
       const data = { user: 'SomeUser' };
+      console.log(data)
       const properData = JSON.stringify(data);
+      console.log(properData)
       expect(request.requestBody).to.be.equal(properData);
     });
   });
