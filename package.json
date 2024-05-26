@@ -14,7 +14,7 @@
     "code linter": "npx eslint .",
     "style linter": "npx stylelint **/*.css",
     "test": "mocha --require mock-local-storage",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
@@ -25,7 +25,7 @@
     "autoprefixer": "^10.4.19",
     "chai": "^5.1.1",
     "eslint": "^8.57.0",
-    "husky": "^9.0.11",
+    "husky": "^8.0.3",
     "jsdom": "^24.0.0",
     "mocha": "^10.4.0",
     "mock-local-storage": "^1.1.24",
