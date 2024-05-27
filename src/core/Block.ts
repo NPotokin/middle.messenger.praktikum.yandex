@@ -18,7 +18,6 @@ export default class Block  {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
-    // FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render',
   };
 
@@ -64,7 +63,6 @@ export default class Block  {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    // eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
@@ -88,9 +86,7 @@ export default class Block  {
   }
 
   _componentDidMount() {
-    // this._checkInDom();
     this.componentDidMount(this.props); //this.props by me and questinable
-    console.log('_cdu');
     Object.values(this.children).forEach(child => {
       child.dispatchComponentDidMount();
     });
@@ -134,24 +130,6 @@ export default class Block  {
     return { children, props };
   }
 
-  // _checkInDom() {
-  //   const elementInDOM = document.body.contains(this._element);
-
-  //   if (elementInDOM) {
-  //     setTimeout(() => this._checkInDom(), 1000);
-  //     return;
-  //   }
-
-  //   this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
-  // }
-
-  // _componentWillUnmount() {
-  //   this.componentWillUnmount();
-  // }
-
-  // componentWillUnmount() {}
-
-
   setProps = (nextProps: BlockInterface) => {
     if (!nextProps) {
       return;
@@ -164,7 +142,7 @@ export default class Block  {
     return this._element;
   }
 
-  _render() {
+  _render(){
     const propsAndStubs = { ...this.props };
 
     Object.entries(this.children).forEach(([key, child]) => {

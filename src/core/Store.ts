@@ -49,7 +49,7 @@ export interface AppState {
   activeChat?: ActiveChat;
 }
 
-class Store extends EventBus<StoreEvents> {
+export class Store extends EventBus<StoreEvents> {
   private static __instance: Store;
   private state: AppState;
 

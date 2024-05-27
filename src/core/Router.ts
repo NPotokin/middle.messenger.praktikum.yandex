@@ -4,8 +4,8 @@ import store from './Store.ts';
 
 class Router {
   private static __instance: Router;
-  private routes: Route[] = [];
-  private history: History;
+  public routes: Route[] = [];
+  public history: History;
   private _currentRoute: Route | null;
   private _rootQuery: string;
 
@@ -19,15 +19,16 @@ class Router {
     this._currentRoute = null;
     this._rootQuery = rootQuery ?? '#app';
 
-    Router.__instance = this;
+    Router.__instance = this; //tested
   }
 
-  use(pathname: string, block: typeof Block): Router {
+  use(pathname: string, block: typeof Block): Router { //tested
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
     this.routes.push(route);
     return this;
   }
-  private isAuthenticated(): boolean {
+
+  protected isAuthenticated(): boolean {
     return !!store.getState().user;
   }
 
