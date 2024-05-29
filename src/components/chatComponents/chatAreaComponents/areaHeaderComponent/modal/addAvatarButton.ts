@@ -2,14 +2,14 @@
 import Block from '../../../../../core/Block.ts';
 
 interface AddAvatarButtonInterface{
-  onAddClick?: () => void;
+  onAddAvatarClick?: () => void;
 }
 export default class AddAvatarButton extends Block{
   constructor(props:AddAvatarButtonInterface){
     super({
       ...props,
       events:{
-        click: props.onAddClick,
+        click: props.onAddAvatarClick,
       },
     });
   }

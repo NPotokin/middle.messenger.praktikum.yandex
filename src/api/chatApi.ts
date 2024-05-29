@@ -25,6 +25,10 @@ export class ChatAPI {
     return chatAPIinstance.delete(`${base}/chats/users`, {data});
   }
 
+  static chatChangeAvatar(data: FormData){
+    return chatAPIinstance.put(`${base}/chats/avatar`, {data});
+  }
+
   static deleteChat(data: Record<string, unknown>){
     return chatAPIinstance.delete(`${base}/chats`, {data});
   }

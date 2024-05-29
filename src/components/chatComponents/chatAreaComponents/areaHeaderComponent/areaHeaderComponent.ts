@@ -5,6 +5,7 @@ import AddDeleteDiv from './modal/addDeleteDiv.ts';
 import { DialogAddUser, DialogDeleteUser } from './modal/index.ts';
 import connect from '../../../../utils/connect.ts';
 import store, { ChatData } from '../../../../core/Store.ts';
+import ChangeAvatarModal from './modal/changeChatAvatarModal.ts';
 
 class AreaHeaderComponent extends Block {
   constructor(props:{}) {
@@ -14,11 +15,15 @@ class AreaHeaderComponent extends Block {
       Img: new Image({
         ...props,
         contSize: '__38',
+        imgSize: '36px',
+        imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState()
+        .chats?.find(chat => chat.isActive)?.avatar}`
       }),
       AddDeleteMain: new AddDeleteMain({
         ...props,
         onAddClick: () => this.toggleDialogVisibility('DialogAddUser'),
         onDeleteClick: () => this.toggleDialogVisibility('DialogDeleteUser'),
+        onAddAvatarClick: () => this.toggleDialogVisibility('DialogNewAvatar'),
       }),
       AddDeleteDiv: new AddDeleteDiv({
         ...props,
@@ -34,29 +39,36 @@ class AreaHeaderComponent extends Block {
         label: 'Удалить',
         ADUtitleText: 'Удалить пользователя',
       }),
+      DialogNewAvatar: new ChangeAvatarModal({
+        ...props
+      })
     });
   }
 
-  toggleDialogVisibility(dialogName:string) {
+  toggleDialogVisibility(dialogName: string) {
     const dialog = this.children[dialogName];
     const dialogElement = dialog.getContent();
 
-
     if (dialogElement.style.display !== 'none') {
-      dialogElement.style.display = 'none';
-      return;
+        dialogElement.style.display = 'none';
+        return;
     }
 
-    const otherDialogName = dialogName === 'DialogAddUser' ? 'DialogDeleteUser' : 'DialogAddUser';
-    const otherDialog = this.children[otherDialogName];
-    const otherDialogElement = otherDialog.getContent();
-    if (otherDialogElement.style.display !== 'none') {
-      otherDialogElement.style.display = 'none';
-    }
+    const dialogNames = ['DialogAddUser', 'DialogDeleteUser', 'DialogNewAvatar'];
 
+    dialogNames.forEach(name => {
+        if (name !== dialogName) {
+            const otherDialog = this.children[name];
+            const otherDialogElement = otherDialog.getContent();
+            if (otherDialogElement.style.display !== 'none') {
+                otherDialogElement.style.display = 'none';
+            }
+        }
+    });
 
     dialogElement.style.display = 'flex';
-  }
+}
+
 
 
   toggleAddDeleteMainVisibility() {
@@ -69,12 +81,13 @@ class AreaHeaderComponent extends Block {
   }
 
   render() {
-    const activeChat =store.getState().chats?.find(chat => chat.isActive)?.title
+    const activeChat = store.getState().chats?.find(chat => chat.isActive)?.title
      || store.getState().chats?.find(chat => chat.id === store.getState().activeChat?.id)?.title;
     return (`
             <div class="chatAreaHeader">
             {{{DialogAddUser}}}
             {{{DialogDeleteUser}}}
+            {{{DialogNewAvatar}}}
                 <div class="chatAreaHeader__image">
                     {{{Img}}}
                 </div>

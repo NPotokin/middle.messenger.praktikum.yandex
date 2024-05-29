@@ -10,16 +10,15 @@ export default class AddDeleteMain extends Block{
       ...props,
       AddButton: new AddButton({
         ...props,
-
       }),
       DeleteButton: new DeleteButton({
         ...props,
       }),
       AttachAvatar: new AddAvatarButton({
-        ...props
+        ...props,
       }),
       DeleteChat: new DeleteChatButton({
-        ...props
+        ...props,
       }),
     });
   }

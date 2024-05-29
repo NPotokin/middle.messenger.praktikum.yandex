@@ -30,6 +30,21 @@ class ChatController {
     }
   }
 
+  public static async changeChatAvatar(data: FormData) {
+    try {
+      const xhr = await ChatAPI.chatChangeAvatar(data);
+      if (xhr.status === 200) {
+        const chatData = JSON.parse(xhr.responseText);
+        store.setChats(chatData)
+        console.log('Chat avatar updated successfully:', chatData);
+      } else {
+        throw xhr;
+      }
+    } catch (xhr) {
+      this.handleError(xhr, 'Error updating avatar');
+    }
+  }
+
   public static async getChatsSetChats() {
     try {
       const xhr = await ChatAPI.allChatsData();

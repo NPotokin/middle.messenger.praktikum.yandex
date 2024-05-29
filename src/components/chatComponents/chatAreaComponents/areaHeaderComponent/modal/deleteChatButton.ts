@@ -10,15 +10,15 @@ export default class DeleteChatButton extends Block{
     super({
       ...props,
       events:{
-        click: () => this.onDelete()
+        click: () => this.onDelete(),
       },
     });
   }
 
   async onDelete(){
-    console.log('delete chat clicked')
-    const id = store.getState().activeChat?.id
-    await ChatController.deleteChat({chatId: id})
+    console.log('delete chat clicked');
+    const id = store.getState().activeChat?.id;
+    await ChatController.deleteChat({chatId: id});
     await ChatController.getChatsSetChats();
   }
 
