@@ -16,8 +16,7 @@ class AreaHeaderComponent extends Block {
         ...props,
         contSize: '__38',
         imgSize: '36px',
-        imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState()
-        .chats?.find(chat => chat.isActive)?.avatar}`
+        imgSrc:  '/icons/image.svg'
       }),
       AddDeleteMain: new AddDeleteMain({
         ...props,
@@ -40,8 +39,8 @@ class AreaHeaderComponent extends Block {
         ADUtitleText: 'Удалить пользователя',
       }),
       DialogNewAvatar: new ChangeAvatarModal({
-        ...props
-      })
+        ...props,
+      }),
     });
   }
 
@@ -50,25 +49,24 @@ class AreaHeaderComponent extends Block {
     const dialogElement = dialog.getContent();
 
     if (dialogElement.style.display !== 'none') {
-        dialogElement.style.display = 'none';
-        return;
+      dialogElement.style.display = 'none';
+      return;
     }
 
     const dialogNames = ['DialogAddUser', 'DialogDeleteUser', 'DialogNewAvatar'];
 
     dialogNames.forEach(name => {
-        if (name !== dialogName) {
-            const otherDialog = this.children[name];
-            const otherDialogElement = otherDialog.getContent();
-            if (otherDialogElement.style.display !== 'none') {
-                otherDialogElement.style.display = 'none';
-            }
+      if (name !== dialogName) {
+        const otherDialog = this.children[name];
+        const otherDialogElement = otherDialog.getContent();
+        if (otherDialogElement.style.display !== 'none') {
+          otherDialogElement.style.display = 'none';
         }
+      }
     });
 
     dialogElement.style.display = 'flex';
-}
-
+  }
 
 
   toggleAddDeleteMainVisibility() {
@@ -78,6 +76,21 @@ class AreaHeaderComponent extends Block {
     } else {
       modalElement.style.display = 'none';
     }
+  }
+
+  componentDidUpdate(oldProps?:{chats: ChatData[]}, newProps?: {chats: ChatData[]}): boolean {
+    if (oldProps !== newProps){
+      const activeChat = newProps?.chats.find(chat => chat.isActive);
+      const imgSrc = activeChat?.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources${activeChat.avatar}`
+        : '/icons/image.svg';
+      
+        this.children.Img.setProps({
+      imgSrc:imgSrc
+      });
+    }
+    return true
+    
   }
 
   render() {

@@ -32,10 +32,11 @@ margin-top: 3px;
 }
 
 .chatAreaInput__input--input {
-    width: 100%;
+    width: 90%;
     background-color:#EFEFEF;
     border: none;
     padding: 6px 1px 6px 5px;
+    margin-right: 5px;
     border-radius: 30px;
     flex: 1;
 }
@@ -45,9 +46,11 @@ margin-top: 3px;
     background-color:#EFEFEF;
     border: none;
     padding: 1px;
+    margin-right: 5px;
     border-radius: 30px;
     flex: 1;
     max-height: 28px;
+    
 }
 
 .chatAreaInput__input--input:focus {

@@ -9,14 +9,12 @@ function connect(mapStateToProps: (state: AppState) => AppState) {
     return class extends Component {
       constructor(props: {}) {
         let state = mapStateToProps(store.getState());
-        console.log('connect old:', state);
         super({...props, ...state});
 
         store.on(StoreEvents.Updated, () => {
           const newState = mapStateToProps(store.getState());
           if (!isEqual(state, newState)) {
             this.setProps({...newState});
-            console.log('connect new:', newState);
           }
 
           state = newState;
