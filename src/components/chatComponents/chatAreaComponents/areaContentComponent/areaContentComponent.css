@@ -41,11 +41,11 @@
 }
 
 .chatAreaContent__outbound {
-    background-color: #E4EDFD;
+    background-color: #a0dcd7;
     border-radius: 12px 12px 0;
     margin-bottom: 10px;
     margin-left: auto;
-    max-width: 300px; /* Adjust width to approximate 30 characters */
+    max-width: 300px; 
 }
 
 .chatAreaContent__outbound--message {
@@ -61,23 +61,23 @@
     line-height: 9px;
     font-weight: 500;
     text-align: right;
-    color: #3369F3;
+    color: #0f766e;
     margin: 5px 10px 10px; 
 }
 
 .chatAreaContent__outbound--name {
     font-size: 10px;
     line-height: 9px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: right;
-    color: #3369F3;
+    color: #0f766e;
     margin: 5px 10px 10px; 
 }
 
 .chatAreaContent__inbound--name {
     font-size: 10px;
     line-height: 9px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     color: #999;
     margin: 5px 10px 10px; 

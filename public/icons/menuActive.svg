@@ -2,8 +2,8 @@
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
     <g id="SVGRepo_iconCarrier">
-        <circle cx="5" cy="12" r="1.5" fill="#3369F3"></circle>
-        <circle cx="12" cy="12" r="1.5" fill="#3369F3"></circle>
-        <circle cx="19" cy="12" r="1.5" fill="#3369F3"></circle>
+        <circle cx="5" cy="12" r="1.5" fill="#0f766e"></circle>
+        <circle cx="12" cy="12" r="1.5" fill="#0f766e"></circle>
+        <circle cx="19" cy="12" r="1.5" fill="#0f766e"></circle>
     </g>
 </svg>
