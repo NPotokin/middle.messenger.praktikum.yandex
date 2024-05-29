@@ -16,6 +16,20 @@ class ChatController {
     }
   }
 
+  public static async deleteChat(data: Record<string, unknown>) {
+    try {
+      const xhr = await ChatAPI.deleteChat(data);
+      if (xhr.status === 200) {
+        const chatData = JSON.parse(xhr.responseText);
+        console.log('Chat Deleted:', chatData);
+      } else {
+        throw xhr;
+      }
+    } catch (xhr) {
+      this.handleError(xhr, 'Error deleting chat');
+    }
+  }
+
   public static async getChatsSetChats() {
     try {
       const xhr = await ChatAPI.allChatsData();

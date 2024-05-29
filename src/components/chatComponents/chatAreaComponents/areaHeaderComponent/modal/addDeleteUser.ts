@@ -1,6 +1,8 @@
 import Block from '../../../../../core/Block.ts';
+import AddAvatarButton from './addAvatarButton.ts';
 import AddButton from './addButton.ts';
 import DeleteButton from './deleteButton.ts';
+import DeleteChatButton from './deleteChatButton.ts';
 
 export default class AddDeleteMain extends Block{
   constructor(props:{}){
@@ -13,6 +15,12 @@ export default class AddDeleteMain extends Block{
       DeleteButton: new DeleteButton({
         ...props,
       }),
+      AttachAvatar: new AddAvatarButton({
+        ...props
+      }),
+      DeleteChat: new DeleteChatButton({
+        ...props
+      }),
     });
   }
 
@@ -21,6 +29,8 @@ export default class AddDeleteMain extends Block{
         <div class="modalSmall">
             {{{AddButton}}}
             {{{DeleteButton}}}
+            {{{AttachAvatar}}}
+            {{{DeleteChat}}}
         </div>
         `);
   }

@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: space-around;
     width: 210px;
-    height: 90px;
+    height: 180px;
     padding: 5px;
     border: solid var(--background-color);
     border-radius: 12px;

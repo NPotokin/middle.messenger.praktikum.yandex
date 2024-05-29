@@ -34,7 +34,7 @@
   height: 32px;
   font-size: 12px;
   line-height: 16px;
-  margin: 20px auto auto;
+  margin: 30px auto 30px auto;
   color: var(--primary-color);
   text-decoration: underline;
   cursor: pointer;
