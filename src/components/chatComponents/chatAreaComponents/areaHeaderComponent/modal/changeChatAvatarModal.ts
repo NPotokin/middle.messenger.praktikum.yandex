@@ -107,8 +107,9 @@ export default class ChangeAvatarModal extends Block{
         const id = store.getState().activeChat!.id!.toString();
         imageData.append('avatar', fileInputElement.files[0]);
         imageData.append('chatId', id);
-        await ChatController.changeChatAvatar(imageData);
+        await ChatController.changeChatAvatar(imageData)
         await ChatController.getChatsSetChats();
+        this.hide()
       }
     }
   }

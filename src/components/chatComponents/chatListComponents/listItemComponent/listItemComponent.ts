@@ -22,8 +22,8 @@ class ListItemComponent extends Block{
         ...props,
         contSize: '__47',
         imgSize: '45px',
-        imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState()
-        .chats?.find(chat => chat.isActive)?.last_message?.user?.avatar}`,
+        // imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState()
+        //   .chats?.find(chat => chat.isActive)?.last_message?.user?.avatar}`,
         // need to have either CDU or map to id or something
         // seems like it would be easier to set up chat avatar here
       }),

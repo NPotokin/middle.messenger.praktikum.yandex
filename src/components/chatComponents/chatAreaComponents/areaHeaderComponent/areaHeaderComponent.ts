@@ -9,6 +9,10 @@ import ChangeAvatarModal from './modal/changeChatAvatarModal.ts';
 
 class AreaHeaderComponent extends Block {
   constructor(props:{}) {
+    const activeChat = store.getState().chats?.find(chat => chat.isActive);
+    const initialImgSrc = activeChat?.avatar
+      ? `https://ya-praktikum.tech/api/v2/resources${activeChat.avatar}`
+      : '/icons/image.svg';
     super({
       ...props,
       chatName: '',
@@ -16,7 +20,7 @@ class AreaHeaderComponent extends Block {
         ...props,
         contSize: '__38',
         imgSize: '36px',
-        imgSrc:  '/icons/image.svg'
+        imgSrc: initialImgSrc,
       }),
       AddDeleteMain: new AddDeleteMain({
         ...props,
@@ -80,17 +84,18 @@ class AreaHeaderComponent extends Block {
 
   componentDidUpdate(oldProps?:{chats: ChatData[]}, newProps?: {chats: ChatData[]}): boolean {
     if (oldProps !== newProps){
+      console.log('123 - cdu')
       const activeChat = newProps?.chats.find(chat => chat.isActive);
       const imgSrc = activeChat?.avatar
         ? `https://ya-praktikum.tech/api/v2/resources${activeChat.avatar}`
         : '/icons/image.svg';
-      
-        this.children.Img.setProps({
-      imgSrc:imgSrc
+
+      this.children.Img.setProps({
+        imgSrc: imgSrc
       });
     }
-    return true
-    
+    return true;
+
   }
 
   render() {

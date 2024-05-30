@@ -34,9 +34,7 @@ class ChatController {
     try {
       const xhr = await ChatAPI.chatChangeAvatar(data);
       if (xhr.status === 200) {
-        const chatData = JSON.parse(xhr.responseText);
-        store.setChats(chatData);
-        console.log('Chat avatar updated successfully:', chatData);
+        console.log('Chat avatar updated successfully');
       } else {
         throw xhr;
       }
