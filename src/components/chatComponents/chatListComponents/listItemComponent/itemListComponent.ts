@@ -18,10 +18,10 @@ class ItemListComponent extends Block{
 
   mapListWrapper(listItem: ChatData[]) {
     return listItem?.map(({ title, id, unread_count, last_message }) => {
-      const imageUrl = last_message?.user?.avatar 
-        ? `https://ya-praktikum.tech/api/v2/resources${last_message.user.avatar}` 
+      const imageUrl = last_message?.user?.avatar
+        ? `https://ya-praktikum.tech/api/v2/resources${last_message.user.avatar}`
         : 'icons/image.svg';
-  
+
       return new ListItemComponent({
         Image: imageUrl,
         title: title,
@@ -33,7 +33,7 @@ class ItemListComponent extends Block{
       });
     });
   }
-  
+
 
   componentDidUpdate(oldProps: {chats: ChatData[]}, newProps: {chats: ChatData[]}): boolean {
     if(oldProps.chats !== newProps.chats) {

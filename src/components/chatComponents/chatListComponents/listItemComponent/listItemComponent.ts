@@ -16,7 +16,7 @@ class ListItemComponent extends Block{
       ...props,
       events:{
         click: () => this.onClick(),
-      }
+      },
     });
   }
 
