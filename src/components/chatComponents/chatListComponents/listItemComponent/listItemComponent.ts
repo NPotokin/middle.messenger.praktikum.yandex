@@ -1,5 +1,4 @@
 import store, {ChatData} from '../../../../core/Store.ts';
-import { Image } from '../../../../ui/index.ts';
 import Block from '../../../../core/Block.ts';
 import connect from '../../../../utils/connect.ts';
 import ChatController from '../../../../controllers/chatController.ts';
@@ -17,17 +16,7 @@ class ListItemComponent extends Block{
       ...props,
       events:{
         click: () => this.onClick(),
-      },
-      Image: new Image({
-        ...props,
-        contSize: '__47',
-        imgSize: '45px',
-        // imgSrc: `https://ya-praktikum.tech/api/v2/resources${store.getState()
-        //   .chats?.find(chat => chat.isActive)?.last_message?.user?.avatar}`,
-        // need to have either CDU or map to id or something
-        // seems like it would be easier to set up chat avatar here
-      }),
-
+      }
     });
   }
 
@@ -58,7 +47,7 @@ class ListItemComponent extends Block{
     return (`
       <div class="listItem${activeChatClass}">
         <div class="listItem__image">
-          {{{Image}}}
+          <img src={{Image}} width="40px" height="40px">
         </div>
         <div class="listItem__content">
           <p class="listItem__title">{{title}}</p>

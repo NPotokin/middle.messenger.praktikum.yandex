@@ -84,14 +84,14 @@ class AreaHeaderComponent extends Block {
 
   componentDidUpdate(oldProps?:{chats: ChatData[]}, newProps?: {chats: ChatData[]}): boolean {
     if (oldProps !== newProps){
-      console.log('123 - cdu')
+      console.log('123 - cdu');
       const activeChat = newProps?.chats.find(chat => chat.isActive);
       const imgSrc = activeChat?.avatar
         ? `https://ya-praktikum.tech/api/v2/resources${activeChat.avatar}`
         : '/icons/image.svg';
 
       this.children.Img.setProps({
-        imgSrc: imgSrc
+        imgSrc: imgSrc,
       });
     }
     return true;
