@@ -47,7 +47,7 @@ class ListItemComponent extends Block{
     return (`
       <div class="listItem${activeChatClass}">
         <div class="listItem__image">
-          <img src={{Image}} width="40px" height="40px">
+          <img class="imageContainer__47 " src={{Image}} width="47px" height="47px">
         </div>
         <div class="listItem__content">
           <p class="listItem__title">{{title}}</p>
